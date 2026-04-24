@@ -1,0 +1,3506 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Freedom Builders Elite — 21 Ngày AI Agent Mastery qua KDP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-0: #07080c;
+  --bg-1: #0d0f15;
+  --bg-2: #131620;
+  --bg-3: #1a1e2b;
+  --bg-4: #232838;
+  --line: rgba(255,255,255,0.08);
+  --line-strong: rgba(255,255,255,0.16);
+  --text-0: #f4f5f7;
+  --text-1: #b8bcc8;
+  --text-2: #6c7282;
+  --accent: #00ff9d;
+  --accent-glow: rgba(0,255,157,0.4);
+  --accent-dim: rgba(0,255,157,0.12);
+  --warn: #ffb800;
+  --hot: #ff4d6d;
+  --week-1: #00d4ff;
+  --week-2: #b794f4;
+  --week-3: #ffb800;
+  --beginner: #00d4ff;
+  --advanced: #ff6b9d;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  background: var(--bg-0);
+  color: var(--text-0);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 800px 600px at 15% 0%, rgba(0,212,255,0.06), transparent 50%),
+    radial-gradient(ellipse 600px 800px at 85% 30%, rgba(183,148,244,0.05), transparent 50%),
+    radial-gradient(ellipse 700px 500px at 50% 100%, rgba(0,255,157,0.04), transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 40px 24px 120px;
+}
+
+/* === HEADER === */
+.header {
+  border: 1px solid var(--line);
+  background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 100%);
+  border-radius: 24px;
+  padding: 48px 40px;
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--accent-glow), transparent 60%);
+  filter: blur(80px);
+  opacity: 0.3;
+}
+
+.brand-strip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-2);
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.brand-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--accent);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.header h1 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(32px, 5vw, 60px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.header h1 .highlight {
+  background: linear-gradient(135deg, var(--accent), var(--week-1));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header .tagline {
+  font-size: 17px;
+  color: var(--text-1);
+  max-width: 760px;
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.meta-cell {
+  background: var(--bg-1);
+  padding: 18px 20px;
+}
+
+.meta-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-2);
+  margin-bottom: 6px;
+}
+
+.meta-value {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text-0);
+}
+
+.meta-value.accent { color: var(--accent); }
+
+/* === PHILOSOPHY === */
+.philosophy {
+  background: linear-gradient(135deg, var(--bg-1), rgba(183,148,244,0.04));
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 36px 40px;
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.philosophy-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--week-2);
+  margin-bottom: 12px;
+}
+
+.philosophy h2 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.25;
+  margin-bottom: 20px;
+}
+
+.philosophy p {
+  font-size: 15px;
+  color: var(--text-1);
+  margin-bottom: 16px;
+}
+
+.philosophy strong { color: var(--accent); font-weight: 600; }
+
+.three-phases {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.phase-block {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
+  border-top: 3px solid var(--phase-color);
+}
+
+.phase-1 { --phase-color: var(--week-1); }
+.phase-2 { --phase-color: var(--week-2); }
+.phase-3 { --phase-color: var(--week-3); }
+
+.phase-day {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--phase-color);
+  margin-bottom: 8px;
+  letter-spacing: 0.1em;
+}
+
+.phase-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.phase-desc {
+  font-size: 13px;
+  color: var(--text-1);
+}
+
+/* === AGENT MAP === */
+.agent-map {
+  background: var(--bg-1);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 32px 36px;
+  margin-bottom: 40px;
+}
+
+.agent-map-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.agent-map h3 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+.agent-map .subtitle {
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+.track-toggle {
+  display: flex;
+  background: var(--bg-3);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.track-btn {
+  padding: 8px 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: transparent;
+  border: none;
+  color: var(--text-2);
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.track-btn.active {
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+
+.agents-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.agent-card {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 18px;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.agent-card:hover {
+  border-color: var(--accent-dim);
+  transform: translateY(-2px);
+}
+
+.agent-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-2);
+  margin-bottom: 6px;
+}
+
+.agent-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.agent-role {
+  font-size: 12px;
+  color: var(--text-1);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.agent-day {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--accent);
+  background: var(--accent-dim);
+  padding: 3px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+/* === PROGRESS BAR === */
+.progress-section {
+  background: rgba(13,15,21,0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 22px 30px;
+  margin-bottom: 40px;
+  position: sticky;
+  top: 16px;
+  z-index: 50;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.progress-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.progress-stats {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--text-1);
+}
+
+.progress-stats .count {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.progress-bar {
+  height: 8px;
+  background: var(--bg-3);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--week-1));
+  border-radius: 4px;
+  width: 0%;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+
+/* === WEEK SECTION === */
+.week {
+  margin-bottom: 64px;
+}
+
+.week-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.week-label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.week-number {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 80px;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, var(--week-color), transparent 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.9;
+}
+
+.week-info h2 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+
+.week-info .subtitle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-2);
+}
+
+.week-goal {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--week-color);
+  border-radius: 8px;
+  padding: 16px 20px;
+  max-width: 460px;
+}
+
+.week-goal .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-2);
+  margin-bottom: 6px;
+}
+
+.week-goal .text {
+  font-size: 13px;
+  color: var(--text-0);
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.week-1 { --week-color: var(--week-1); }
+.week-2 { --week-color: var(--week-2); }
+.week-3 { --week-color: var(--week-3); }
+
+/* === DAY CARDS === */
+.days-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.day-card {
+  background: var(--bg-1);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.day-card:hover { border-color: var(--line-strong); }
+
+.day-card.completed {
+  border-color: var(--accent-dim);
+  background: linear-gradient(135deg, var(--bg-1), rgba(0,255,157,0.03));
+}
+
+.day-card.completed .day-number { color: var(--accent); }
+
+.day-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 22px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s ease;
+}
+
+.day-header:hover { background: rgba(255,255,255,0.02); }
+
+.day-number-block {
+  flex-shrink: 0;
+  width: 60px;
+  text-align: center;
+  border-right: 1px solid var(--line);
+  padding-right: 18px;
+}
+
+.day-number-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-2);
+  margin-bottom: 2px;
+}
+
+.day-number {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 26px;
+  line-height: 1;
+  color: var(--text-0);
+  transition: color 0.3s ease;
+}
+
+.day-info { flex: 1; min-width: 0; }
+
+.day-tag-row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.day-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--week-color, var(--accent));
+  color: var(--bg-0);
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.day-tag.module {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+.day-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 1.25;
+  margin-bottom: 4px;
+}
+
+.day-outcome {
+  font-size: 12.5px;
+  color: var(--text-2);
+}
+
+.day-meta {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.time-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-2);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.time-badge::before { content: '◐'; color: var(--accent); }
+
+.expand-icon {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  color: var(--text-1);
+}
+
+.day-card.open .expand-icon {
+  transform: rotate(180deg);
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* === DAY BODY === */
+.day-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.day-card.open .day-body { max-height: 9000px; }
+
+.day-body-inner {
+  padding: 8px 22px 26px;
+  border-top: 1px solid var(--line);
+}
+
+/* === LIVE/VIDEO RIBBON === */
+.support-ribbon {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0 4px;
+  flex-wrap: wrap;
+}
+
+.support-pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: var(--bg-3);
+  border: 1px solid var(--line);
+  color: var(--text-1);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.support-pill.video { color: var(--week-1); border-color: rgba(0,212,255,0.3); }
+.support-pill.zoom { color: var(--week-2); border-color: rgba(183,148,244,0.3); }
+.support-pill.community { color: var(--accent); border-color: var(--accent-dim); }
+
+.section-block { margin-top: 22px; }
+
+.section-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-2);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-title::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  background: var(--week-color, var(--accent));
+  border-radius: 50%;
+}
+
+.section-intro {
+  font-size: 14px;
+  color: var(--text-1);
+  margin-bottom: 12px;
+  line-height: 1.65;
+}
+
+.section-intro strong { color: var(--accent); font-weight: 600; }
+
+/* === MODULE BUILD CARD === */
+.module-build {
+  background: linear-gradient(135deg, rgba(0,255,157,0.04), rgba(0,212,255,0.04));
+  border: 1px solid var(--accent-dim);
+  border-radius: 14px;
+  padding: 20px;
+  margin: 16px 0;
+}
+
+.module-build-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.module-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--accent-dim);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.module-info h4 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--accent);
+  margin-bottom: 2px;
+}
+
+.module-info .meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-2);
+  letter-spacing: 0.05em;
+}
+
+.module-desc {
+  font-size: 13px;
+  color: var(--text-1);
+  margin-bottom: 14px;
+}
+
+/* === TRACK TABS (BEGINNER/ADVANCED) === */
+.track-section {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+.track-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--line);
+}
+
+.track-tab {
+  flex: 1;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  color: var(--text-2);
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-bottom: 2px solid transparent;
+}
+
+.track-tab:hover { color: var(--text-1); }
+
+.track-tab.active {
+  color: var(--text-0);
+  background: var(--bg-3);
+}
+
+.track-tab[data-tab="beginner"].active { border-bottom-color: var(--beginner); color: var(--beginner); }
+.track-tab[data-tab="advanced"].active { border-bottom-color: var(--advanced); color: var(--advanced); }
+
+.track-content {
+  padding: 18px 20px;
+  display: none;
+}
+
+.track-content.active { display: block; }
+
+.track-content h5 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: var(--text-0);
+}
+
+.track-content ol {
+  list-style: none;
+  counter-reset: step;
+  padding: 0;
+}
+
+.track-content ol li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 32px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: var(--text-1);
+  line-height: 1.6;
+}
+
+.track-content ol li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 22px;
+  height: 22px;
+  background: var(--bg-0);
+  border: 1px solid var(--line-strong);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-1);
+  font-weight: 600;
+}
+
+.track-content code, .track-content kbd {
+  background: var(--bg-0);
+  border: 1px solid var(--line);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+}
+
+/* === CHECKLIST === */
+.checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+.checklist li:hover {
+  border-color: var(--line-strong);
+  background: var(--bg-3);
+}
+
+.checklist li.done {
+  background: rgba(0,255,157,0.04);
+  border-color: var(--accent-dim);
+}
+
+.checklist li.done .check-text {
+  text-decoration: line-through;
+  color: var(--text-2);
+}
+
+.checkbox {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--text-2);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  margin-top: 2px;
+}
+
+.checklist li.done .checkbox {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.checklist li.done .checkbox::after {
+  content: '✓';
+  color: var(--bg-0);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.check-text { flex: 1; color: var(--text-0); }
+.check-text strong { color: var(--accent); font-weight: 600; }
+.check-text code {
+  background: var(--bg-3);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--week-1);
+}
+
+/* === PROMPT BLOCK === */
+.prompt-block {
+  background: var(--bg-0);
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.prompt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--line);
+}
+
+.prompt-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.prompt-label::before { content: '⌬'; font-size: 14px; }
+
+.copy-btn {
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  color: var(--text-1);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.copy-btn.copied {
+  background: var(--accent);
+  color: var(--bg-0);
+  border-color: var(--accent);
+}
+
+.prompt-text {
+  padding: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  line-height: 1.7;
+  color: var(--text-1);
+  white-space: pre-wrap;
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+.prompt-text::-webkit-scrollbar { width: 6px; }
+.prompt-text::-webkit-scrollbar-track { background: var(--bg-2); }
+.prompt-text::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 3px; }
+
+/* === KPI === */
+.kpi-block {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.kpi-cell {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.kpi-cell .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-2);
+  margin-bottom: 4px;
+}
+
+.kpi-cell .value {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--text-0);
+}
+
+/* === MILESTONE === */
+.milestone {
+  background: linear-gradient(135deg, var(--bg-2), var(--bg-3));
+  border: 1px solid var(--accent-dim);
+  border-radius: 16px;
+  padding: 32px;
+  margin: 40px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.milestone::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--week-1), var(--week-2));
+}
+
+.milestone-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.milestone h3 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.milestone p {
+  font-size: 14px;
+  color: var(--text-1);
+  margin-bottom: 16px;
+}
+
+.milestone-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px;
+}
+
+.milestone-item {
+  background: var(--bg-0);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+
+.milestone-item .num {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 26px;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.milestone-item .desc {
+  font-size: 12px;
+  color: var(--text-1);
+}
+
+/* === FINAL CTA === */
+.final-cta {
+  background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 56px 40px;
+  margin-top: 64px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.final-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, var(--accent-glow), transparent 60%);
+  opacity: 0.15;
+}
+
+.final-cta h2 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(26px, 4vw, 42px);
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.final-cta p {
+  font-size: 16px;
+  color: var(--text-1);
+  max-width: 640px;
+  margin: 0 auto 24px;
+  position: relative;
+}
+
+.final-cta .signature {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-2);
+  position: relative;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .container { padding: 24px 16px 80px; }
+  .header { padding: 32px 24px; }
+  .day-header { padding: 16px; gap: 14px; }
+  .day-number-block { width: 48px; padding-right: 14px; }
+  .day-number { font-size: 22px; }
+  .day-title { font-size: 16px; }
+  .time-badge { display: none; }
+  .day-body-inner { padding: 8px 16px 20px; }
+  .week-number { font-size: 56px; }
+  .week-info h2 { font-size: 22px; }
+  .philosophy { padding: 28px 24px; }
+  .agent-map { padding: 24px 22px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="brand-strip">
+      <span class="brand-dot"></span>
+      <span>Freedom Builders Elite</span>
+      <span style="opacity:0.4">/</span>
+      <span>AI Agent Mastery</span>
+      <span style="opacity:0.4">/</span>
+      <span>21-Day Sprint qua KDP</span>
+    </div>
+    <h1>21 Ngày Build <span class="highlight">AI Agent Pipeline</span><br>Tự Động Hoá KDP Business</h1>
+    <p class="tagline">Học viên không học KDP — học viên build hệ thống AI Agent <strong>tự nghiên cứu, tự sản xuất, tự bán, tự tối ưu</strong> sách trên Amazon. KDP là use case thực chiến để chạm vào tất cả các kỹ năng cốt lõi của AI Agent. Kết thúc sprint: catalog 15+ cuốn live + pipeline tự chủ + doanh thu thực.</p>
+
+    <div class="meta-grid">
+      <div class="meta-cell">
+        <div class="meta-label">Mục tiêu doanh thu</div>
+        <div class="meta-value accent">$100–$500</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">Catalog sau sprint</div>
+        <div class="meta-value">15–20 cuốn</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">AI Agents build</div>
+        <div class="meta-value accent">8 modules</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">Time/ngày</div>
+        <div class="meta-value">2–3 giờ</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-label">Stack</div>
+        <div class="meta-value">Claude.ai + Code</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- PHILOSOPHY -->
+  <div class="philosophy">
+    <div class="philosophy-tag">◆ Triết lý Sprint</div>
+    <h2>Đây không phải khoá KDP — đây là khoá AI Agent dùng KDP làm sân tập</h2>
+    <p>Sự khác biệt căn bản: <strong>khoá KDP truyền thống</strong> dạy học viên publish sách thủ công, dùng AI lác đác như một công cụ phụ. <strong>Sprint này</strong> dạy học viên build pipeline AI Agent đầy đủ — sau sprint, học viên có thể tự ra 1 cuốn sách trong 30 phút thay vì 3 ngày, và kỹ năng đó áp dụng cho mọi business khác.</p>
+    <p style="margin-bottom:0">Lộ trình chia 3 phase rõ ràng — Foundation trước, Build trong giữa, Scale ở cuối. Mỗi module Agent học viên build sẽ <strong>chạy ra output thật</strong> ngay trong sprint, không phải lý thuyết.</p>
+
+    <div class="three-phases">
+      <div class="phase-block phase-1">
+        <div class="phase-day">Day 01 — 03</div>
+        <div class="phase-name">Foundation</div>
+        <div class="phase-desc">Tầm nhìn AI Agent. Hiểu KDP business. Validate ngách. Setup môi trường. Lock spec cho agent sẽ build.</div>
+      </div>
+      <div class="phase-block phase-2">
+        <div class="phase-day">Day 04 — 12</div>
+        <div class="phase-name">Build Modules</div>
+        <div class="phase-desc">Mỗi 1-2 ngày build 1 module Agent + chạy ra output thật. Kết thúc Day 12: 8 agents hoàn chỉnh + 6-8 cuốn sách đã publish.</div>
+      </div>
+      <div class="phase-block phase-3">
+        <div class="phase-day">Day 13 — 21</div>
+        <div class="phase-name">Run + Scale</div>
+        <div class="phase-desc">Pipeline đầy đủ — chạy như nhà máy. Ads + Reviews + Scale winner. Ra doanh thu $100-500. Graduate với case study.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AGENT MAP -->
+  <div class="agent-map">
+    <div class="agent-map-header">
+      <div>
+        <h3>8 Agent Modules sẽ build trong sprint</h3>
+        <div class="subtitle">Mỗi module có 2 phiên bản: Beginner (Claude.ai Project) và Advanced (Claude Code + Skills)</div>
+      </div>
+    </div>
+
+    <div class="agents-grid">
+      <div class="agent-card">
+        <div class="agent-num">Agent 01</div>
+        <div class="agent-name">Niche Hunter</div>
+        <div class="agent-role">Research, score, validate ngách KDP. Output: bảng 20 ngách với điểm tiềm năng.</div>
+        <div class="agent-day">Day 4</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-num">Agent 02</div>
+        <div class="agent-name">Manuscript Generator</div>
+        <div class="agent-role">Tạo interior cho 3 loại sách: low-content, coloring, activity. Output: PDF chuẩn KDP.</div>
+        <div class="agent-day">Day 5–6</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-num">Agent 03</div>
+        <div class="agent-name">Cover Designer</div>
+        <div class="agent-role">Generate cover concept + image prompt + spec. Output: cover PDF đúng KDP dimension.</div>
+        <div class="agent-day">Day 7</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-num">Agent 04</div>
+        <div class="agent-name">Listing Copywriter</div>
+        <div class="agent-role">Title, subtitle, description, 7 keywords, A+ content, categories.</div>
+        <div class="agent-day">Day 8</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-num">Agent 05</div>
+        <div class="agent-name">Quality Reviewer</div>
+        <div class="agent-role">Audit PDF interior + cover + listing trước publish. Output: GO/NO-GO checklist.</div>
+        <div class="agent-day">Day 9</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-num">Agent 06</div>
+        <div class="agent-name">Ads Manager</div>
+        <div class="agent-role">Setup campaign, gen keyword list, đề xuất bid. Output: ads ready to launch.</div>
+        <div class="agent-day">Day 10</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-num">Agent 07</div>
+        <div class="agent-name">Performance Analyst</div>
+        <div class="agent-role">Phân tích sale + ads data, đề xuất iteration. Output: weekly action plan.</div>
+        <div class="agent-day">Day 11</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-num">Agent 08</div>
+        <div class="agent-name">Master Orchestrator</div>
+        <div class="agent-role">Kết nối 7 agent trên thành 1 pipeline. Input: ngách → Output: cuốn sách live.</div>
+        <div class="agent-day">Day 12</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-section">
+    <div class="progress-header">
+      <div class="progress-title">Tiến độ Sprint</div>
+      <div class="progress-stats"><span class="count" id="doneCount">0</span> / <span id="totalCount">0</span> tasks · <span class="count" id="percentDone">0%</span></div>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  </div>
+
+  <!-- ============ TUẦN 1 ============ -->
+  <section class="week week-1">
+    <div class="week-header">
+      <div class="week-label">
+        <div class="week-number">01</div>
+        <div class="week-info">
+          <h2>Foundation + Build Core Agents</h2>
+          <div class="subtitle">Day 01 — 07 · Hiểu - Validate - Build 3 agents đầu</div>
+        </div>
+      </div>
+      <div class="week-goal">
+        <div class="label">Outcome tuần 1</div>
+        <div class="text">3 agent đầu hoàn thành (Niche Hunter, Manuscript, Cover). Đã validate 7 ngách. Có 2-3 cuốn đầu tiên submitted lên KDP.</div>
+      </div>
+    </div>
+
+    <div class="days-grid">
+
+      <!-- DAY 1 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number-block">
+            <div class="day-number-label">Day</div>
+            <div class="day-number">01</div>
+          </div>
+          <div class="day-info">
+            <div class="day-tag-row">
+              <span class="day-tag">Foundation</span>
+              <span class="day-tag module">Tầm nhìn</span>
+            </div>
+            <div class="day-title">Why AI Agent + KDP Business Map + Setup môi trường</div>
+            <div class="day-outcome">Output: Hiểu rõ pipeline 8 agent + KDP account live + Claude.ai/Code ready</div>
+          </div>
+          <div class="day-meta">
+            <span class="time-badge">2.5h</span>
+            <div class="expand-icon">▼</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="day-body-inner">
+
+            <div class="support-ribbon">
+              <span class="support-pill video">▶ Video 45 phút: Tầm nhìn AI Agent + KDP Map</span>
+              <span class="support-pill zoom">◉ Zoom Kickoff Call (90 phút, 8 PM)</span>
+              <span class="support-pill community">● Community: Intro thread bắt buộc</span>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Hôm nay học viên hiểu được gì</div>
+              <div class="section-intro">Sprint này không phải học KDP — là học <strong>build AI Agent thực chiến</strong>. KDP là use case có sẵn dữ liệu, có sẵn doanh thu, có sẵn rủi ro thấp để học viên test pipeline. Sau sprint, kỹ năng build agent áp dụng cho dropshipping, ecommerce, content business, agency — bất cứ business nào.</div>
+              <div class="section-intro">Cuối ngày 1, học viên phải vẽ ra được <strong>"KDP Business Pipeline"</strong> trên giấy/Miro — hiểu rõ 8 bước từ "research ngách" đến "ra tiền". Đây là blueprint cho 8 agent sẽ build.</div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Checklist hành động</div>
+              <ul class="checklist">
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Xem video 45 phút trước Zoom Call: <strong>"AI Agent thay đổi KDP business như thế nào"</strong></div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Tham dự Zoom Kickoff Call (Coach + Tony) — bắt buộc, không record</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Đăng ký <code>kdp.amazon.com</code> bằng email mới + hoàn tất tax (W-8BEN)</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Setup phương thức nhận tiền: Payoneer hoặc tài khoản USD VN</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Setup Claude.ai (Pro/Max plan) — tạo Workspace tên <code>FB-Elite-KDP</code></div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text"><strong>Advanced track</strong>: cài Claude Code (terminal) + Node.js — xem video setup riêng</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Tạo Drive folder structure: <code>FB-KDP-Sprint/</code> với 8 sub-folder cho 8 agent</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Vẽ KDP Pipeline Map (template Miro có trong Whop) — submit ảnh chụp lên #kdp-day1</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Post intro vào community: tên, background, mục tiêu sau sprint</div></li>
+              </ul>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Mindset key — phải internalize</div>
+              <div class="section-intro">Học viên cũ thường sai ở chỗ: <strong>build agent quá hoàn hảo trước khi publish</strong>. Triết lý sprint: <strong>v1 chạy được > v10 chưa launch</strong>. Mỗi agent build xong trong 1 buổi → chạy ngay ra output → iterate sau khi thấy bottleneck thật. Tránh perfectionism.</div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">KPI cuối ngày</div>
+              <div class="kpi-block">
+                <div class="kpi-cell"><div class="label">KDP Account</div><div class="value">Active</div></div>
+                <div class="kpi-cell"><div class="label">AI Stack</div><div class="value">Ready</div></div>
+                <div class="kpi-cell"><div class="label">Pipeline Map</div><div class="value">Drawn</div></div>
+                <div class="kpi-cell"><div class="label">Community</div><div class="value">Joined</div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 2 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number-block">
+            <div class="day-number-label">Day</div>
+            <div class="day-number">02</div>
+          </div>
+          <div class="day-info">
+            <div class="day-tag-row">
+              <span class="day-tag">Foundation</span>
+              <span class="day-tag module">Manual Walkthrough</span>
+            </div>
+            <div class="day-title">Làm 1 cuốn sách HOÀN TOÀN THỦ CÔNG để hiểu workflow</div>
+            <div class="day-outcome">Output: 1 cuốn low-content interior + cover + listing đã làm tay (chưa publish)</div>
+          </div>
+          <div class="day-meta">
+            <span class="time-badge">3h</span>
+            <div class="expand-icon">▼</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="day-body-inner">
+
+            <div class="support-ribbon">
+              <span class="support-pill video">▶ Video 60 phút: KDP End-to-End Walkthrough</span>
+              <span class="support-pill community">● Community: Q&A async</span>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Vì sao hôm nay làm thủ công</div>
+              <div class="section-intro">Đây là phần <strong>nhiều khoá AI Agent bỏ qua và thất bại</strong>. Học viên không thể build agent cho việc mình không hiểu. Day 2 = "thấm" workflow. Khi cảm nhận đủ pain (3 giờ thủ công), việc build agent ở Day 4-12 trở nên ý nghĩa và đúng spec.</div>
+              <div class="section-intro">Mục tiêu: <strong>không cần đẹp, không cần publish</strong>. Chỉ cần đi qua đủ 8 bước để cảm nhận từng nỗi đau. Day 4 trở đi sẽ build agent giải quyết từng nỗi đau đó.</div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Checklist hành động — đi đủ 8 bước</div>
+              <ul class="checklist">
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text"><strong>B1 — Niche</strong>: lên Amazon search "journal for", "notebook for" — chọn 1 ngách low-content (ví dụ "Gratitude Journal for Teachers")</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text"><strong>B2 — Validate</strong>: check BSR top 10 + review count → ghi chú cảm nhận "khó/dễ?"</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text"><strong>B3 — Interior</strong>: tạo 110 trang lined journal trong Canva/Bookbolt — ghi giờ bắt đầu/kết thúc</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text"><strong>B4 — Cover</strong>: design cover trong Canva với KDP template — ghi giờ</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text"><strong>B5 — Listing</strong>: viết title/subtitle/description/7 keywords thủ công — ghi giờ</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text"><strong>B6 — Quality check</strong>: tự audit PDF + cover + listing — note lỗi mắc phải</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text"><strong>B7 — Submit</strong>: KHÔNG submit, chỉ chuẩn bị tới bước này</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text"><strong>Reflection</strong>: viết 1 đoạn ngắn — bước nào chiếm thời gian nhất? Bước nào dễ tự động hoá?</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Submit reflection lên #kdp-day2 — sẽ dùng để "spec" cho 8 agent sắp build</div></li>
+              </ul>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">KPI cuối ngày</div>
+              <div class="kpi-block">
+                <div class="kpi-cell"><div class="label">Manual book</div><div class="value">Done</div></div>
+                <div class="kpi-cell"><div class="label">Time tracked</div><div class="value">~3-4h</div></div>
+                <div class="kpi-cell"><div class="label">Pain points</div><div class="value">Logged</div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 3 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number-block">
+            <div class="day-number-label">Day</div>
+            <div class="day-number">03</div>
+          </div>
+          <div class="day-info">
+            <div class="day-tag-row">
+              <span class="day-tag">Foundation</span>
+              <span class="day-tag module">Agent Architecture</span>
+            </div>
+            <div class="day-title">Hiểu Claude Skills + Project + Code — Spec 8 Agent</div>
+            <div class="day-outcome">Output: 8 Agent Spec Sheet (mỗi agent: input/output/skill/prompt) — blueprint chính thức</div>
+          </div>
+          <div class="day-meta">
+            <span class="time-badge">2.5h</span>
+            <div class="expand-icon">▼</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="day-body-inner">
+
+            <div class="support-ribbon">
+              <span class="support-pill video">▶ Video 50 phút: Claude Skills + Project Architecture</span>
+              <span class="support-pill zoom">◉ Zoom Workshop (90 phút, 8 PM): Spec Together</span>
+              <span class="support-pill community">● Community: Spec Sheet review</span>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Đây là ngày bản lề của sprint</div>
+              <div class="section-intro">Hôm nay học viên học cách Claude Skills + Project hoạt động. Sau đó, dựa vào pain points Day 2, học viên viết <strong>Spec Sheet cho 8 agent</strong>. Spec Sheet này là blueprint — 9 ngày tiếp theo chỉ là "thi công" theo bản vẽ này.</div>
+              <div class="section-intro">Coach sẽ review từng Spec Sheet trên Zoom — fix sai sớm còn rẻ, fix sai sau khi build xong rất tốn thời gian.</div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Checklist hành động</div>
+              <ul class="checklist">
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Xem video Claude Skills + Project — tạo skill thử nghiệm "hello world" để hiểu cú pháp</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text"><strong>Beginner track</strong>: tạo Claude Project mẫu đầu tiên trong workspace</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text"><strong>Advanced track</strong>: tạo folder <code>~/.claude/skills/kdp/</code> và file <code>SKILL.md</code> mẫu</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Tham dự Zoom Workshop — Coach hướng dẫn fill template Spec Sheet</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Hoàn thành Spec Sheet cho cả 8 agent (template Notion có sẵn trong Whop)</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Submit Spec Sheet vào #kdp-day3 → coach review trong 24h</div></li>
+              </ul>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Template — Agent Spec Sheet</div>
+              <div class="prompt-block">
+                <div class="prompt-header">
+                  <div class="prompt-label">Copy template để fill cho 8 agent</div>
+                  <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+                </div>
+                <div class="prompt-text">═══════════════════════════════════
+AGENT SPEC SHEET — [Agent Number] [Agent Name]
+═══════════════════════════════════
+
+1. PURPOSE (1 câu):
+   Agent này giải quyết bước nào trong KDP pipeline?
+
+2. INPUT (cụ thể):
+   - Tôi sẽ cung cấp gì? (ví dụ: tên ngách, BSR data, cuốn sách reference)
+   - Format input như thế nào?
+
+3. OUTPUT (cụ thể):
+   - Agent trả gì? (ví dụ: Title + 7 keywords + description sẵn paste KDP)
+   - Format output? (text/JSON/file?)
+
+4. KEY DECISIONS agent phải làm:
+   - Quyết định 1: ...
+   - Quyết định 2: ...
+   - (3-5 quyết định chính)
+
+5. KNOWLEDGE agent cần có:
+   - KDP rules (file PDF)
+   - Best practice cho ngách
+   - Examples cuốn winner
+
+6. TOOLS agent cần (Advanced track):
+   - Web search? Web fetch?
+   - File creation?
+   - MCP server (nếu có)?
+
+7. SUCCESS CRITERIA:
+   - Output đạt được phải pass test gì?
+   - Coach review pass = 8/10 điểm trở lên
+
+8. EDGE CASES (lỗi thường gặp):
+   - Khi input thiếu → agent làm gì?
+   - Khi output sai format → fallback gì?
+
+═══════════════════════════════════</div>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">KPI cuối ngày</div>
+              <div class="kpi-block">
+                <div class="kpi-cell"><div class="label">Spec Sheets</div><div class="value">8/8</div></div>
+                <div class="kpi-cell"><div class="label">Coach review</div><div class="value">Pending</div></div>
+                <div class="kpi-cell"><div class="label">Architecture</div><div class="value">Locked</div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 4 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number-block">
+            <div class="day-number-label">Day</div>
+            <div class="day-number">04</div>
+          </div>
+          <div class="day-info">
+            <div class="day-tag-row">
+              <span class="day-tag">Build + Run</span>
+              <span class="day-tag module">Agent 01</span>
+            </div>
+            <div class="day-title">Build Agent 01: Niche Hunter — Run ngay 20 ngách</div>
+            <div class="day-outcome">Output: Agent 01 hoàn chỉnh + bảng 20 ngách đã score + Top 7 chọn để publish tuần này</div>
+          </div>
+          <div class="day-meta">
+            <span class="time-badge">3h</span>
+            <div class="expand-icon">▼</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="day-body-inner">
+
+            <div class="support-ribbon">
+              <span class="support-pill video">▶ Video 40 phút: Build Niche Hunter Agent</span>
+              <span class="support-pill community">● Community: Niche shortlist review</span>
+            </div>
+
+            <div class="module-build">
+              <div class="module-build-header">
+                <div class="module-icon">⌬</div>
+                <div class="module-info">
+                  <h4>Agent 01: Niche Hunter</h4>
+                  <div class="meta">INPUT: 5 keyword seed · OUTPUT: 20 ngách scored 1–10</div>
+                </div>
+              </div>
+              <div class="module-desc">Agent đầu tiên — đơn giản nhất để học viên làm quen quy trình. Sau khi build xong, chạy ngay với 5 keyword seed của mình → ra 20 ngách trong 30 phút (vs 3 giờ thủ công).</div>
+
+              <div class="track-section">
+                <div class="track-tabs">
+                  <button class="track-tab active" data-tab="beginner" onclick="switchTrack(this, 'beginner')">◉ Beginner — Claude.ai Project</button>
+                  <button class="track-tab" data-tab="advanced" onclick="switchTrack(this, 'advanced')">⚡ Advanced — Claude Code + Skill</button>
+                </div>
+
+                <div class="track-content active" data-content="beginner">
+                  <h5>Setup trên Claude.ai (15 phút)</h5>
+                  <ol>
+                    <li>Mở <code>claude.ai</code> → Sidebar → <kbd>+ Create Project</kbd> → tên: <code>Agent01-NicheHunter</code></li>
+                    <li>Vào tab <kbd>Knowledge</kbd> → upload 3 file: KDP Categories list, Top 100 BSR snapshot, Niche scoring framework (có trong Whop)</li>
+                    <li>Vào tab <kbd>Custom Instructions</kbd> → paste prompt Niche Hunter (xem prompt block bên dưới)</li>
+                    <li>Test: gõ "Score ngách: Gratitude Journal for Nurses, BSR 250000, 45 reviews avg, $9.99 avg price" → Agent trả output đúng format</li>
+                    <li>Khi pass test → chạy thật với 5 keyword seed của mình → ghi 20 ngách vào Google Sheet</li>
+                  </ol>
+                </div>
+
+                <div class="track-content" data-content="advanced">
+                  <h5>Build Skill cho Claude Code (30 phút)</h5>
+                  <ol>
+                    <li>Tạo folder <code>~/.claude/skills/niche-hunter/</code></li>
+                    <li>Tạo file <code>SKILL.md</code> với frontmatter <code>name: niche-hunter</code> và <code>description</code> chi tiết khi nào skill được trigger</li>
+                    <li>Trong <code>SKILL.md</code> body, viết workflow 4 bước: web_search BSR → web_fetch top 10 → score theo framework → output table</li>
+                    <li>Tạo sub-file <code>references/scoring-framework.md</code> chứa tiêu chí scoring chi tiết</li>
+                    <li>Test: chạy <code>claude</code> trong terminal, prompt "Tìm 20 ngách low-content tiềm năng cho keyword 'planner for'" — agent tự dùng skill</li>
+                    <li>Iteration: nếu output sai format, edit <code>SKILL.md</code>, không cần restart</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Core Prompt cho Agent 01 — Niche Hunter</div>
+              <div class="prompt-block">
+                <div class="prompt-header">
+                  <div class="prompt-label">System Prompt / Custom Instructions</div>
+                  <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+                </div>
+                <div class="prompt-text">Bạn là Niche Hunter Agent chuyên về Amazon KDP low-content books, coloring books, activity books.
+
+NHIỆM VỤ:
+Khi tôi cung cấp 1 keyword seed (ví dụ "journal for"), bạn:
+
+1. EXPAND: Brainstorm 30 ngách cụ thể từ keyword đó (ví dụ "Gratitude Journal for ICU Nurses", "Daily Reflection for First-Year Teachers")
+2. PRIORITIZE: Tự eliminate 10 ngách quá generic hoặc quá hẹp → còn 20 ngách
+3. SCORE: Cho mỗi ngách, score theo 5 tiêu chí (1-10 điểm):
+   - DEMAND (BSR top 10 < 500k = high score)
+   - COMPETITION (review count thấp = high score)
+   - DIFFERENTIATION (dễ tạo angle mới = high score)
+   - GIFT POTENTIAL (ngách quà tặng = high score)
+   - MARGIN (giá > $7.99 = high score)
+4. OUTPUT: Table 20 ngách + tổng điểm + verdict (GO / WAIT / SKIP) + lý do 1 câu
+
+THÔNG TIN BỔ SUNG:
+- Nếu cần data BSR thật, hỏi tôi paste từ Amazon (hoặc dùng web_search nếu có tool)
+- Tránh ngách quá saturated như: "dot grid notebook", "5-year journal generic"
+- Ưu tiên ngách niche-down theo profession + use case + audience cụ thể
+
+FORMAT OUTPUT:
+| # | Ngách cụ thể | Demand | Comp | Diff | Gift | Margin | Total | Verdict | Lý do |
+|---|--------------|--------|------|------|------|--------|-------|---------|-------|
+| 1 | ... | 8 | 7 | 6 | 9 | 7 | 37 | GO | "ngách đặc thù, ít cạnh tranh" |
+
+Sau khi xong 20 ngách, đề xuất TOP 7 nên publish tuần này (đa dạng risk: 4 low risk + 3 medium risk).</div>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Checklist hành động</div>
+              <ul class="checklist">
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Xem video build Niche Hunter (40 phút)</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Build Agent 01 theo track của mình (Beginner Project hoặc Advanced Skill)</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Test agent với 1 keyword mẫu → đảm bảo output đúng format</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Chạy Agent 01 thật với 5 keyword seed → ra 20 ngách</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Đối chiếu output với manual research Day 2 — agent nhanh hơn bao nhiêu lần?</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Pick TOP 7 ngách → submit lên #kdp-day4 cho coach review</div></li>
+              </ul>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">KPI cuối ngày</div>
+              <div class="kpi-block">
+                <div class="kpi-cell"><div class="label">Agent 01</div><div class="value">Live ✓</div></div>
+                <div class="kpi-cell"><div class="label">Ngách scored</div><div class="value">20</div></div>
+                <div class="kpi-cell"><div class="label">Top 7</div><div class="value">Locked</div></div>
+                <div class="kpi-cell"><div class="label">Time saved</div><div class="value">~70%</div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 5 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number-block">
+            <div class="day-number-label">Day</div>
+            <div class="day-number">05</div>
+          </div>
+          <div class="day-info">
+            <div class="day-tag-row">
+              <span class="day-tag">Build + Run</span>
+              <span class="day-tag module">Agent 02 (P1)</span>
+            </div>
+            <div class="day-title">Build Agent 02: Manuscript Generator — Low-content variant</div>
+            <div class="day-outcome">Output: Agent 02 (low-content version) + 3 PDF interior tạo trong 1 giờ</div>
+          </div>
+          <div class="day-meta">
+            <span class="time-badge">3h</span>
+            <div class="expand-icon">▼</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="day-body-inner">
+
+            <div class="support-ribbon">
+              <span class="support-pill video">▶ Video 50 phút: Build Manuscript Agent (low-content)</span>
+              <span class="support-pill zoom">◉ Office Hours (60 phút, 8 PM): Debug agent</span>
+              <span class="support-pill community">● Community: Sample PDF review</span>
+            </div>
+
+            <div class="module-build">
+              <div class="module-build-header">
+                <div class="module-icon">⌬</div>
+                <div class="module-info">
+                  <h4>Agent 02 (Phase 1): Manuscript Generator — Low-content</h4>
+                  <div class="meta">INPUT: ngách + spec sách · OUTPUT: PDF interior 110 trang chuẩn KDP</div>
+                </div>
+              </div>
+              <div class="module-desc">Phase 1 của Agent 02 — chỉ tập trung low-content trước (lined journal, planner, tracker). Phase 2 (coloring + activity) sẽ build Day 9. Lý do split: 3 loại sách có pipeline khác nhau, build chung thì agent quá phức tạp ngay từ đầu.</div>
+
+              <div class="track-section">
+                <div class="track-tabs">
+                  <button class="track-tab active" data-tab="beginner" onclick="switchTrack(this, 'beginner')">◉ Beginner — Project + Canva</button>
+                  <button class="track-tab" data-tab="advanced" onclick="switchTrack(this, 'advanced')">⚡ Advanced — Skill + python-pptx/reportlab</button>
+                </div>
+
+                <div class="track-content active" data-content="beginner">
+                  <h5>Build Manuscript Agent với Canva integration (45 phút)</h5>
+                  <ol>
+                    <li>Tạo Project mới <code>Agent02-Manuscript</code> trong Claude.ai</li>
+                    <li>Upload Knowledge: KDP trim size guide, Canva template export setting, sample interior PDF</li>
+                    <li>Custom Instructions: paste prompt Manuscript Generator (xem bên dưới)</li>
+                    <li>Workflow agent: agent generate <strong>front matter content</strong> (title page, dedication, "how to use") → bạn paste vào Canva template → export PDF</li>
+                    <li>Beginner: agent tạo <strong>nội dung text</strong>, không tạo file PDF. Bạn dùng Canva template Whop cung cấp để compose</li>
+                    <li>Test: chạy với ngách top 1 → ra 110 trang PDF trong 30 phút (vs 2h thủ công)</li>
+                  </ol>
+                </div>
+
+                <div class="track-content" data-content="advanced">
+                  <h5>Build Skill với Python tự generate PDF (60 phút)</h5>
+                  <ol>
+                    <li>Tạo skill <code>~/.claude/skills/manuscript-low-content/</code></li>
+                    <li><code>SKILL.md</code> mô tả khi trigger + workflow</li>
+                    <li>Tạo sub-script <code>scripts/generate-journal.py</code> dùng <code>reportlab</code> để tạo PDF với lined pages, page numbers, front/back matter</li>
+                    <li>Skill cho phép Claude Code chạy script với args: <code>--niche</code>, <code>--pages</code>, <code>--trim-size</code></li>
+                    <li>Output PDF lưu vào <code>./output/[niche]_interior_v1.pdf</code></li>
+                    <li>Test: <code>claude "Generate manuscript for 'Gratitude Journal for Teachers' 110 pages 6x9"</code> → PDF ra trong 5 phút</li>
+                    <li>Bonus: thêm option <code>--variant</code> để có 5 layout khác nhau (lined, dot grid, blank, split, prompt)</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Core Prompt — Manuscript Generator (Low-content)</div>
+              <div class="prompt-block">
+                <div class="prompt-header">
+                  <div class="prompt-label">System Prompt</div>
+                  <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+                </div>
+                <div class="prompt-text">Bạn là Manuscript Generator Agent chuyên cho KDP low-content books (journal, planner, notebook, tracker, log book).
+
+NHIỆM VỤ:
+Khi tôi cung cấp ngách + spec, bạn output toàn bộ NỘI DUNG TEXT cho cuốn sách, sẵn sàng paste vào Canva/Bookbolt template hoặc generate PDF.
+
+INPUT EXPECTED:
+- Niche: [tên ngách]
+- Target buyer: [ai mua]
+- Trim size: [6x9 hoặc 8.5x11]
+- Page count: [thường 110-120]
+- Variant: [lined / dot grid / specialty với prompt]
+
+OUTPUT THEO ĐÚNG STRUCTURE:
+
+═════════════════════════════
+PAGE 1 — TITLE PAGE
+═════════════════════════════
+[Title]
+[Subtitle]
+[Author placeholder]
+
+═════════════════════════════
+PAGE 2 — COPYRIGHT PAGE
+═════════════════════════════
+[Copyright text với year + author placeholder + "All rights reserved"]
+
+═════════════════════════════
+PAGE 3 — DEDICATION
+═════════════════════════════
+[1-2 câu dedication ấm áp, liên quan ngách]
+
+═════════════════════════════
+PAGE 4 — WELCOME / INTRO (80-100 từ EN)
+═════════════════════════════
+[Đoạn welcome warm, addressing pain point của target]
+
+═════════════════════════════
+PAGE 5 — HOW TO USE THIS JOURNAL
+═════════════════════════════
+[5 bullet points hướng dẫn cách dùng]
+
+═════════════════════════════
+PAGES 6 — 105 (100 PAGES OF CONTENT)
+═════════════════════════════
+[Tuỳ variant:
+- Lined: chỉ ghi "Lined journal pages — 100 pages"
+- Specialty: cung cấp 100 prompt khác nhau (mỗi prompt 1 trang). Ví dụ "Today I am grateful for..."]
+
+═════════════════════════════
+PAGES 106 — 110 (NOTES PAGES)
+═════════════════════════════
+[Blank notes pages]
+
+═════════════════════════════
+END MATTER
+═════════════════════════════
+[1 trang "Thank you" + gentle review request]
+
+QUY TẮC:
+- Tone: warm but professional, không cheesy
+- Tránh AI-sounding phrases: "Welcome to your journey", "Dive in", "Embark on"
+- Specialty pages phải đa dạng prompt, không lặp
+- Tất cả tiếng Anh (US English)</div>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Checklist hành động</div>
+              <ul class="checklist">
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Xem video build Manuscript Agent</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Build Agent 02 theo track của mình</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Test với 1 ngách → ra PDF chuẩn KDP Previewer</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Chạy thật với 3 ngách top → ra 3 PDF interior</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Đo thời gian: agent vs manual Day 2 — chênh lệch thế nào?</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Tham gia Office Hours nếu agent gặp lỗi</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Submit 1 sample PDF lên #kdp-day5</div></li>
+              </ul>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">KPI cuối ngày</div>
+              <div class="kpi-block">
+                <div class="kpi-cell"><div class="label">Agent 02 P1</div><div class="value">Live ✓</div></div>
+                <div class="kpi-cell"><div class="label">PDFs generated</div><div class="value">3</div></div>
+                <div class="kpi-cell"><div class="label">KDP Previewer</div><div class="value">Pass</div></div>
+                <div class="kpi-cell"><div class="label">Speed</div><div class="value">15min/cuốn</div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 6 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number-block">
+            <div class="day-number-label">Day</div>
+            <div class="day-number">06</div>
+          </div>
+          <div class="day-info">
+            <div class="day-tag-row">
+              <span class="day-tag">Build + Run</span>
+              <span class="day-tag module">Agent 03</span>
+            </div>
+            <div class="day-title">Build Agent 03: Cover Designer — 3 cover sẵn sàng</div>
+            <div class="day-outcome">Output: Agent 03 hoàn chỉnh + 3 cover PDF chuẩn spec KDP</div>
+          </div>
+          <div class="day-meta">
+            <span class="time-badge">3h</span>
+            <div class="expand-icon">▼</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="day-body-inner">
+
+            <div class="support-ribbon">
+              <span class="support-pill video">▶ Video 45 phút: Build Cover Designer + Image AI</span>
+              <span class="support-pill community">● Community: A/B cover vote</span>
+            </div>
+
+            <div class="module-build">
+              <div class="module-build-header">
+                <div class="module-icon">⌬</div>
+                <div class="module-info">
+                  <h4>Agent 03: Cover Designer</h4>
+                  <div class="meta">INPUT: ngách + page count · OUTPUT: cover concept + image prompt + Canva spec</div>
+                </div>
+              </div>
+              <div class="module-desc">Agent 03 không tự design cover (model image gen còn hạn chế cho text). Agent generate <strong>concept + image prompt cho Gemini/Ideogram</strong> + Canva layout spec. Học viên chỉ cần paste vào Canva template là có cover.</div>
+
+              <div class="track-section">
+                <div class="track-tabs">
+                  <button class="track-tab active" data-tab="beginner" onclick="switchTrack(this, 'beginner')">◉ Beginner — Project + Manual Canva</button>
+                  <button class="track-tab" data-tab="advanced" onclick="switchTrack(this, 'advanced')">⚡ Advanced — Skill + Image API integration</button>
+                </div>
+
+                <div class="track-content active" data-content="beginner">
+                  <h5>Setup Cover Designer Project (40 phút)</h5>
+                  <ol>
+                    <li>Tạo Project <code>Agent03-Cover</code></li>
+                    <li>Upload knowledge: KDP cover spec PDF, Canva template URL list, 10 example cover của winner</li>
+                    <li>Workflow: Input ngách → Agent ra (1) concept paragraph (2) image prompt cho Gemini (3) typography spec cho Canva</li>
+                    <li>Bạn copy image prompt → paste vào Gemini → tải hình về</li>
+                    <li>Mở Canva template (link Whop) → paste hình + typography → export PDF</li>
+                    <li>Test: làm 3 cover trong 60 phút (vs 3 giờ thủ công)</li>
+                  </ol>
+                </div>
+
+                <div class="track-content" data-content="advanced">
+                  <h5>Skill với Image API tự gen (75 phút)</h5>
+                  <ol>
+                    <li>Tạo skill <code>~/.claude/skills/cover-designer/</code></li>
+                    <li>Setup Gemini API key trong <code>.env</code> (hoặc Ideogram, Replicate)</li>
+                    <li><code>scripts/gen-cover-image.py</code>: nhận prompt → call API → save PNG</li>
+                    <li><code>scripts/compose-cover.py</code>: dùng Pillow để compose front + spine + back theo trim size + page count → output PDF chuẩn KDP</li>
+                    <li>Skill cho phép Claude Code: <code>"Tạo cover cho 'Gratitude Journal Teachers', 110 trang, 6x9"</code></li>
+                    <li>Output: 2 versions (A/B) PDF lưu vào <code>./output/covers/</code></li>
+                    <li>Bonus: integrate Helium 10 / Publisher Rocket data để cover match competitor style</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Core Prompt — Cover Designer Agent</div>
+              <div class="prompt-block">
+                <div class="prompt-header">
+                  <div class="prompt-label">System Prompt</div>
+                  <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+                </div>
+                <div class="prompt-text">Bạn là Cover Designer Agent cho Amazon KDP books.
+
+NGUYÊN TẮC THIẾT KẾ:
+- KDP thumbnail nhỏ ~150px → title PHẢI đọc được khi thumbnail
+- 1 focal point duy nhất (không clutter)
+- Color contrast cao
+- Niche cue rõ ràng (cuốn cho y tá → stethoscope; cho thợ may → kim chỉ)
+- Tránh: photo realistic faces, complex scene, generic abstract
+
+INPUT:
+- Niche: [tên ngách cụ thể]
+- Target buyer: [ai mua]
+- Page count: [để tính spine width]
+- Trim size: [6x9 hoặc 8.5x11]
+- Mood: [tự đề xuất 2 mood phù hợp]
+
+OUTPUT — STRUCTURE:
+
+═══════════════════════════════════
+COVER CONCEPT (Variant A)
+═══════════════════════════════════
+Mood: [calm / energetic / nostalgic / playful]
+Color palette: [3 màu HEX, ví dụ #2D5F3F, #F5E6D3, #D4A574]
+Focal element: [1 câu mô tả vật thể chính]
+Composition: [centered / asymmetric / split]
+Typography style: [serif elegant / bold modern / handwritten]
+
+IMAGE PROMPT (paste vào Gemini/Ideogram):
+"[Full prompt 60-80 từ EN, có style + subject + color + composition + 'NO text, NO words' negative]"
+
+CANVA SPEC:
+- Title font: [tên font + size pt]
+- Subtitle font: [tên font + size pt]
+- Author font: [tên font + size pt]
+- Title position: [top center / centered / bottom]
+- Spine width: [auto-calc từ page count: pages × 0.0025 inch]
+
+═══════════════════════════════════
+COVER CONCEPT (Variant B) — alternative direction
+═══════════════════════════════════
+[Lặp lại structure trên với hướng khác biệt]
+
+═══════════════════════════════════
+A/B TEST RECOMMENDATION
+═══════════════════════════════════
+[1 đoạn 2-3 câu giải thích vì sao 2 variant này tốt cho A/B test, dự đoán cái nào sẽ thắng và lý do]</div>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Checklist hành động</div>
+              <ul class="checklist">
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Build Agent 03 theo track</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Generate concept + image cho 3 ngách top</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Compose 3 cover PDF (mỗi cuốn 2 variant A/B)</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">A/B vote trên #kdp-day6 — pick winner cover</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Test KDP Cover Calculator → spec đúng</div></li>
+              </ul>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">KPI cuối ngày</div>
+              <div class="kpi-block">
+                <div class="kpi-cell"><div class="label">Agent 03</div><div class="value">Live ✓</div></div>
+                <div class="kpi-cell"><div class="label">Covers ready</div><div class="value">3 + variants</div></div>
+                <div class="kpi-cell"><div class="label">Speed</div><div class="value">20min/cover</div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 7 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number-block">
+            <div class="day-number-label">Day</div>
+            <div class="day-number">07</div>
+          </div>
+          <div class="day-info">
+            <div class="day-tag-row">
+              <span class="day-tag">Run + Submit</span>
+              <span class="day-tag module">First Publish</span>
+            </div>
+            <div class="day-title">Tổng kết tuần 1 + Submit 3 cuốn đầu lên KDP</div>
+            <div class="day-outcome">Output: 3 cuốn đang Review trên KDP + retrospective tuần 1</div>
+          </div>
+          <div class="day-meta">
+            <span class="time-badge">2.5h</span>
+            <div class="expand-icon">▼</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="day-body-inner">
+
+            <div class="support-ribbon">
+              <span class="support-pill zoom">◉ Zoom Weekly Wrap (90 phút, 8 PM)</span>
+              <span class="support-pill community">● Community: First Submit Celebration</span>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Đây là milestone tinh thần đầu tiên</div>
+              <div class="section-intro">Sau 6 ngày, học viên có 3 agent chạy được + 3 cuốn ready. Hôm nay submit lần đầu — không cần Agent 04 (Listing) vì sẽ dùng <strong>listing copy thủ công cho 3 cuốn này</strong> (vì agent 04 chưa build). Lý do: tránh bottleneck. Submit sớm = học sớm.</div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Checklist hành động</div>
+              <ul class="checklist">
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Viết listing thủ công cho 3 cuốn (dùng ChatGPT/Claude regular, chưa cần agent 04)</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Submit 3 cuốn lên KDP (Paperback) — trim size, royalty 60%, giá $7.99-$8.99</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Screenshot "In Review" → post lên #kdp-day7 với caption "First submit"</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Tham dự Zoom Weekly Wrap — chia sẻ retrospective</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Viết retrospective: 3 thứ học được tuần 1, 1 thứ sẽ làm khác tuần 2</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Reflect: 3 agent đã build có pain point gì cần fix tuần sau?</div></li>
+              </ul>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">KPI cuối tuần 1</div>
+              <div class="kpi-block">
+                <div class="kpi-cell"><div class="label">Agents built</div><div class="value">3 / 8</div></div>
+                <div class="kpi-cell"><div class="label">Submitted</div><div class="value">3 cuốn</div></div>
+                <div class="kpi-cell"><div class="label">Status</div><div class="value">In Review</div></div>
+                <div class="kpi-cell"><div class="label">Pipeline speed</div><div class="value">2× faster</div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== MILESTONE WEEK 1 ========== -->
+  <div class="milestone">
+    <div class="milestone-tag">◆ Milestone Tuần 1 hoàn thành</div>
+    <h3>3 agents built — học viên đã hiểu cách "compose" AI Agent</h3>
+    <p>Tuần 1 không phải về số cuốn — là về <strong>việc build được agent đầu tiên</strong>. Sau 7 ngày, học viên đã có Niche Hunter + Manuscript + Cover. Tuần 2 sẽ build 5 agent còn lại + run pipeline đầy đủ.</p>
+    <div class="milestone-grid">
+      <div class="milestone-item"><div class="num">3 / 8</div><div class="desc">Agents live</div></div>
+      <div class="milestone-item"><div class="num">3</div><div class="desc">Cuốn submitted</div></div>
+      <div class="milestone-item"><div class="num">2×</div><div class="desc">Faster than manual</div></div>
+      <div class="milestone-item"><div class="num">100%</div><div class="desc">Foundation locked</div></div>
+    </div>
+  </div>
+
+  <!-- ============ TUẦN 2 ============ -->
+  <section class="week week-2">
+    <div class="week-header">
+      <div class="week-label">
+        <div class="week-number">02</div>
+        <div class="week-info">
+          <h2>Build Remaining Agents + Full Pipeline</h2>
+          <div class="subtitle">Day 08 — 14 · 5 agent cuối + Master Orchestrator + Run batch</div>
+        </div>
+      </div>
+      <div class="week-goal">
+        <div class="label">Outcome tuần 2</div>
+        <div class="text">8/8 agents complete + Master Orchestrator chạy được. Pipeline ra 1 cuốn trong 30 phút. Total catalog: 10-13 cuốn submitted.</div>
+      </div>
+    </div>
+
+    <div class="days-grid">
+
+      <!-- DAY 8 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number-block">
+            <div class="day-number-label">Day</div>
+            <div class="day-number">08</div>
+          </div>
+          <div class="day-info">
+            <div class="day-tag-row">
+              <span class="day-tag">Build + Run</span>
+              <span class="day-tag module">Agent 04</span>
+            </div>
+            <div class="day-title">Build Agent 04: Listing Copywriter — Title, Keywords, A+ Content</div>
+            <div class="day-outcome">Output: Agent 04 + 4 listing hoàn chỉnh sẵn paste KDP</div>
+          </div>
+          <div class="day-meta">
+            <span class="time-badge">3h</span>
+            <div class="expand-icon">▼</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="day-body-inner">
+
+            <div class="support-ribbon">
+              <span class="support-pill video">▶ Video 50 phút: Build Listing Agent + Keyword research</span>
+              <span class="support-pill community">● Community: Listing peer review</span>
+            </div>
+
+            <div class="module-build">
+              <div class="module-build-header">
+                <div class="module-icon">⌬</div>
+                <div class="module-info">
+                  <h4>Agent 04: Listing Copywriter</h4>
+                  <div class="meta">INPUT: ngách + cover · OUTPUT: title, subtitle, 7 keywords, description, A+ content, categories</div>
+                </div>
+              </div>
+              <div class="module-desc">Agent quan trọng nhất cho conversion. Cover làm người ta click, listing làm người ta mua. Agent này tích hợp keyword research + copywriting + Amazon SEO best practice.</div>
+
+              <div class="track-section">
+                <div class="track-tabs">
+                  <button class="track-tab active" data-tab="beginner" onclick="switchTrack(this, 'beginner')">◉ Beginner — Project</button>
+                  <button class="track-tab" data-tab="advanced" onclick="switchTrack(this, 'advanced')">⚡ Advanced — Skill + Helium 10 MCP</button>
+                </div>
+
+                <div class="track-content active" data-content="beginner">
+                  <h5>Build Listing Project (45 phút)</h5>
+                  <ol>
+                    <li>Tạo Project <code>Agent04-Listing</code></li>
+                    <li>Upload knowledge: KDP listing rules, Amazon prohibited keywords list, 5 winning listing examples</li>
+                    <li>Workflow: Input ngách + cover description → Agent ra full listing</li>
+                    <li>Bonus: copy keyword từ Publisher Rocket / Helium 10 trial → paste vào agent input → agent tự pick top 7</li>
+                    <li>Test: 4 cuốn mới (3 cuốn ngày 7 + 1 cuốn mới) → 4 listing trong 30 phút</li>
+                  </ol>
+                </div>
+
+                <div class="track-content" data-content="advanced">
+                  <h5>Skill với MCP Helium 10 / Web Search (60 phút)</h5>
+                  <ol>
+                    <li>Skill <code>~/.claude/skills/listing-copywriter/</code></li>
+                    <li>Workflow: web_search BSR ngách → web_fetch top 5 listing → analyze keyword → generate listing</li>
+                    <li>Optional: setup MCP server cho Helium 10 / DataDive nếu có account paid</li>
+                    <li>Output: file <code>./output/listings/[niche]_listing.json</code> với structured data sẵn để KDP API push (tương lai)</li>
+                    <li>Test với 4 cuốn → 4 listings trong 20 phút</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Core Prompt — Listing Copywriter</div>
+              <div class="prompt-block">
+                <div class="prompt-header">
+                  <div class="prompt-label">System Prompt</div>
+                  <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+                </div>
+                <div class="prompt-text">Bạn là Amazon KDP Listing Copywriter Agent — chuyên về SEO + conversion copywriting cho low-content / coloring / activity books.
+
+INPUT:
+- Niche: [tên ngách]
+- Target buyer + pain point: [chi tiết]
+- Cover concept: [paste từ Agent 03]
+- Top 5 competitor listings: [paste hoặc tôi sẽ provide]
+- Top 15 keyword candidates (từ Publisher Rocket/Helium 10): [paste]
+
+OUTPUT — STRUCTURE CHẶT:
+
+═══════════════════════════════════
+TITLE (max 60 chars)
+═══════════════════════════════════
+[Format: Main keyword + Specific Use Case + Differentiator]
+Ví dụ: "Gratitude Journal for Nurses | 90 Days of Reflection After Long Shifts"
+
+═══════════════════════════════════
+SUBTITLE (max 200 chars)
+═══════════════════════════════════
+[Mô tả sâu hơn use case + benefit + spec ("120 Pages, 6x9 Inch, Soft Cover")]
+
+═══════════════════════════════════
+7 KEYWORDS (Amazon backend, mỗi keyword max 50 chars)
+═══════════════════════════════════
+QUY TẮC: KHÔNG trùng từ trong Title/Subtitle (tránh waste). Long-tail. Có intent buyer.
+1. ...
+2. ...
+...
+7. ...
+
+═══════════════════════════════════
+CATEGORIES (đề xuất 2)
+═══════════════════════════════════
+Primary: [path đầy đủ, ví dụ "Books > Self-Help > Journals"]
+Secondary: [path]
+Note: 2 categories phụ thêm sẽ request sau qua KDP support.
+
+═══════════════════════════════════
+DESCRIPTION (max 4000 chars, có HTML &lt;b&gt; và &lt;br&gt;)
+═══════════════════════════════════
+HOOK (2-3 câu): [Pain point của target buyer]
+
+WHY THIS JOURNAL? (1 đoạn): [Differentiator]
+
+WHAT YOU GET (5 bullet points):
+• ...
+• ...
+• ...
+• ...
+• ...
+
+PERFECT GIFT FOR (3 use cases): [gift suggestions]
+
+CALL TO ACTION (1 câu): [scroll up + add to cart]
+
+═══════════════════════════════════
+A+ CONTENT MODULES (4 modules)
+═══════════════════════════════════
+Module 1 — Hero banner: [headline + subhead + image suggestion]
+Module 2 — Features grid: [4 features với icon + 1 line each]
+Module 3 — Use case lifestyle: [scenario + image + caption]
+Module 4 — Comparison/Why us: [3 reasons to buy]
+
+═══════════════════════════════════
+PRICING RECOMMENDATION
+═══════════════════════════════════
+Suggested price: $X.XX
+Reasoning: [so với competitor + margin + buyer perception]
+
+═══════════════════════════════════
+COMPLIANCE CHECK
+═══════════════════════════════════
+✓ Không có từ cấm (free, best-seller, new, guaranteed)
+✓ Không link ngoài
+✓ Không câu copyright violation
+✓ Description tone professional</div>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Checklist hành động</div>
+              <ul class="checklist">
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Build Agent 04 theo track</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Research keyword cho 4 cuốn (Publisher Rocket trial hoặc Amazon auto-suggest)</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Chạy Agent 04 ra 4 listing hoàn chỉnh</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">So sánh listing AI vs listing thủ công Day 7 — chất lượng?</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Submit 1 listing lên peer review #kdp-day8</div></li>
+              </ul>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">KPI cuối ngày</div>
+              <div class="kpi-block">
+                <div class="kpi-cell"><div class="label">Agent 04</div><div class="value">Live ✓</div></div>
+                <div class="kpi-cell"><div class="label">Listings ready</div><div class="value">4</div></div>
+                <div class="kpi-cell"><div class="label">Speed</div><div class="value">7min/listing</div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 9 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number-block">
+            <div class="day-number-label">Day</div>
+            <div class="day-number">09</div>
+          </div>
+          <div class="day-info">
+            <div class="day-tag-row">
+              <span class="day-tag">Build + Run</span>
+              <span class="day-tag module">Agent 02 (P2) + Agent 05</span>
+            </div>
+            <div class="day-title">Extend Agent 02 (Coloring + Activity) + Build Agent 05: Quality Reviewer</div>
+            <div class="day-outcome">Output: Agent 02 hỗ trợ 3 loại sách + Agent 05 audit checklist tự động</div>
+          </div>
+          <div class="day-meta">
+            <span class="time-badge">3h</span>
+            <div class="expand-icon">▼</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="day-body-inner">
+
+            <div class="support-ribbon">
+              <span class="support-pill video">▶ Video 60 phút: Coloring Pipeline + Quality Agent</span>
+              <span class="support-pill zoom">◉ Office Hours (60 phút)</span>
+              <span class="support-pill community">● Community: Coloring sample review</span>
+            </div>
+
+            <div class="module-build">
+              <div class="module-build-header">
+                <div class="module-icon">⌬</div>
+                <div class="module-info">
+                  <h4>Agent 02 (Phase 2): Manuscript — Coloring + Activity</h4>
+                  <div class="meta">INPUT: theme + audience · OUTPUT: 30-50 page prompts + assembled PDF</div>
+                </div>
+              </div>
+              <div class="module-desc">Phase 2 mở rộng Agent 02 để xử lý coloring books (gen 30 page prompts cho Gemini/Ideogram) và activity books (sudoku/word search/maze data). Setup tốn thời gian hơn vì có image generation pipeline.</div>
+            </div>
+
+            <div class="module-build">
+              <div class="module-build-header">
+                <div class="module-icon">⌬</div>
+                <div class="module-info">
+                  <h4>Agent 05: Quality Reviewer</h4>
+                  <div class="meta">INPUT: PDF + cover + listing · OUTPUT: GO/NO-GO checklist với fix suggestions</div>
+                </div>
+              </div>
+              <div class="module-desc">Agent 05 là "QA team" của pipeline. Mỗi cuốn trước khi submit → chạy qua Agent 05 → audit theo 30 tiêu chí → trả checklist + suggestions. Giảm 80% lỗi reject từ KDP.</div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Core Prompt — Quality Reviewer (Agent 05)</div>
+              <div class="prompt-block">
+                <div class="prompt-header">
+                  <div class="prompt-label">System Prompt</div>
+                  <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+                </div>
+                <div class="prompt-text">Bạn là Quality Reviewer Agent — kiểm tra chất lượng và compliance của cuốn KDP trước khi submit.
+
+INPUT:
+- Listing draft (title/subtitle/keywords/description): [paste]
+- Cover description (hoặc upload image): [paste/upload]
+- Interior PDF spec (trim size, page count, có front/back matter không): [paste]
+- Target market: US
+
+CHECKLIST 30 TIÊU CHÍ — Output dưới dạng table với GO/FAIL/WARN:
+
+═══════════════════════════════════
+A. LISTING COMPLIANCE (10 checks)
+═══════════════════════════════════
+1. Title không chứa từ cấm (free, best, new, guaranteed)?
+2. Title đúng max 60 chars?
+3. Subtitle không trùng title?
+4. 7 keywords không trùng từ trong title?
+5. Keyword không quá 50 chars?
+6. Description không có link ngoài?
+7. Description không vi phạm copyright (mention brand khác)?
+8. Categories đúng path Amazon?
+9. Pricing đúng range KDP $0.99-$200?
+10. Tone description professional, không AI-generic?
+
+═══════════════════════════════════
+B. COVER QUALITY (10 checks)
+═══════════════════════════════════
+11. Title đọc được khi thumbnail 150px?
+12. Cover có niche cue rõ?
+13. Color contrast cao?
+14. Spine width đúng cho page count?
+15. Bleed 0.125 inch?
+16. DPI ≥ 300?
+17. Không vi phạm IP (logo, character, brand)?
+18. Front + back + spine align đúng?
+19. Author name có visible?
+20. Genre cue đúng (kids book → playful font, journal → elegant)?
+
+═══════════════════════════════════
+C. INTERIOR QUALITY (10 checks)
+═══════════════════════════════════
+21. Trim size đúng?
+22. Page count match cover spine calc?
+23. Margin trim-safe (0.5" inner)?
+24. Page numbers đúng vị trí?
+25. Front matter đầy đủ (title/copyright/dedication)?
+26. Back matter có review request page?
+27. Font readable (10pt+ cho text)?
+28. Không có blank pages giữa content (KDP reject)?
+29. Coloring/activity: layout match audience age?
+30. PDF/X compatible?
+
+═══════════════════════════════════
+OUTPUT FORMAT
+═══════════════════════════════════
+| # | Tiêu chí | Status | Note/Fix |
+|---|----------|--------|----------|
+| 1 | ... | GO/FAIL/WARN | ... |
+
+OVERALL VERDICT:
+- Total GO: X/30
+- FAIL items: X (PHẢI fix trước submit)
+- WARN items: X (nên fix nhưng không block)
+
+RECOMMENDATION: SUBMIT NOW / FIX FAILS FIRST / MAJOR REWORK NEEDED</div>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Checklist hành động</div>
+              <ul class="checklist">
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Extend Agent 02 — coloring page generator (30 prompts)</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Extend Agent 02 — activity book (word list / sudoku data)</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Build Agent 05: Quality Reviewer</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Generate 1 cuốn coloring (30 pages) bằng Gemini/Ideogram</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Chạy Agent 05 audit cho 4 cuốn ngày 8 → fix theo recommendations</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Submit 4 cuốn batch 2 lên KDP</div></li>
+              </ul>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">KPI cuối ngày</div>
+              <div class="kpi-block">
+                <div class="kpi-cell"><div class="label">Agent 02 P2</div><div class="value">Extended</div></div>
+                <div class="kpi-cell"><div class="label">Agent 05</div><div class="value">Live ✓</div></div>
+                <div class="kpi-cell"><div class="label">Total submitted</div><div class="value">7</div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 10 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number-block">
+            <div class="day-number-label">Day</div>
+            <div class="day-number">10</div>
+          </div>
+          <div class="day-info">
+            <div class="day-tag-row">
+              <span class="day-tag">Build + Run</span>
+              <span class="day-tag module">Agent 06</span>
+            </div>
+            <div class="day-title">Build Agent 06: Ads Manager — Setup campaigns đầu tiên</div>
+            <div class="day-outcome">Output: Agent 06 + 2 ad campaign live cho 2 cuốn winner</div>
+          </div>
+          <div class="day-meta">
+            <span class="time-badge">3h</span>
+            <div class="expand-icon">▼</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="day-body-inner">
+
+            <div class="support-ribbon">
+              <span class="support-pill video">▶ Video 55 phút: Build Ads Manager Agent</span>
+              <span class="support-pill community">● Community: Campaign setup peer review</span>
+            </div>
+
+            <div class="module-build">
+              <div class="module-build-header">
+                <div class="module-icon">⌬</div>
+                <div class="module-info">
+                  <h4>Agent 06: Ads Manager</h4>
+                  <div class="meta">INPUT: cuốn sách + budget · OUTPUT: campaign config + keyword list + bid strategy</div>
+                </div>
+              </div>
+              <div class="module-desc">Agent 06 không tự push ads (Amazon Ads API phức tạp) — agent generate <strong>full config sẵn để học viên paste vào Amazon Ads Console trong 5 phút</strong>. Bao gồm: campaign type, keyword + bid table, negative keywords, budget allocation.</div>
+
+              <div class="track-section">
+                <div class="track-tabs">
+                  <button class="track-tab active" data-tab="beginner" onclick="switchTrack(this, 'beginner')">◉ Beginner — Project</button>
+                  <button class="track-tab" data-tab="advanced" onclick="switchTrack(this, 'advanced')">⚡ Advanced — Skill + Amazon Ads CSV upload</button>
+                </div>
+
+                <div class="track-content active" data-content="beginner">
+                  <h5>Build Ads Manager Project (45 phút)</h5>
+                  <ol>
+                    <li>Tạo Project <code>Agent06-Ads</code></li>
+                    <li>Upload knowledge: Amazon Ads playbook 2026, sample winning campaigns, KDP-specific bid range</li>
+                    <li>Workflow: Input cuốn sách + ngân sách → Agent ra (1) Auto campaign config (2) Manual campaign với 20 keyword + bid (3) Negative keyword starter list</li>
+                    <li>Test với 1 cuốn → paste config vào Amazon Ads → launch trong 10 phút</li>
+                  </ol>
+                </div>
+
+                <div class="track-content" data-content="advanced">
+                  <h5>Skill với CSV bulk upload (60 phút)</h5>
+                  <ol>
+                    <li>Skill <code>~/.claude/skills/ads-manager/</code></li>
+                    <li><code>scripts/gen-bulk-csv.py</code>: tạo Amazon Ads bulk operation CSV (format chuẩn của Amazon)</li>
+                    <li>Học viên upload CSV vào Amazon Ads Console → 1 click launch nhiều campaigns cùng lúc</li>
+                    <li>Bonus: skill có thể call Amazon Ads API (nếu có Seller Central API access) để tự push</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Core Prompt — Ads Manager Agent</div>
+              <div class="prompt-block">
+                <div class="prompt-header">
+                  <div class="prompt-label">System Prompt</div>
+                  <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+                </div>
+                <div class="prompt-text">Bạn là Amazon Ads Manager Agent chuyên cho KDP books.
+
+NHIỆM VỤ:
+Setup full ads campaign config sẵn paste vào Amazon Ads Console.
+
+INPUT:
+- Cuốn sách: [Title + ASIN nếu đã có]
+- Niche: [tên ngách]
+- Top 15 keywords (từ Agent 04): [paste]
+- Royalty/cuốn: $[số]
+- Daily budget cho cuốn này: $[số]
+- Goal: [discovery / conversion / both]
+
+OUTPUT — STRUCTURE:
+
+═══════════════════════════════════
+CAMPAIGN STRATEGY
+═══════════════════════════════════
+Recommended approach: [Auto only / Auto + Manual / Manual heavy]
+Reasoning: [1-2 câu]
+Total daily budget: $X.XX
+
+═══════════════════════════════════
+CAMPAIGN 1 — AUTO TARGETING (DISCOVERY)
+═══════════════════════════════════
+Name: [Niche]_AUTO_v1
+Type: Sponsored Products - Auto Targeting
+Daily budget: $X.XX (typically $3-5)
+Default bid: $0.30
+Bid adjustments:
+  - Close match: +20%
+  - Loose match: -10%
+  - Substitutes: 0%
+  - Complements: 0%
+Duration: 14 days, then evaluate
+
+═══════════════════════════════════
+CAMPAIGN 2 — MANUAL TARGETING (CONVERSION)
+═══════════════════════════════════
+Name: [Niche]_MANUAL_v1
+Type: Sponsored Products - Manual - Keyword Targeting
+Daily budget: $X.XX (typically $5-7)
+
+KEYWORD TABLE:
+| Keyword | Match Type | Bid |
+|---------|------------|-----|
+| [main kw] | Exact | $0.45 |
+| [main kw] | Phrase | $0.35 |
+| [main kw] | Broad | $0.25 |
+| [variant 1] | Exact | $0.40 |
+| ... |
+
+Total: 15-20 keyword × 3 match types
+
+═══════════════════════════════════
+NEGATIVE KEYWORDS (starter list)
+═══════════════════════════════════
+- [generic broad terms tránh waste, ví dụ "free", "kindle", "ebook"]
+- [misspell trap]
+- [irrelevant niches]
+
+═══════════════════════════════════
+BREAK-EVEN ACoS
+═══════════════════════════════════
+ACoS = (royalty / price) × 100 = X%
+Target ACoS: < (break-even - 10%) = Y%
+
+═══════════════════════════════════
+EVALUATION SCHEDULE
+═══════════════════════════════════
+Day 3: check impressions (>500 = OK)
+Day 7: check ACoS, pause if >100%
+Day 14: full restructure based on Search Term Report
+
+═══════════════════════════════════
+RED FLAGS để dừng campaign sớm
+═══════════════════════════════════
+- ACoS > 200% sau 7 ngày
+- 0 sale sau $30 spend
+- CTR < 0.1%</div>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Checklist hành động</div>
+              <ul class="checklist">
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Build Agent 06 theo track</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Identify 2 cuốn đầu đã live (từ batch 1) có CTR/sale tốt nhất</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Chạy Agent 06 cho 2 cuốn đó → ra full campaign config</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Paste config vào Amazon Ads Console → launch 2 campaigns</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Set reminder Day 13 review ads</div></li>
+              </ul>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">KPI cuối ngày</div>
+              <div class="kpi-block">
+                <div class="kpi-cell"><div class="label">Agent 06</div><div class="value">Live ✓</div></div>
+                <div class="kpi-cell"><div class="label">Campaigns launched</div><div class="value">2</div></div>
+                <div class="kpi-cell"><div class="label">Daily ad spend</div><div class="value">$10</div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 11 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number-block">
+            <div class="day-number-label">Day</div>
+            <div class="day-number">11</div>
+          </div>
+          <div class="day-info">
+            <div class="day-tag-row">
+              <span class="day-tag">Build + Run</span>
+              <span class="day-tag module">Agent 07</span>
+            </div>
+            <div class="day-title">Build Agent 07: Performance Analyst — Phân tích sale + ads data</div>
+            <div class="day-outcome">Output: Agent 07 + báo cáo phân tích đầu tiên cho catalog hiện tại</div>
+          </div>
+          <div class="day-meta">
+            <span class="time-badge">2.5h</span>
+            <div class="expand-icon">▼</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="day-body-inner">
+
+            <div class="support-ribbon">
+              <span class="support-pill video">▶ Video 40 phút: Build Performance Analyst</span>
+              <span class="support-pill community">● Community: First analytics share</span>
+            </div>
+
+            <div class="module-build">
+              <div class="module-build-header">
+                <div class="module-icon">⌬</div>
+                <div class="module-info">
+                  <h4>Agent 07: Performance Analyst</h4>
+                  <div class="meta">INPUT: KDP Reports CSV + Ads CSV · OUTPUT: weekly action plan + iteration suggestions</div>
+                </div>
+              </div>
+              <div class="module-desc">Agent 07 là "data scientist" của pipeline. Mỗi tuần học viên download KDP Reports + Amazon Ads Search Term Report → paste vào agent → ra báo cáo: cuốn nào win, cuốn nào fix listing, keyword nào cần tăng/giảm bid, ngách nào nên double down.</div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Core Prompt — Performance Analyst</div>
+              <div class="prompt-block">
+                <div class="prompt-header">
+                  <div class="prompt-label">System Prompt</div>
+                  <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+                </div>
+                <div class="prompt-text">Bạn là Performance Analyst Agent cho KDP business của tôi.
+
+INPUT (paste hoặc upload CSV):
+- KDP Sales Report (last 7 days): [data]
+- KDP Royalty Report: [data]
+- Amazon Ads Search Term Report: [data]
+- Catalog snapshot (số cuốn live, ngách, ngày publish): [data]
+
+PHÂN TÍCH 4 TẦNG:
+
+═══════════════════════════════════
+1. CATALOG PERFORMANCE
+═══════════════════════════════════
+- Top 3 winners (sale + royalty cao nhất)
+- Bottom 3 underperformers
+- Pattern: ngách nào hot? Format nào convert?
+- Recommendation: tiếp tục / pivot / kill
+
+═══════════════════════════════════
+2. ADS EFFICIENCY
+═══════════════════════════════════
+- Overall ACoS vs break-even
+- Top 5 keyword winners (ACoS thấp + sale cao)
+- Top 5 keyword wasters (>$2 spend, 0 sale → NEGATIVE)
+- Bid adjustment recommendations
+- Campaign restructure: pause / scale / split
+
+═══════════════════════════════════
+3. CONVERSION FUNNEL
+═══════════════════════════════════
+- Impressions → Click rate (CTR target >0.3%)
+- Click → Sale rate (CR target >10%)
+- Cuốn nào CTR thấp = fix cover
+- Cuốn nào CR thấp = fix listing/price
+
+═══════════════════════════════════
+4. ROI + NEXT ACTIONS
+═══════════════════════════════════
+Total revenue 7 days: $X
+Total ad spend 7 days: $X
+Net profit: $X
+Profit margin: X%
+
+WEEKLY ACTION PLAN (top 5 priorities, theo thứ tự):
+1. [action cụ thể với cuốn nào, mong đợi gì]
+2. ...
+3. ...
+4. ...
+5. ...
+
+═══════════════════════════════════
+SCALE OPPORTUNITY
+═══════════════════════════════════
+Best ngách to double down: [ngách]
+Suggested next 3 books: [3 spin-off ideas]</div>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Checklist hành động</div>
+              <ul class="checklist">
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Build Agent 07</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Download KDP Reports + Ads Reports (CSV)</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Chạy Agent 07 → ra báo cáo đầu tiên</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Implement top 3 actions trong tuần này</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Tạo Spin-off plan từ winner ngách</div></li>
+              </ul>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">KPI cuối ngày</div>
+              <div class="kpi-block">
+                <div class="kpi-cell"><div class="label">Agent 07</div><div class="value">Live ✓</div></div>
+                <div class="kpi-cell"><div class="label">Báo cáo đầu</div><div class="value">Done</div></div>
+                <div class="kpi-cell"><div class="label">7 / 8 agents</div><div class="value">Built</div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 12 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number-block">
+            <div class="day-number-label">Day</div>
+            <div class="day-number">12</div>
+          </div>
+          <div class="day-info">
+            <div class="day-tag-row">
+              <span class="day-tag">Build + Run</span>
+              <span class="day-tag module">Agent 08 — Master</span>
+            </div>
+            <div class="day-title">Build Agent 08: Master Orchestrator — Toàn bộ pipeline trong 1 lệnh</div>
+            <div class="day-outcome">Output: 1 lệnh duy nhất → 1 cuốn sách hoàn chỉnh từ ngách → ready submit</div>
+          </div>
+          <div class="day-meta">
+            <span class="time-badge">3.5h</span>
+            <div class="expand-icon">▼</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="day-body-inner">
+
+            <div class="support-ribbon">
+              <span class="support-pill video">▶ Video 60 phút: Master Orchestrator Architecture</span>
+              <span class="support-pill zoom">◉ Zoom Workshop (90 phút, 8 PM): Pipeline Demo</span>
+              <span class="support-pill community">● Community: Pipeline showcase</span>
+            </div>
+
+            <div class="module-build">
+              <div class="module-build-header">
+                <div class="module-icon">⌬</div>
+                <div class="module-info">
+                  <h4>Agent 08: Master Orchestrator (KDP Book Factory)</h4>
+                  <div class="meta">INPUT: 1 ngách → OUTPUT: 1 cuốn hoàn chỉnh sẵn submit (PDF + Cover + Listing + Ads config)</div>
+                </div>
+              </div>
+              <div class="module-desc">Đây là <strong>graduation project của AI Agent Mastery</strong>. Master Orchestrator gọi tuần tự 7 agent trên: Niche Hunter → Manuscript → Cover → Listing → Quality Reviewer → (sau publish) Ads Manager. Học viên giờ có "KDP Book Factory" cá nhân.</div>
+
+              <div class="track-section">
+                <div class="track-tabs">
+                  <button class="track-tab active" data-tab="beginner" onclick="switchTrack(this, 'beginner')">◉ Beginner — Project chain</button>
+                  <button class="track-tab" data-tab="advanced" onclick="switchTrack(this, 'advanced')">⚡ Advanced — Claude Code orchestration</button>
+                </div>
+
+                <div class="track-content active" data-content="beginner">
+                  <h5>Beginner — Manual chain (60 phút)</h5>
+                  <ol>
+                    <li>Tạo Project <code>Agent08-Master</code> với knowledge tổng hợp pipeline</li>
+                    <li>Workflow là <strong>checklist sequence</strong>: input ngách → mở Agent 01 → output → mở Agent 02 → output → ...</li>
+                    <li>Tạo Notion template "Book Production Tracker" để track 1 cuốn qua 7 agent</li>
+                    <li>Beginner version chưa fully automated — vẫn cần học viên switch giữa các Project</li>
+                    <li>Total time per book: ~60 phút (vs 3-4h manual ban đầu)</li>
+                    <li><strong>Upgrade path</strong>: khi học viên thành thạo, có thể chuyển sang Advanced track</li>
+                  </ol>
+                </div>
+
+                <div class="track-content" data-content="advanced">
+                  <h5>Advanced — Claude Code orchestration (90 phút)</h5>
+                  <ol>
+                    <li>Tạo skill <code>~/.claude/skills/kdp-orchestrator/</code></li>
+                    <li><code>SKILL.md</code> mô tả workflow đầy đủ 7 sub-agents</li>
+                    <li>Trong Claude Code: 1 prompt <code>"Tạo cuốn sách cho ngách X"</code> → Claude tự gọi từng skill: niche-hunter → manuscript → cover-designer → listing-copywriter → quality-reviewer</li>
+                    <li>Output cuối: folder <code>./output/books/[niche]/</code> với đầy đủ: <code>interior.pdf</code>, <code>cover.pdf</code>, <code>listing.json</code>, <code>ads-config.csv</code>, <code>quality-report.md</code></li>
+                    <li>Test: chạy 1 cuốn end-to-end trong 30 phút (mostly waiting for image gen)</li>
+                    <li>Bonus: cron job tự chạy 1 cuốn/ngày từ ngách top trong queue</li>
+                    <li>Total time per book: ~30 phút (95% automated)</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Core Prompt — Master Orchestrator</div>
+              <div class="prompt-block">
+                <div class="prompt-header">
+                  <div class="prompt-label">Orchestrator Logic</div>
+                  <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+                </div>
+                <div class="prompt-text">Bạn là Master Orchestrator của KDP Book Factory.
+
+NHIỆM VỤ:
+Khi tôi cung cấp 1 ngách, bạn coordinate toàn bộ pipeline để output 1 cuốn sách READY SUBMIT.
+
+PIPELINE WORKFLOW:
+
+STEP 1 — NICHE VALIDATION (call Agent 01 logic)
+Input: ngách thô
+Output: scoring + verdict GO/SKIP
+Nếu SKIP → STOP và đề xuất ngách khác
+Nếu GO → tiếp STEP 2
+
+STEP 2 — MANUSCRIPT GENERATION (call Agent 02 logic)
+Input: ngách + spec sách (auto-decide low-content/coloring/activity)
+Output: PDF interior 110-120 trang chuẩn KDP
+Nếu lỗi format → loop sửa, max 2 lần
+
+STEP 3 — COVER DESIGN (call Agent 03 logic)
+Input: ngách + page count (từ STEP 2)
+Output: cover concept + image prompt + Canva spec
+Học viên paste image prompt vào Gemini → tải hình → compose cover
+
+STEP 4 — LISTING COPY (call Agent 04 logic)
+Input: ngách + cover description
+Output: title/subtitle/keywords/description/A+ content/categories/price
+
+STEP 5 — QUALITY AUDIT (call Agent 05 logic)
+Input: tất cả output STEP 2-4
+Output: 30-point checklist + GO/FIX verdict
+Nếu FIX → loop về STEP cần sửa
+Nếu GO → tiếp STEP 6
+
+STEP 6 — ADS CONFIG (call Agent 06 logic)
+Input: cuốn sách + budget
+Output: campaign config sẵn paste Amazon Ads (chạy sau khi cuốn live)
+
+═══════════════════════════════════
+DELIVERABLE — Output cuối cùng
+═══════════════════════════════════
+Bạn trả 1 báo cáo "Book Ready Package" với 6 sections:
+1. ✓ Niche validated: [name + score]
+2. ✓ Interior PDF spec: [confirm uploaded]
+3. ✓ Cover spec + image prompt: [details]
+4. ✓ Listing copy (title/sub/kw/desc/cat/price)
+5. ✓ Quality audit passed: 30/30 GO
+6. ✓ Ads config (run after live)
+
+ESTIMATED TIME: 30-60 phút (depending on track)
+
+EDGE CASES:
+- Nếu user input vague niche → hỏi lại 2-3 câu để clarify
+- Nếu agent nào fail → báo rõ step nào fail, đề xuất fix
+- Nếu user muốn skip step nào → confirm risk trước khi skip</div>
+              </div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Checklist hành động</div>
+              <ul class="checklist">
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Build Agent 08 theo track</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Test pipeline đầy đủ với 1 ngách mới → end-to-end ra cuốn sách</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Đo thời gian end-to-end (target: <60 phút)</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Tham dự Zoom Workshop — Pipeline Demo (showcase pipeline của mình)</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Submit pipeline demo video 2 phút lên #kdp-day12</div></li>
+              </ul>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">KPI cuối ngày — TUẦN 2 ENDS HERE</div>
+              <div class="kpi-block">
+                <div class="kpi-cell"><div class="label">Agents</div><div class="value">8 / 8 ✓</div></div>
+                <div class="kpi-cell"><div class="label">Pipeline</div><div class="value">Operational</div></div>
+                <div class="kpi-cell"><div class="label">Time/cuốn</div><div class="value">30-60 min</div></div>
+                <div class="kpi-cell"><div class="label">Catalog</div><div class="value">10+</div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 13 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number-block">
+            <div class="day-number-label">Day</div>
+            <div class="day-number">13</div>
+          </div>
+          <div class="day-info">
+            <div class="day-tag-row">
+              <span class="day-tag">Run Pipeline</span>
+              <span class="day-tag module">Batch Production</span>
+            </div>
+            <div class="day-title">Run Pipeline batch — Tạo 4 cuốn trong 1 ngày</div>
+            <div class="day-outcome">Output: 4 cuốn ready submit từ pipeline (chứng minh pipeline hoạt động ở scale)</div>
+          </div>
+          <div class="day-meta">
+            <span class="time-badge">4h</span>
+            <div class="expand-icon">▼</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="day-body-inner">
+
+            <div class="support-ribbon">
+              <span class="support-pill community">● Community: Batch racing thread (gamification)</span>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Đây là test thực tế của pipeline</div>
+              <div class="section-intro">Hôm qua xác nhận pipeline chạy được 1 cuốn. Hôm nay test scale: <strong>4 cuốn trong 4 giờ</strong>. Nếu pipeline đúng, mỗi cuốn ~60 phút. Đây là chứng minh "AI Agent + KDP" không chỉ là demo mà thật sự production-ready.</div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Checklist hành động</div>
+              <ul class="checklist">
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Pick 4 ngách từ Top 7 chưa làm + 1 ngách spin-off (5 cuốn total)</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Chạy Agent 08 cho cuốn 1 → ghi thời gian</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Chạy Agent 08 cho cuốn 2-4 → optimize bottleneck nếu chậm</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Submit 4 cuốn lên KDP</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Update ads cho cuốn nào đã có sale (chạy Agent 06)</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Post tổng kết pipeline performance lên #kdp-day13</div></li>
+              </ul>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">KPI cuối ngày</div>
+              <div class="kpi-block">
+                <div class="kpi-cell"><div class="label">Cuốn batch ngày này</div><div class="value">4</div></div>
+                <div class="kpi-cell"><div class="label">Total submitted</div><div class="value">11+</div></div>
+                <div class="kpi-cell"><div class="label">Pipeline validated</div><div class="value">✓</div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 14 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number-block">
+            <div class="day-number-label">Day</div>
+            <div class="day-number">14</div>
+          </div>
+          <div class="day-info">
+            <div class="day-tag-row">
+              <span class="day-tag">Optimize</span>
+              <span class="day-tag module">Mid-Sprint Review</span>
+            </div>
+            <div class="day-title">Pipeline optimization + Plan tuần 3 Sales Push</div>
+            <div class="day-outcome">Output: Pipeline v2 với fixes + Plan tuần 3 chi tiết</div>
+          </div>
+          <div class="day-meta">
+            <span class="time-badge">2.5h</span>
+            <div class="expand-icon">▼</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="day-body-inner">
+
+            <div class="support-ribbon">
+              <span class="support-pill zoom">◉ Zoom Mid-Sprint Review (90 phút, 8 PM)</span>
+              <span class="support-pill community">● Community: Pipeline v2 share</span>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Checklist hành động</div>
+              <ul class="checklist">
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Identify bottleneck trong pipeline (agent nào chậm/sai nhiều nhất?)</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Iterate prompt + skill cho agent đó → pipeline v2</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Chạy Agent 07 (Performance Analyst) cho catalog hiện tại</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Identify top 2 cuốn winner từ catalog 11+</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Plan tuần 3: 2 spin-off winner + 3 cuốn mới + ads scale + reviews</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Tham dự Zoom Mid-Sprint Review</div></li>
+              </ul>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">KPI cuối tuần 2</div>
+              <div class="kpi-block">
+                <div class="kpi-cell"><div class="label">Total agents</div><div class="value">8 / 8 ✓</div></div>
+                <div class="kpi-cell"><div class="label">Total submitted</div><div class="value">11+</div></div>
+                <div class="kpi-cell"><div class="label">Live</div><div class="value">7+</div></div>
+                <div class="kpi-cell"><div class="label">First sales</div><div class="value">Likely</div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== MILESTONE WEEK 2 ========== -->
+  <div class="milestone">
+    <div class="milestone-tag">◆ Milestone Tuần 2 hoàn thành</div>
+    <h3>8 agents + Master Orchestrator — học viên giờ là AI Agent Engineer thực thụ</h3>
+    <p>Catalog 11+ cuốn submitted. Pipeline có thể tạo 1 cuốn trong 30-60 phút. Đây là <strong>tài sản trí tuệ</strong> không ai lấy đi được. Tuần 3 chuyển focus sang sale + ads + scale.</p>
+    <div class="milestone-grid">
+      <div class="milestone-item"><div class="num">8 / 8</div><div class="desc">Agents complete</div></div>
+      <div class="milestone-item"><div class="num">11+</div><div class="desc">Cuốn trong KDP</div></div>
+      <div class="milestone-item"><div class="num">10×</div><div class="desc">Faster than manual</div></div>
+      <div class="milestone-item"><div class="num">$0–50</div><div class="desc">Doanh thu accumulated</div></div>
+    </div>
+  </div>
+
+  <!-- ============ TUẦN 3 ============ -->
+  <section class="week week-3">
+    <div class="week-header">
+      <div class="week-label">
+        <div class="week-number">03</div>
+        <div class="week-info">
+          <h2>Sales Acceleration + Graduate</h2>
+          <div class="subtitle">Day 15 — 21 · Ads scale · Reviews · Scale winner · Graduate</div>
+        </div>
+      </div>
+      <div class="week-goal">
+        <div class="label">Outcome tuần 3</div>
+        <div class="text">Doanh thu chạm $100-500. Reviews đầu tiên. 2 winner được scale. Catalog 17-20 cuốn. Graduate với case study + Pipeline v3 hoàn chỉnh.</div>
+      </div>
+    </div>
+
+    <div class="days-grid">
+
+      <!-- DAY 15 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number-block">
+            <div class="day-number-label">Day</div>
+            <div class="day-number">15</div>
+          </div>
+          <div class="day-info">
+            <div class="day-tag-row">
+              <span class="day-tag">Ads Scale</span>
+            </div>
+            <div class="day-title">Ads scale — Mở rộng 2 → 5 campaigns + tăng budget</div>
+            <div class="day-outcome">Output: 5 ad campaigns active với $25-30/ngày total budget</div>
+          </div>
+          <div class="day-meta">
+            <span class="time-badge">2.5h</span>
+            <div class="expand-icon">▼</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="day-body-inner">
+
+            <div class="section-block">
+              <div class="section-title">Checklist hành động</div>
+              <ul class="checklist">
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Chạy Agent 06 cho 3 cuốn mới (chưa có ads)</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Launch 3 campaigns mới ($5/ngày each)</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Review 2 campaigns cũ → tăng budget cho cuốn nào ACoS &lt;50%</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Chạy Agent 07 (Performance) phân tích 7 ngày ads data</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Apply top 5 actions từ báo cáo</div></li>
+              </ul>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">KPI</div>
+              <div class="kpi-block">
+                <div class="kpi-cell"><div class="label">Active campaigns</div><div class="value">5</div></div>
+                <div class="kpi-cell"><div class="label">Daily spend</div><div class="value">$25-30</div></div>
+                <div class="kpi-cell"><div class="label">Target ACoS</div><div class="value">&lt;60%</div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 16 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number-block">
+            <div class="day-number-label">Day</div>
+            <div class="day-number">16</div>
+          </div>
+          <div class="day-info">
+            <div class="day-tag-row">
+              <span class="day-tag">Reviews</span>
+              <span class="day-tag module" style="border-color:var(--hot);color:var(--hot)">⚠ Compliance</span>
+            </div>
+            <div class="day-title">Review strategy — An toàn, không vi phạm KDP TOS</div>
+            <div class="day-outcome">Output: 5 author copies ordered + 10+ review requests đã gửi qua kênh hợp lệ</div>
+          </div>
+          <div class="day-meta">
+            <span class="time-badge">2h</span>
+            <div class="expand-icon">▼</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="day-body-inner">
+
+            <div class="support-ribbon">
+              <span class="support-pill video">▶ Video 30 phút: Review Strategy + KDP TOS</span>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">⚠ Cảnh báo nghiêm ngặt</div>
+              <div class="section-intro" style="color:var(--text-1)"><strong style="color:var(--hot)">KHÔNG ĐƯỢC:</strong> đổi review lấy sách miễn phí, mua review, fake account, paid review. Vi phạm = ban tài khoản KDP vĩnh viễn, mất toàn bộ catalog.</div>
+              <div class="section-intro"><strong style="color:var(--accent)">ĐƯỢC PHÉP:</strong> tặng author copy với điều kiện "honest review only if you want", giveaway public, gửi đến reviewer tự nguyện trên BookSirens/NetGalley/BookFunnel.</div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Checklist hành động</div>
+              <ul class="checklist">
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Order 5 Author Copies (KDP Bookshelf → Order Author Copies, giá in chỉ cost)</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Tặng cho 5 người trong network US/UK với letter "honest review optional"</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Đăng ký BookSirens / BookFunnel free tier cho 3 cuốn winner</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Post sách lên Reddit subreddit liên quan (r/coloringbooks, r/journals) — share authentically, không spam</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Insert Review Request Page vào back matter cuốn mới (subtle reminder)</div></li>
+              </ul>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">KPI</div>
+              <div class="kpi-block">
+                <div class="kpi-cell"><div class="label">Author copies</div><div class="value">5</div></div>
+                <div class="kpi-cell"><div class="label">Review reach</div><div class="value">10+</div></div>
+                <div class="kpi-cell"><div class="label">Compliance</div><div class="value">100%</div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 17 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number-block">
+            <div class="day-number-label">Day</div>
+            <div class="day-number">17</div>
+          </div>
+          <div class="day-info">
+            <div class="day-tag-row">
+              <span class="day-tag">Scale Winner</span>
+            </div>
+            <div class="day-title">Scale Winner — Pipeline tạo 2 spin-off từ winner</div>
+            <div class="day-outcome">Output: 2 spin-off books ready (Volume 2 + Audience variant)</div>
+          </div>
+          <div class="day-meta">
+            <span class="time-badge">3h</span>
+            <div class="expand-icon">▼</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="day-body-inner">
+
+            <div class="section-block">
+              <div class="section-title">Pareto của KDP — winner replication</div>
+              <div class="section-intro">Sau 12-15 cuốn, sẽ có 1-2 cuốn chiếm 70% sale. <strong>Đó là tài sản.</strong> Tuần 3 không tạo ngách mới — double down winner. Tạo "series" hoặc "variant".</div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Checklist hành động</div>
+              <ul class="checklist">
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Identify 1-2 winner từ Agent 07 báo cáo</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Chạy Agent 08 với input = "Tạo Volume 2 cho [winner title]"</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Chạy Agent 08 với input = "Tạo audience variant cho [winner], đổi từ adult sang kids"</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Cover phải có "series consistency" — listing reference cuốn 1</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Update Author Central — group 3 cuốn vào series</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Submit 2 spin-off lên KDP</div></li>
+              </ul>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">KPI</div>
+              <div class="kpi-block">
+                <div class="kpi-cell"><div class="label">Winner identified</div><div class="value">Yes</div></div>
+                <div class="kpi-cell"><div class="label">Spin-offs</div><div class="value">2 submitted</div></div>
+                <div class="kpi-cell"><div class="label">Series setup</div><div class="value">Done</div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 18 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number-block">
+            <div class="day-number-label">Day</div>
+            <div class="day-number">18</div>
+          </div>
+          <div class="day-info">
+            <div class="day-tag-row">
+              <span class="day-tag">Ads Optimize</span>
+            </div>
+            <div class="day-title">Deep ads optimization — Search Term Report + Negative keywords</div>
+            <div class="day-outcome">Output: ACoS giảm 30-50% so với Day 15</div>
+          </div>
+          <div class="day-meta">
+            <span class="time-badge">2h</span>
+            <div class="expand-icon">▼</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="day-body-inner">
+
+            <div class="section-block">
+              <div class="section-title">Checklist hành động</div>
+              <ul class="checklist">
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Download Search Term Report 7 ngày từ Amazon Ads</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Chạy Agent 07 với input là Search Term CSV → ra danh sách negative + bid adjust</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Apply 10+ negative keywords vào campaigns</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Tăng bid cho top 5 winning keywords (+25%)</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Pause campaign nào ACoS > 100% sau 7 ngày</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Tạo 1 campaign mới chỉ với top 5 keyword Exact match</div></li>
+              </ul>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">KPI</div>
+              <div class="kpi-block">
+                <div class="kpi-cell"><div class="label">Negative kw added</div><div class="value">10+</div></div>
+                <div class="kpi-cell"><div class="label">ACoS target</div><div class="value">&lt;40%</div></div>
+                <div class="kpi-cell"><div class="label">Profit/day</div><div class="value">+25%</div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 19 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number-block">
+            <div class="day-number-label">Day</div>
+            <div class="day-number">19</div>
+          </div>
+          <div class="day-info">
+            <div class="day-tag-row">
+              <span class="day-tag">Final Push</span>
+            </div>
+            <div class="day-title">Pipeline batch run — 3 cuốn cuối cùng + Setup ads ngay</div>
+            <div class="day-outcome">Output: 3 cuốn submit + ads ready cho cả 3</div>
+          </div>
+          <div class="day-meta">
+            <span class="time-badge">3h</span>
+            <div class="expand-icon">▼</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="day-body-inner">
+
+            <div class="section-block">
+              <div class="section-title">Checklist hành động</div>
+              <ul class="checklist">
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Chọn 3 ngách cuối: 2 spin-off ngách thứ 2 + 1 ngách seasonal (sắp tới holiday season)</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Chạy Agent 08 batch cho 3 cuốn (target: 3 giờ tổng)</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Submit 3 cuốn</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Pre-config ads (Agent 06) — sẵn launch khi cuốn live</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Total catalog check: ~17-18 cuốn submitted</div></li>
+              </ul>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">KPI</div>
+              <div class="kpi-block">
+                <div class="kpi-cell"><div class="label">Final batch</div><div class="value">3 submitted</div></div>
+                <div class="kpi-cell"><div class="label">Total catalog</div><div class="value">17+</div></div>
+                <div class="kpi-cell"><div class="label">Live</div><div class="value">12+</div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 20 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number-block">
+            <div class="day-number-label">Day</div>
+            <div class="day-number">20</div>
+          </div>
+          <div class="day-info">
+            <div class="day-tag-row">
+              <span class="day-tag">Polish</span>
+              <span class="day-tag module">Pipeline v3</span>
+            </div>
+            <div class="day-title">Pipeline v3 — Final polish + Build 30-day post-sprint plan</div>
+            <div class="day-outcome">Output: Pipeline v3 với toàn bộ learnings + Roadmap 30 ngày tiếp theo</div>
+          </div>
+          <div class="day-meta">
+            <span class="time-badge">2.5h</span>
+            <div class="expand-icon">▼</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="day-body-inner">
+
+            <div class="section-block">
+              <div class="section-title">Tư duy "sau sprint"</div>
+              <div class="section-intro">21 ngày là khởi động. KDP business thực sự bắt đầu sau sprint — khi học viên có pipeline + catalog + data. Plan 30 ngày tiếp theo giúp giữ momentum.</div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Checklist hành động</div>
+              <ul class="checklist">
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Refactor cả 8 agent với learnings 21 ngày — pipeline v3</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Document pipeline trong README.md hoặc Notion (để reuse cho ngách khác)</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Build 30-day plan: target 30 cuốn live, $300-1000/tháng</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Identify 1 ngách "go deep" — publish 5 cuốn cùng series</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Tracking sheet: weekly sale, royalty, ACoS, profit</div></li>
+              </ul>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">KPI</div>
+              <div class="kpi-block">
+                <div class="kpi-cell"><div class="label">Pipeline v3</div><div class="value">Documented</div></div>
+                <div class="kpi-cell"><div class="label">30-day plan</div><div class="value">Locked</div></div>
+                <div class="kpi-cell"><div class="label">Total catalog</div><div class="value">18+</div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 21 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number-block">
+            <div class="day-number-label">Day</div>
+            <div class="day-number">21</div>
+          </div>
+          <div class="day-info">
+            <div class="day-tag-row">
+              <span class="day-tag">🏆 Graduation</span>
+            </div>
+            <div class="day-title">Graduation Day — Showcase Pipeline + Case Study</div>
+            <div class="day-outcome">Output: Pipeline showcase + Certificate + Elite Alumni network</div>
+          </div>
+          <div class="day-meta">
+            <span class="time-badge">2.5h</span>
+            <div class="expand-icon">▼</div>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="day-body-inner">
+
+            <div class="support-ribbon">
+              <span class="support-pill zoom">◉ Zoom Graduation Ceremony (120 phút, 8 PM)</span>
+              <span class="support-pill community">● Community: Final Showcase</span>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Đây là ngày kỷ niệm + showcase</div>
+              <div class="section-intro">21 ngày trước, học viên có 0 cuốn + 0 agent. Hôm nay: <strong>15+ cuốn live, 8 AI Agents, pipeline tự chủ, doanh thu thực, skill transferable.</strong> Đây là transformation Freedom Builders Elite cam kết.</div>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">Checklist hành động</div>
+              <ul class="checklist">
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Tổng kết doanh thu: tổng sale, royalty, ad spend, net profit</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Quay video showcase 3 phút: pipeline demo + sale screenshot + lessons</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Viết case study cá nhân (template Whop): trước/sau, pipeline, plan tiếp</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Tham dự Zoom Graduation Ceremony — Tony + Coach + cohort</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Nhận Certificate "Freedom Builders Elite — AI Agent Mastery (KDP Track) Graduate"</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Vote next track: KDP Scale / AI Agent for Business / Affiliate Channel</div></li>
+                <li onclick="toggleCheck(this)"><div class="checkbox"></div><div class="check-text">Kết nối Elite Alumni network — buddy system 1-1 với người cùng cohort</div></li>
+              </ul>
+            </div>
+
+            <div class="section-block">
+              <div class="section-title">KPI cuối Sprint</div>
+              <div class="kpi-block">
+                <div class="kpi-cell"><div class="label">Cuốn live</div><div class="value">15-20</div></div>
+                <div class="kpi-cell"><div class="label">Doanh thu</div><div class="value">$100-500</div></div>
+                <div class="kpi-cell"><div class="label">AI Agents built</div><div class="value">8</div></div>
+                <div class="kpi-cell"><div class="label">Pipeline speed</div><div class="value">~6× faster</div></div>
+                <div class="kpi-cell"><div class="label">Status</div><div class="value">Graduate 🎓</div></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== FINAL CTA ========== -->
+  <div class="final-cta">
+    <h2>Sau 21 ngày, bạn không có sách — bạn có nhà máy</h2>
+    <p>Catalog 15+ cuốn không phải đích đến — đó là dữ liệu. 8 AI Agents không phải tool — đó là đội ngũ ảo của bạn. Skill build agent không chỉ áp dụng cho KDP — áp dụng cho mọi business tiếp theo bạn build. Đây là transformation thực sự của AI Agent Mastery.</p>
+    <div class="signature">Freedom Builders Elite — by AIFirst Global</div>
+  </div>
+
+</div>
+
+<script>
+  function toggleDay(header) {
+    const card = header.parentElement;
+    card.classList.toggle('open');
+  }
+
+  function toggleCheck(li) {
+    li.classList.toggle('done');
+    updateProgress();
+    const card = li.closest('.day-card');
+    if (card) {
+      const actionChecks = card.querySelectorAll('.section-block .checklist li');
+      const actionDone = card.querySelectorAll('.section-block .checklist li.done');
+      if (actionChecks.length > 0 && actionChecks.length === actionDone.length) {
+        card.classList.add('completed');
+      } else {
+        card.classList.remove('completed');
+      }
+    }
+  }
+
+  function copyPrompt(btn) {
+    const promptText = btn.closest('.prompt-block').querySelector('.prompt-text').innerText;
+    navigator.clipboard.writeText(promptText).then(() => {
+      btn.textContent = 'Copied ✓';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'Copy';
+        btn.classList.remove('copied');
+      }, 2000);
+    }).catch(() => {
+      btn.textContent = 'Failed';
+      setTimeout(() => btn.textContent = 'Copy', 2000);
+    });
+  }
+
+  function switchTrack(btn, tab) {
+    const trackSection = btn.closest('.track-section');
+    trackSection.querySelectorAll('.track-tab').forEach(t => t.classList.remove('active'));
+    trackSection.querySelectorAll('.track-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    trackSection.querySelector(`.track-content[data-content="${tab}"]`).classList.add('active');
+  }
+
+  function updateProgress() {
+    const allTasks = document.querySelectorAll('.checklist li');
+    const doneTasks = document.querySelectorAll('.checklist li.done');
+    const total = allTasks.length;
+    const done = doneTasks.length;
+    const percent = total > 0 ? Math.round((done / total) * 100) : 0;
+
+    document.getElementById('doneCount').textContent = done;
+    document.getElementById('totalCount').textContent = total;
+    document.getElementById('percentDone').textContent = percent + '%';
+    document.getElementById('progressFill').style.width = percent + '%';
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    updateProgress();
+    const firstCard = document.querySelector('.day-card');
+    if (firstCard) firstCard.classList.add('open');
+  });
+</script>
+
+</body>
+</html>

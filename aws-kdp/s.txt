@@ -1,0 +1,995 @@
+Impromptu Zoom Meeting - April 06
+VIEW RECORDING - 101 mins (No highlights): https://fathom.video/share/FhbHyfJJ72MtGyQBMJHWExt6hkJNqXuZ
+
+---
+
+0:37 - Feroz Ahmed
+  Hello.
+
+0:44 - Tran Hoang (hoanghd218@gmail.com)
+  Yes. Hello. Hi, Feroz.
+
+0:49 - Feroz Ahmed
+  How are you? Yes.
+
+0:51 - Tran Hoang (hoanghd218@gmail.com)
+  Doing good. Thank you. How about you?
+
+0:55 - Feroz Ahmed
+  I'm good. Good. Thank you. Okay. Let's discuss a few things. Give me one minute. Let me find my laptop charger.  Sorry, guys. Okay. How was everybody's weekend?
+
+2:34 - Admin Giang
+  Everybody is working at the weekend.
+
+2:41 - Feroz Ahmed
+  Was it a productive weekend?
+
+2:45 - Admin Giang
+  Sorry?
+
+2:47 - Feroz Ahmed
+  Was it a productive weekend?
+
+2:52 - Admin Giang
+  No? I think so.
+  SCREEN SHARING: Feroz started screen sharing - WATCH: https://fathom.video/share/FhbHyfJJ72MtGyQBMJHWExt6hkJNqXuZ?timestamp=182.410716
+
+2:56 - Feroz Ahmed
+  Okay. Okay, let me show my screen and let me go through a few things. Okay, so what does this mean?  Project ready and in progress. The card guy sent me a message today again. He sent me the screenshot. What does this mean?  Project ready and in progress.
+
+3:46 - Tony Hoang
+  Okay, so let me see the picture. Give me a moment.
+
+4:01 - Feroz Ahmed
+  The picture says project I not see the picture?
+
+4:30 - Tony Hoang
+  Oh, yes, I see it now. Okay, so I think for now the project ready for the node 20 is in common.  So that's why we... No, no.
+
+4:50 - Feroz Ahmed
+  The picture says project ready and in progress. What does that mean?
+
+5:17 - Tony Hoang
+  We need to change.
+
+5:21 - Feroz Ahmed
+  What do we need to change? This one. Can everybody see my screen?
+
+5:30 - Tran Hoang (hoanghd218@gmail.com)
+  Yes, you can see now.
+
+5:33 - Feroz Ahmed
+  What does this mean? Project ready and in progress. What does that mean? Anybody? We have six people on this call.  Can anybody tell me what is it telling the cut guy? Project ready. And in progress. Wong?
+
+6:10 - Tran Hoang (hoanghd218@gmail.com)
+  No, I'm asking a question.
+
+6:14 - Feroz Ahmed
+  What does this mean? I'm genuinely confused. I don't know what this means.
+
+6:21 - Tony Hoang
+  Okay. I think it means the current step is project ready and is still in progress, I think.
+
+6:34 - Feroz Ahmed
+  That means the project ready is in progress?
+
+6:39 - Tony Hoang
+  Yes.
+
+6:43 - Feroz Ahmed
+  Project ready in progress.
+
+6:47 - Tony Hoang
+  So siding installation. Okay, so about this, so about this, we updated the logic in the back end, but...
+
+7:18 - Feroz Ahmed
+  Hold on, I have a question for everybody else has been on this app for a very long time, but Sharon, Giang, you are brand new to the team.  I want to ask you a question. By looking at this screen, can you tell, is this, this line, is this related to this or this?  Can you tell me?
+
+7:58 - Admin Giang
+  I think that... Liated to the information below.
+
+8:04 - Feroz Ahmed
+  Below? Yeah. See, that is wrong.
+
+8:08 - Admin Giang
+  Uh-huh.
+
+8:10 - Feroz Ahmed
+  So Wong, who has been working on the UI for this app for a year and a half?
+
+8:18 - Tran Hoang (hoanghd218@gmail.com)
+  We have just the mobile app.
+
+8:22 - Feroz Ahmed
+  So I guess we need to let go the mobile app because even after one and a half year of developing the mobile app UI, if a user cannot tell, is this the house card or is this the house card?  What is the house card?
+
+8:49 - Tran Hoang (hoanghd218@gmail.com)
+  Understood.
+
+8:51 - Feroz Ahmed
+  Like, why do I have to micromanage every single thing? Like, do I have to start micromanaging every little task?  I will start doing it. him? If somebody gets islong And will not like it. Should I focus on bringing in more projects for the company, or should I focus on this UI little task?  I cannot do both. If I have to do this, I don't need the whole team, right?
+
+9:22 - Tran Hoang (hoanghd218@gmail.com)
+  Yes.
+
+9:32 - Tony Hoang
+  Can you open job, but can you open- And project ready and in progress.
+
+9:38 - Feroz Ahmed
+  Where did this end come from? Where did this end come from? So if the project, like Hao said, if project ready is in progress, oops, project, oh  Project ready is in progress. Where did this end come from? Can somebody tell me, please? Did I ask somebody to, hey, add this end in here?  Or is that a typo? Or did somebody just make a decision? Oh, I'm going to just put an end in here.  What happened? Where did this come from? So just tell him we are doing wrong, all right? No, like, did I give a task to add the end?  Or is this a typo? Or did the developer just put it because they thought it's a good idea to put it?
+
+11:07 - Tony Hoang
+  I don't remember because the cut guy sent me the picture again and said, what does this mean?
+
+11:18 - Feroz Ahmed
+  What do I have to do today? If our app cannot tell the user what to do, if you guys, if all of you are workers and you get on the app and you don't know what the app is telling you, will you use the app?
+
+11:37 - Tran Hoang (hoanghd218@gmail.com)
+  No.
+
+11:39 - Feroz Ahmed
+  Sharon, would you use the app?
+
+11:43 - Admin Giang
+  No, I would drop it.
+
+11:44 - Feroz Ahmed
+  Lily, ARCHANA, how would you guys use the app?
+
+11:53 - ARCHANA
+  No.
+
+11:55 - Feroz Ahmed
+  So if you guys, if everybody is working on an app and if the app As an end user, if your app doesn't make sense to you, why will the end user use the app?  One, I need to know if I need to start micromanaging all these little things. Do I have to manage or is everybody capable enough to take care of these things by themselves?  He asked me today, what do I do here? I'm like, I don't know, man. Just follow the app. I don't want you to call me every single day what to do here.  And on one side, it says you cannot register for jobs within seven days. But on this side, it says job ready in progress, GPM 20.  And on here, lot number two, cut guide, it says you cannot register for the job. So what is going on?  Is he registered for the job or is he not registered for the job?
+
+13:26 - Tran Hoang (hoanghd218@gmail.com)
+  If the job cannot register, it should not show here. So why is he registered here?
+
+13:34 - Feroz Ahmed
+  This is GPM 20, right?
+
+13:37 - Tony Hoang
+  Can you go back to the another picture?
+
+13:45 - Feroz Ahmed
+  Siting installation, lot number 20.
+
+13:50 - Tony Hoang
+  But I don't know when they send the picture. Okay.
+
+14:01 - Feroz Ahmed
+  He sent me the picture on Saturday.
+
+14:05 - Tony Hoang
+  I mean, when he captured this picture, when he captured this picture, and after he captured this picture, I assigned the job to him, I think.
+
+14:28 - Feroz Ahmed
+  So you forcefully assigned the job to him, and on here, when he's trying to do the job ready, and this is what it shows.
+
+14:39 - Tony Hoang
+  Yes. Actually, we created a tab to update it already.
+
+15:03 - Feroz Ahmed
+  It's not about task of updating to fix it. Why did they do the mistake in the first place? Like, did Brandon ask, hey, add an end here?  Did Megan ask? Did Hillary ask? Like, why did this even come here in the first place? Is my question.  It's like, you know, I'm doing a mistake. Oh, I need to fix it. Oh, we don't have time to fix the mistake.  Like, why, why are they even doing the mistake in the first place? I don't understand. Did Lily create a task?  Did Archana create a task? Hey, Feroz told Project Ready and in progress. If there is a task, if I told somebody, if, if, if, if our team received a, we, yes, we received.  I want to see it. I want to see where it came from and who it came from. Project ready and in progress.  It doesn't make any sense at all. Guys, come on. We are all professionals. We do look at the app system every day.  If something doesn't make sense, we should ourselves fix it. You shouldn't have to wait until I point it out.  Look at this UI. Did anybody not think of it in the last year and a half? We've been working on this UI for 16 months, 17 months.  Lily, Wong, you tested it. Did nobody, did nobody feel, oh, it is very confusing. I don't know, siding installation.  There is no boundaries around the job card. Is it for this, for this? What's happening here? Did nobody feel it or did nobody care to make a task for this in the last 16 months or one year?
+
+17:28 - Tran Hoang (hoanghd218@gmail.com)
+  I was so feeling.
+
+17:30 - Feroz Ahmed
+  You are feeling it now, but after I pointed it out, my question is, why did, and we had almost more than 10 people in our team, why did nobody feel it?  Archana, when you tested it, did you notice the difference? Were you able to tell it? Which, is this the job card or is this the job card?  tab, out, Let Put a boundary around the job card, please. When shall we do the full system rundown of the worker app?  If I'm able to find these mistakes from just two screenshots, I'm pretty sure there are many more mistakes. Now I'm really worried that the app doesn't work.  When shall we do the full system rundown for the worker app from sign up till the job complete?
+
+18:49 - Tran Hoang (hoanghd218@gmail.com)
+  Sooner, the better.
+
+18:52 - Feroz Ahmed
+  It's not sooner. Do you want to do it now, tomorrow, day after tomorrow? I'm not saying sooner than this week or next week.  I want to do it right now because I don't believe anything in the app works properly.
+
+19:07 - Tony Hoang
+  In my site, am able to see the job card and the picture, you show it different.
+
+19:20 - Feroz Ahmed
+  Are you able to log into Jose's account? Can you please log into Jose's account and share your screen?
+
+19:25 - Tony Hoang
+  will share your screen. Can I share my screen?
+
+19:28 - Feroz Ahmed
+  Yeah, yeah, yeah. Go ahead, please. Let me stop sharing. Hal, you said you can see the job card. You can see the boundaries, but the question is, is the job card clear?
+
+20:14 - Tony Hoang
+  Not actually clear. It is hard to recognize, right?
+
+20:31 - Feroz Ahmed
+  So, you are an expert. You know the system in and out. If it is hard for you, what is one thing I always tell our team?  One thing. We should think about the end user who don't even know how to use a phone, right? Construction workers don't know technology.  Most of the time they use... A phone with an internet. If you who are an expert who knows the system is hard to understand the job card, what do you think the construction worker who doesn't know anything will feel when they log into the app?  We have to put ourselves in the end user's perspective when we are designing the app. I have been saying that since we started working together for Elliot Holmes four years ago, right?  Have I not said that every single time? Why are we still having issues about those core principles? Guys, if we cannot make this happen, I really need to know if I appreciate everybody's hard work, everybody works hard over time, all the time, I really appreciate it.  But if it is not making real change, it's of no use. If we cannot make workers life easy, or if we cannot make the app easy enough for the workers to use it, there will be no users, no users means no revenue, no revenue means no company.  I was shocked when he sent me the screenshots Saturday. I'm like, what is this? We are one and a half year into the system development and this is what we have?  This does not look good. And I may look like a bad guy always scolding the team, but if this is the result, Wong, what do you want me to do?
+  SCREEN SHARING: Feroz started screen sharing - WATCH: https://fathom.video/share/FhbHyfJJ72MtGyQBMJHWExt6hkJNqXuZ?timestamp=1414.079134  We have talked several times about holding our team accountable, holding the people accountable for every task. What happened to that?  When he sent me the picture, I literally thought this Lot 20, this is the job card. But it's not.  This is the job card. No, no, this is the job card.
+
+24:31 - Tran Hoang (hoanghd218@gmail.com)
+  Understood. This is totally our fault.
+
+24:34 - Feroz Ahmed
+  You know, Wong, we always talk about this every other month, once a month. We say this is our fault.  But the problem is, it's not about making mistakes. It's about rectifying them and making sure you don't do the mistakes again, right?  But this has become a cycle. You do it once. Okay, this is our fault. We will fix it, but then do it again, and again, and again, and again, and the cycle never stops.  That's what is bothering me, and it's a very big concern. So this one, they are not, they're a sub-user, I see.  I see what you're saying, huh?
+
+25:36 - Tony Hoang
+  But do you think it could be confusing for the sub-user, about the sub-user and the driver, maybe the sub-user still also be a driver?
+
+25:52 - Feroz Ahmed
+  Sub-user could also be a sub-user with full access. Yeah. Remove the word sub, add a user. That's all. There is only, there is, it's not like a sub user.  What are the access options? They can access everything, right? The sub users right now?
+
+26:18 - Tony Hoang
+  Yes. It is either a driver or a full permission.
+
+26:22 - Feroz Ahmed
+  That's it, right?
+
+26:25 - Tony Hoang
+  Yes. There's only two choices.
+
+26:27 - Feroz Ahmed
+  Okay. Remove the sub user because there is no sub. There is just a user who can access everything.
+
+26:39 - Tony Hoang
+  Okay. So if they, if they add a sub user, if they add a user here, we don't need to show the, we don't need to show notification to them to add the driver again, right?
+
+26:53 - Feroz Ahmed
+  No, no, no. The user, until they add a driver, they keep, they need to keep getting notifications.
+
+27:00 - Tony Hoang
+  But in here, they add a user, but?
+
+27:03 - Feroz Ahmed
+  Add a user, but the user type is a sub-user. The user type is not a driver, right? Yes.
+
+27:11 - Tony Hoang
+  Yeah.
+
+27:12 - Feroz Ahmed
+  So until the user type is a driver, they need to keep getting notifications. So they, you can either have add user and add driver option, two tabs, or just add user.  And then when they open it, they will have, choose a driver or an admin user. And you can remove add delivery drivers, just add driver.  Driver means delivery driver.
+
+27:47 - Tony Hoang
+  Okay. And we also need to highlight the add driver in here. If they don't have any driver, we need to highlight the pattern, right?
+
+27:59 - Feroz Ahmed
+  Yes. Okay, got it. And, Archana, I'll call you later to discuss about this. Yep. Don't worry about it now.  Worker-related flow. I'm ready for this to be swapped. It means when a worker is kicked out of the job board, he started the job posted to the job board, which will pay me.  Job starts the VPN. Oh, wait, what is this? Late worker. So this is what I was thinking over the weekend.  Wong, how far is the schedule algorithm coming along? Like, what constraints have you added into the algorithm?
+
+28:55 - Tran Hoang (hoanghd218@gmail.com)
+  I did probably go to person already.
+
+28:58 - Admin Giang
+  So about...
+
+29:00 - Tran Hoang (hoanghd218@gmail.com)
+  Yes, this we haven't worked on yet.
+
+29:08 - Feroz Ahmed
+  Correct. I want to know, we have the algorithm that automatically schedules the workers and automatically drops the houses based on some constraints, right?  Yes. So the algorithm, what constraints, obviously we cannot implement all the constraints right now, but what constraints have we implemented in the algorithm that is deployed right now?  Like one constraint is obviously no overlapping, like if the job moves overlapping, drop the house, right? Yes, correct.
+
+29:58 - Admin Giang
+  Yes.
+
+29:59 - Feroz Ahmed
+  Okay. What is What's the second constraint?
+
+30:04 - Admin Giang
+  The second constraint is if a job is rescheduled for more than seven days, all the workers will be dropped.
+
+30:15 - Feroz Ahmed
+  All the workers will be dropped. Okay. What's the third constraint? Does anybody have a document of all the constraints that are implemented?
+
+30:25 - Admin Giang
+  Yes, I do have.
+
+30:28 - Feroz Ahmed
+  Can you share the screen and open the document, please?
+  SCREEN SHARING: Admin started screen sharing - WATCH: https://fathom.video/share/FhbHyfJJ72MtGyQBMJHWExt6hkJNqXuZ?timestamp=1838.961879
+
+30:33 - Admin Giang
+  Yes, yes. Let me share my screen. Can you see my screen now? Yes.
+
+30:56 - Feroz Ahmed
+  We have actually four.
+
+31:00 - Admin Giang
+  First, the first priority is if the job has already started, we will keep that job. Okay.
+
+31:07 - Feroz Ahmed
+  Yeah.
+
+31:07 - Admin Giang
+  And the job with earlier start date will be prioritized to be kept. Okay.
+
+31:14 - Feroz Ahmed
+  Yeah.
+
+31:15 - Admin Giang
+  And just to laugh, if the job is rescheduled more than twice and that two times might create an overlap, then that job will be prioritized to be canceled.
+
+31:34 - Feroz Ahmed
+  So one suggestion I would give you here, this is easier for the developers to understand. Here you are saying prioritized to be kept.  Yeah.
+
+31:47 - Admin Giang
+  Here you are saying prioritized to be canceled. I know. You mean I should be consistent.
+
+31:53 - Feroz Ahmed
+  very, very likely be consistent in the documentation because it will confuse the developers.
+
+32:00 - Admin Giang
+  Okay.
+
+32:01 - Feroz Ahmed
+  In prioritization, that will cause a lot of bugs and then we will have to spend more time to fix those bugs and the cycle goes on.  Okay?
+
+32:12 - Admin Giang
+  Yeah. So please be consistent in the documentation. Okay, continue. And the final one is if all this condition is, you know, still cannot figure out which job should be canceled and two jobs left is totally the same, then we will random cancel one of them.
+
+32:36 - Feroz Ahmed
+  If all rules have been applied, they're still duplicate jobs. Okay. Yeah, that's all.
+
+32:49 - Admin Giang
+  And combined with the seven-day reschedule.
+
+32:57 - Feroz Ahmed
+  Seven-day reschedule. Okay.
+
+33:01 - Admin Giang
+  Okay, so your question, can you open the themes and open your question? This question is related to the address around here.  Is it a worker no-show or checking late on the app?
+
+33:18 - Feroz Ahmed
+  Yes.
+
+33:19 - Admin Giang
+  Yes, here I hear a little bit confused, like if a worker be kicked out, like after job start, why will oppose a job to job work with full pay?  I think it should be half pay plus bonus. And if a worker...
+
+33:44 - Feroz Ahmed
+  So, yes, so the build, we need to build this solution, but don't deploy it yet because we don't have very many workers on the network.  So this will be a problem if we drop the net drop. We worker because they did not check in or because they are late, but go ahead and build it, but comment out the code, don't deploy this part.  So yes, we will drop the worker and put the job back on the job board with full pay for now.  Later on, we may change to prorated. If it's a five day job and somebody drops on the fourth day, so we have to pay.  We have to find somebody for the last two days. So we will only pay for the two days based on the prorating.  Prorated. Do you understand what prorate means?
+
+34:50 - Admin Giang
+  Yeah. Okay.
+
+34:51 - Feroz Ahmed
+  So we will prorate the amount and add a $50 bonus or whatever it is. And then put it on the job board.  But for now, if that's what he wants, let's do it that way. Because in the contract for the workers, it tells them that you will not get paid until you finish the job and the job passes the quality inspection.
+
+35:16 - Admin Giang
+  Oh, I see. So they know when they sign the contract, if they don't complete the job, they're not getting paid.  Oh, I got it. And then, okay, go ahead. So if this worker be dropped and don't get any pay, then the next worker is registered, and that worker will get full pay, even though he just work for less than, you know, the required.  Okay, got it, got it. Got it now. Because it's in the emergency, we are finding somebody to come in the last minute and go up and finish the job.
+
+35:57 - Feroz Ahmed
+  So it's like a bonus for them.
+
+36:00 - Admin Giang
+  Got it.
+
+36:01 - Feroz Ahmed
+  That explained now.
+
+36:01 - Admin Giang
+  Now I got it. Thank you. Thank you so much. And here, you know, they track the GPS and divide into two cases that work on GPS and not in GPS.  I think we will not care about it right now, right? Build it, but don't implement it.
+
+36:19 - Feroz Ahmed
+  Yes. Because we're right now, because we also have a rule. If the worker cancels the job 24 hours before the job start, they will not be able to sign back up for the job.
+
+36:40 - Admin Giang
+  24 hours.
+
+36:42 - Feroz Ahmed
+  I don't remember. Did we say 24 or 48?
+
+36:49 - Admin Giang
+  I don't remember. As far as I know right now, we do not deny them to register back to that job.
+
+36:58 - Feroz Ahmed
+  No, we... We built that a long time ago because the problem is if I sign up for a job and tomorrow the job starts and I cancel it, that means the worker is missing.  So before what we did was, oh, our general manager says, oh my God, tomorrow the job starts, I don't have anybody, so let me increase the pricing.  Instead of $500, I pay $700 and I will post the job like, hey, instead of $500, I'm paying $700, come, I need somebody.  Then I can go back up and sign up for the job again, you know, like I can cheat the system.  And I remember Lily and how we implemented that like almost six months ago. What happened to that?
+
+38:01 - Tony Hoang
+  Okay, so I need to check it a long time ago. And I have a question. So for now, the job is started, so the worker cannot cancel the job.  So do you think we should enable that option? I think we should enable it because the worker, when they want to cancel the job, they must have a reason.  You mean after the job install has started? Yes, for now, after the job is started, they cannot cancel the job.  Yeah.
+
+38:44 - Feroz Ahmed
+  No, no, no. We don't want that. Not right now. Because we only have less than 10 workers. We don't want them to.  Because if that does, the problem is they will start the job. And let's say this job pays $500. But if there is a bigger house, and that job is paying $2,000, and that starts tomorrow, they will cancel this job, and they will go to the other job.
+
+39:13 - Tony Hoang
+  We don't want that.
+
+39:20 - Feroz Ahmed
+  So, Sharon, check. That should be a rule, too. They cannot cancel, well, yeah, 24 hours. Because the installers can only sign up for a job 48 hours before the job starts.  So, they cannot, I mean, they can cancel the job 24 hours, they can cancel whatever they want, but they cannot sign cannot sign up again, yes, to be in 24 hours, right.
+
+39:53 - Admin Giang
+  They can cancel the job, but they cannot sign up again to that job within. Yes.
+
+40:02 - Feroz Ahmed
+  today is Monday, right?
+
+40:05 - Admin Giang
+  Yeah. Monday for everybody.
+
+40:06 - Feroz Ahmed
+  Yes. Monday, let's say Wednesday, there is a job start.
+
+40:11 - Admin Giang
+  And Monday, today, I signed up for the job.
+
+40:15 - Feroz Ahmed
+  Tomorrow, if I want to, I can cancel it.
+
+40:19 - Admin Giang
+  Yeah.
+
+40:20 - Feroz Ahmed
+  But I cannot sign back up for the job, for the same job. Yes.
+
+40:26 - Admin Giang
+  Okay.
+
+40:28 - Tony Hoang
+  Yes. But, but, but we will have the same issue with, yes. So they cannot, but, but they can sign for another job, right?
+
+40:43 - Admin Giang
+  Yes, of course. Yeah.
+
+40:45 - Feroz Ahmed
+  Yeah. So we, we, we, we, we, we have the same issue that you just mentioned.
+
+40:53 - Tony Hoang
+  That's the, okay. So, okay. They have the job tomorrow, right?
+
+40:57 - Feroz Ahmed
+  Mm Mm-hmm. Mm-hmm.
+
+40:59 - Tony Hoang
+  right. Okay, but there is another job with $1,000, so you can show the client.
+
+41:05 - Feroz Ahmed
+  Yeah, that's okay, because the job has not started. That's fine.
+
+41:11 - Tony Hoang
+  I mean, the job you started tomorrow.
+
+41:14 - Feroz Ahmed
+  No, no, no. Yeah, yeah. So today is Monday. Tomorrow is Tuesday. Let's say there is a job starting on Wednesday.  Okay. Let's say today is Monday. And tomorrow morning I wake up and I see, oh, I am registered for a job on Wednesday morning.  I get paid $500. But I also see on, let me share my screen. Probably it's easier to explain. I mean, not when I, tomorrow, tomorrow.
+  SCREEN SHARING: Feroz started screen sharing - WATCH: https://fathom.video/share/FhbHyfJJ72MtGyQBMJHWExt6hkJNqXuZ?timestamp=2507.940496  Yeah, yeah, yeah. Tomorrow, I can, come on, get out. Okay, so today, Monday, what, 4-6 date? Okay, today is Monday 4-6.  There is a job starting on Wednesday, right? That pays $500. Tomorrow morning, I wake up and I see, okay, I mean, today I registered for this job.  Okay, tomorrow morning, I wake up on 4-7. And I see, oh, on Thursday, I'm already registered. But on Thursday, I see another job that pays $1,000 because Tuesday I can see and register for the jobs that are 48 hours ahead, right?  So I see, oh, this job just opened up. This pays $1,000. I can cancel this job if I want to.  That's okay. And I can register for this job, but I cannot sign because now this worker, Installer A, let's say I am an Installer A.  Installer A is missing for the job that starts on Wednesday. So our general manager, what they do? Oh, instead of $500, I will pay $700.  I need somebody right now. Since I canceled this job, I will not be able We to sign back up.  Is it clear for everybody? Any questions? Yes, I have one.
+
+44:12 - Admin Giang
+  In case that TSOF does start on when they be rescheduled more than three days, for example, in that case, can I sign up?  Yes. So that constraint is only in 24 hours in one day, right?
+
+44:32 - Feroz Ahmed
+  Yes. That constraint is only for within the 24 hours. If you cancel a job that starts within 24 hours, you cannot sign back up to the same job after the price goes up.
+
+44:48 - Admin Giang
+  Clear, clear.
+
+44:50 - Feroz Ahmed
+  Okay. Okay. So what other constraints are implemented? size, is valid for Thank That's it. Wang, what other constraints are you still working on?
+
+45:13 - Tran Hoang (hoanghd218@gmail.com)
+  Well, constraints.
+
+45:17 - Feroz Ahmed
+  For the algorithm, what other constraints are you still working on?
+
+45:24 - Tran Hoang (hoanghd218@gmail.com)
+  I, how do I say, I did, one second. I just did the, the, the, the, the, constraints that we discussed in the last meeting, and I already haven't working on any new constraints.
+
+46:00 - Feroz Ahmed
+  The one that you deployed to production, so it will not let them sign up, and it will drop them if the job moves, right?
+
+46:17 - Tran Hoang (hoanghd218@gmail.com)
+  Yes.
+
+46:17 - Feroz Ahmed
+  And this has been... Sorry, one second.
+
+46:26 - Tran Hoang (hoanghd218@gmail.com)
+  It will not let them sign up. It will drop them. What do you mean about it will not let them sign up?  I mean...
+
+46:35 - Feroz Ahmed
+  Like the overlapping jobs, I'm sure that is already working. But it will drop them when the job moves, right?  Yes.
+
+46:45 - Tran Hoang (hoanghd218@gmail.com)
+  So how do I say, the algorithm will drop or will work out if we change the start date over seven days.
+
+46:54 - Feroz Ahmed
+  Okay. That is one.
+
+46:58 - Tran Hoang (hoanghd218@gmail.com)
+  How do I say, another is... It's about, how do say, in forecast guide, three days, the other rows, two days, it will drop, how do say, it will drop the other jobs, if half overlap.
+
+47:18 - Feroz Ahmed
+  Okay. And are all the constraints that Sharon just showed, are they all implemented? The four constraints?
+
+47:28 - Admin Giang
+  Yeah, I think on the constraint, show, I show right, it's already implemented, but the constraint you are asking right now on, on, you know, PPT file, I think we will start working later.  Okay.
+
+47:57 - Feroz Ahmed
+  Okay, that's fine. Just make sure this and Sharon, this constraint was implemented almost six months ago. So it should be there.  If it's not there, let me know. I would like to see, I would like to know what happened, why the constraint was removed.  I'm guessing because we scrapped the whole algorithm and we started back, started fresh. So probably that's how I'm guessing the delivery driver.  Yeah, he sent it to me on Friday, not even Saturday. Okay. Wang, did you look into this? You got an email, too.
+
+49:05 - Tran Hoang (hoanghd218@gmail.com)
+  Yes, yes, I got it. I think it connected already. It's because of, how do say, it's of sometimes the system may be different, just sometimes only.  So, how do say, then QuickBooks cannot check the health status of our system, so it will send that email.
+
+49:27 - Feroz Ahmed
+  Okay, still, let's do, let's look at the still working. Don't worry about this. If anybody is working on this, stop this.  Submit plan filter by regions. I thought this was completed. We tested this long. A time ago, didn't we? The builder submitting the plans on the website.
+
+50:09 - Lily Phan
+  Yes, when we were done with it, we didn't apply the company layer.
+
+50:18 - Feroz Ahmed
+  Oh, the company layer. That's right. That's right.
+
+50:20 - Lily Phan
+  Okay. Okay. Okay.
+
+50:25 - Feroz Ahmed
+  Should pop up missing information to the supplier. Lily, what happened to the pop-up? You know, you sent me a design.  One, two, three, four, five company information done, insurance done. You remember?
+
+50:41 - Lily Phan
+  Yes. Is that done?
+
+50:43 - Feroz Ahmed
+  Or is they still working on it? What's happening with that?
+
+50:46 - Lily Phan
+  I think I already deployed production.
+
+50:52 - Feroz Ahmed
+  He did?
+
+50:54 - Tony Hoang
+  Yes. Let me log in.
+
+50:57 - Lily Phan
+  Can you log into Frandon account?
+
+51:00 - Feroz Ahmed
+  Yeah, I got his email. 28, I think. 24.
+
+51:26 - Lily Phan
+  But when you log in, it still has a small box that the company info is entered, but it shows red when you log in.
+
+51:41 - Feroz Ahmed
+  It's 28. Oh, God. I forgot the password. Hold on. Brandon Elliot 24. What did gmail.com? 25 maybe? Oh, there you go.  I see. Bank info, company info, contract, driver, insurance, W9. Okay, next.
+
+52:36 - Tran Hoang (hoanghd218@gmail.com)
+  This is good.
+
+52:40 - Feroz Ahmed
+  We, the supplier, submits the bank info and Hillary has to manually enter in QuickBooks. Am I right? Yes.
+
+53:01 - Tran Hoang (hoanghd218@gmail.com)
+  Okay, so update banking information requests.
+
+53:12 - Feroz Ahmed
+  So QXO, the supplier has requested to update the bank info, but obviously Hillary, I don't know if she's checking this or not, should until this is marked updated, we should show here or to the supplier that it has not been updated.  Again, put your every single person on this call. I would like you to, when you are working and looking at the system, put yourself in the shoes of  Imagine yourself in the process. You are a supplier. You put in the bank info, but you're not getting paid.  What is the reason? You don't have your bank info correct. Or we don't have their bank info. In that case, imagine if we have 500 suppliers.  Is it possible for Hillary to keep a track? Speak up, guys. Come on. No, right? Does everybody need more coffee?
+
+54:42 - Tran Hoang (hoanghd218@gmail.com)
+  No, no.
+
+54:43 - Feroz Ahmed
+  So what are we doing to remind Hillary there is a pending bank info? Like, is Hillary getting notified every single day about this?
+
+55:00 - Tran Hoang (hoanghd218@gmail.com)
+  Why she do not go here and check every day?
+
+55:03 - Feroz Ahmed
+  Because she has to manage the finance report. She has to make sure the executive report. She has a lot of other finance.  And imagine, this is only one supplier. There are 10 suppliers in 10 different regions. And this is only one supplier.  But what if this is a worker too, right? Even the workers, when the workers update the bank info, it comes here.
+
+55:34 - Tony Hoang
+  Am I right, Hal? I guess.
+
+55:37 - Feroz Ahmed
+  So if we have 5,000 workers and 5,000 workers update their bank info, do you think she'll be able to come and check here every day?
+
+55:48 - Tony Hoang
+  So what are we doing?
+
+55:51 - Feroz Ahmed
+  What is the system doing to remind Hillary that there is a pending user to update the bank info? Is the system doing anything?
+
+56:07 - Tran Hoang (hoanghd218@gmail.com)
+  No. Okay.
+
+56:09 - Feroz Ahmed
+  We need to fix that.
+
+56:11 - Tony Hoang
+  Yes, we are building.
+
+56:13 - Feroz Ahmed
+  Go ahead.
+
+56:14 - Tony Hoang
+  start for the first time only, first time they update, they submit the bank information only. And as of that, we can create an item in missing report.  And you know, in missing report, we have a setting for the owner, right? Okay. So for that setting, we will send the daily to the owner, yes.
+
+56:46 - Feroz Ahmed
+  Missing, I don't see here.
+
+56:52 - Tony Hoang
+  Yes. I mean, we haven't do it yet. We can add a new item.
+
+56:56 - Feroz Ahmed
+  Okay. I see. Did you check what to do? you.
+
+57:01 - Tony Hoang
+  In QuickBooks, not in Tradewise.
+
+57:09 - Feroz Ahmed
+  Because she said this should be zero. It should not be 15.
+
+57:12 - Tony Hoang
+  This is in QuickBooks, but not in Tradewise. We need to update.
+
+57:20 - Feroz Ahmed
+  Okay. Please update this. Missing transaction memo, QuickBooks. Payment for job in AR. This is the 2001. Yeah. Because it's not completed yet, right?  That's not verified. I think tomorrow he will verify it. And please clean up this. Clean this up if you can.  It's been going on forever. Wong, I think you built the communication portal. So we are telling the administration employees that go to missing report every day and check what is missing.  If something is missing, you need to fix it right away. If I am Megan and I come here, communication not sent.  What is this? Communication not sent. It has 11,700 things, but the communication is sent. So what is this? Communication not read.  I read my notification. Is this an email?
+
+59:08 - Tran Hoang (hoanghd218@gmail.com)
+  Yes.
+
+59:10 - Feroz Ahmed
+  And here it doesn't, it is not showing me the date, fma.tradewise.biz. I opened that email, but oh, this is a notice.  I mean, see, I opened it, but here it is showing it's not red. So obviously none of this is correct.  Well, how long do you think? I mean, this has been on our scrum cards for four months. Let me debug it.
+
+59:58 - Tran Hoang (hoanghd218@gmail.com)
+  Let me debug and test it.
+
+1:00:00 - Feroz Ahmed
+  I know, we've been discussing this since last October, and this is April, so six months. Still testing. Money going out.  Crew lead. Cut guy should not be able to complete the job without verifying, okay. Filtered worker, okay. Pop-up show missing workers.  I think that's completed. That was good. That is completed. Wait, these things are completed. Why are they still in testing?
+
+1:00:58 - Tony Hoang
+  No, wait, really, I knew what
+
+1:01:01 - Feroz Ahmed
+  Okay. Number of jobs for each tab. Crew lead, company layer, service order, payment process for warranty. So what is wrong with this one?  This was working perfectly fine when we tested the system long, long, long, long time ago. Like, did somebody find a bug in this?  This was working perfectly fine.
+
+1:01:47 - Tony Hoang
+  Send about the missing item. I don't remember, but I don't remember maybe before we sent the... No, no, no, no.
+
+1:02:02 - Feroz Ahmed
+  We sent the email too because I, I, I have, I think it's about adding the missing material list on the email.  Mm-hmm. So in, before you used to show here is the list of click here. Now you're saying you are showing the missing material list.  I didn't understand. Say that again, please. Okay.
+
+1:02:27 - Tony Hoang
+  So before we, before we, we tell them that they have, uh, we have some item missing only. So now we, we, we will show them what, what item is missing, what material is missing.  Mm-hmm.
+
+1:02:42 - Feroz Ahmed
+  I, I feel like we had that before, Raul. I am positive because I have been managing Brandon's supplier account since the beginning.  Maybe that is about another notification.
+
+1:03:22 - Tony Hoang
+  Okay.
+
+1:03:31 - Feroz Ahmed
+  Material tags for POVPO. This is the QR code, right? Yes. Wang, how long does it take somebody to design this page?  Why did I get this page after one week? It takes me three minutes in cloud to design this page.  And Hal said, this is the first draft, this developer, that the dev sent it to him. What is the dev doing for seven days?
+
+1:04:16 - Tony Hoang
+  What do you mean about the seven days?
+
+1:04:19 - Feroz Ahmed
+  Like we have been discussing the warranty process for more than a week.
+
+1:04:24 - Tony Hoang
+  Yes.
+
+1:04:25 - Feroz Ahmed
+  So why is this when, and after one week, I asked, hey, what does the page look like? And this is what you said, the dev sent it to you.
+
+1:04:39 - Tony Hoang
+  Yet, I mean...
+
+1:04:40 - Feroz Ahmed
+  the dev not know that we don't choose the builder for warranty? So this is what I'm worried. Is there a communication gap?  Is there an information disconnect somewhere between me and you or you and the dev? Or is there a disconnect between all of you?  I'm so confused because if I am the dev and if How tells me like, hey, I need a page for the warranty, I already know the process.  I should already know the process because I've been working on the system for almost a year. Or did you not communicate to the designer properly?  Or did the designer not understand your request or did not understand the process? I am shocked to see that this is what the designer, the dev gave to you, the builder with a drop-down.  Wang, I'm trying to understand. I would like you to speak up and explain what is happening. Like, is there a disconnect?  Is developer not able to understand? Do we need to give them more coaching, more training? Understood? No, no. Not understood.  I'm trying to understand the problem. Like, what's happening?
+
+1:06:19 - Tran Hoang (hoanghd218@gmail.com)
+  What I mean is, you need to tell them what all we need. Not just about, I mean, tell the developer all we need in detail.
+
+1:06:31 - Feroz Ahmed
+  So, am I not giving you guys all the details to work on a task? Is the designer not... Like, Hao told him, like, hey, this is what I need, but if the designer is designing whatever the heck they want, do we even need them?
+
+1:06:59 - Tran Hoang (hoanghd218@gmail.com)
+  I mean, how...
+
+1:07:00 - Feroz Ahmed
+  can spend extra 10 minutes on cloud and design his own thing, right?
+
+1:07:05 - Tran Hoang (hoanghd218@gmail.com)
+  Well, actually, how I say, we did something similar to this before, just tell them that I want something similar like this, more attractive, then tell them the tool to use.  can be cloud or it can be Google Stitch.
+
+1:07:22 - Feroz Ahmed
+  So does how need to tell them? Do you have to tell them? Do I have to tell them? Who needs to tell them?
+
+1:07:27 - Tran Hoang (hoanghd218@gmail.com)
+  We need to tell them because of the developer, they only follow what we said.
+
+1:07:45 - Feroz Ahmed
+  And there is no date. These are the very basic.
+
+1:07:53 - Tran Hoang (hoanghd218@gmail.com)
+  date, the warranty date. The date for warranty.
+
+1:07:58 - Feroz Ahmed
+  I mean, the expected it to be done. I think I sent the notes, requested service date or something, but in the design that the developer gave to how, this is the design.  Where is the date? This is, when was this? Friday, I think how? Yeah, Friday. And we have been discussing warranty for, oh God, more than two weeks by now.  So, but he says, this is the UI and this is absolutely shocking. And why would the field manager have the options about services contact?  Why do they have this? I feel like whoever designed this space, they're really not serious about their job. So we don't, we don't need them on our team.
+
+1:09:08 - Tran Hoang (hoanghd218@gmail.com)
+  In my opinion, don't talk about the developer this time. Just this will be in charge of the leader or me.
+
+1:09:19 - Feroz Ahmed
+  Whoever it is, they need to seriously get, get serious about their, their tasks.
+
+1:09:40 - Tran Hoang (hoanghd218@gmail.com)
+  So what we need for that is, firstly, we're missing some field. Another is about how I say, the design is too basic, right?  It's not about that.
+
+1:09:52 - Feroz Ahmed
+  There are two main problems with the design. One, the builder is not a drop down. When the field manager scans it, there should be no builder option.  There should only be a community option and a lot option.
+
+1:10:22 - Tran Hoang (hoanghd218@gmail.com)
+  Okay, understood. So that means the system must be recognized to which builder, right?
+
+1:10:31 - Feroz Ahmed
+  Yes.
+
+1:10:32 - Tran Hoang (hoanghd218@gmail.com)
+  So that means that the user no need to select the builder manually, only need to select the community. Correct.
+
+1:10:40 - Feroz Ahmed
+  So builder ID should be in the URL, so the system can re-correct. Correct. We discussed this is same like the Elliott Homes warranty system where they enter the phone and the email and they will search and whatever matches, it will pull up those houses.  So here we will do. Do the same thing, the builder will automatically be grayed out and show Meritage Homes or whoever the builder we are doing the warranty for based on the QR code that is sent.  And if they want, they can select other communities.
+
+1:11:20 - Tran Hoang (hoanghd218@gmail.com)
+  Okay, understood. What is the second?
+
+1:11:23 - Feroz Ahmed
+  The date. Okay, the date.
+
+1:11:25 - Tran Hoang (hoanghd218@gmail.com)
+  Okay, I got it. How about the third? Remove these things. And how do I say, we don't need the about service and contact.
+
+1:11:41 - Feroz Ahmed
+  Yes, we don't need those.
+
+1:11:44 - Tran Hoang (hoanghd218@gmail.com)
+  Anything else?
+
+1:11:49 - Feroz Ahmed
+  That's it. Those are the three major things.
+
+1:12:00 - Tran Hoang (hoanghd218@gmail.com)
+  Understood. Okay. I will check with the one who created this task. So we'll work more with that.
+
+1:12:10 - Feroz Ahmed
+  So don't talk about developer because this is responsible to the BA or the leader. That's why I was asking, where is the disconnect?  Is the disconnect between me and you, me and how, me and BA, me and the testers, or is the disconnect misinformation between the team?  Where is the problem? I'm trying to understand. If there is no disconnect, and if we are doing everything, but the developer is still doing a mistake, then it's the developer's fault.  If not, it's my fault. Okay. If I'm not explaining, it's my fault. Right? Yeah.
+
+1:12:53 - Tran Hoang (hoanghd218@gmail.com)
+  And to start, we need to fight the root issues.
+
+1:12:56 - Feroz Ahmed
+  Yes. Okay. Give me one second.
+
+1:13:00 - Tran Hoang (hoanghd218@gmail.com)
+  Fathom quá nên Quang Hector Developer làm hả, hay là thế nào?
+
+1:13:06 - Tony Hoang
+  Cũng như kiểu vậy.
+
+1:13:08 - Tran Hoang (hoanghd218@gmail.com)
+  Ok nhá, như vậy là chủ yếu ở đây mình tìm ra được nguyên vấn đề thôi á. Nhất là bây giờ thì từ thời điểm này thì mình sẽ có Hậu, có anh này, có Lily, Phương đúng không, với cả chị Giang.  Hoặc ít nhất là đang có 3 người, mà vẫn không kịp đúng không? Để tính xem từ tuần này á.
+
+1:13:24 - Tony Hoang
+  Ok, phần đấy thì không phải không kịp hay không, mà đáp phải tự biết được, đáp phải làm luôn như...
+
+1:13:31 - Tran Hoang (hoanghd218@gmail.com)
+  Thứ nhất là mấy cái phần này, đầu tiên là cái phần mà thừa thiếu field ấy. Là mình phải nghi vào, là phần mình phải nghi vào á.
+
+1:13:44 - Admin Giang
+  Chúng không, chị nghĩ là bây giờ mình có thể thay đổi process một xí là...
+
+1:13:48 - Tran Hoang (hoanghd218@gmail.com)
+  Vâng, vâng.
+
+1:13:48 - Admin Giang
+  Tức là tài liệu đi qua BI trước, giống như nếu mà chị confirm cái UI, cách chị làm, chị confirm UI của ví dụ Quick Startup với Feroz trước, sẽ không có những cái chuyện về sau á.
+
+1:13:57 - Tony Hoang
+  Đấy thì... Tức I everything you were able read. The first thing is cut the boxes, the second thing is to read that.  We always we read it, we always read it. But then I would know the successful. now I don't anything So, I just think not like I don't know anything about I don't know if the last time I know.
+
+1:14:34 - Admin Giang
+  It's not true, It's good.
+
+1:14:36 - Tran Hoang (hoanghd218@gmail.com)
+  think it's a good It's a good job, it's good job. Then I can't do it.
+
+1:14:45 - Tony Hoang
+  It's not I'm you got test. I'm just cut the vạn down.
+
+1:14:49 - Tran Hoang (hoanghd218@gmail.com)
+  That's the time there is going to VA. That's point that now, I'm going to I'm going to with you.  Bye So the input of the task is to fill the fields Second, now I will give them a sample of design for them fill this Or if not, I will use sample the field Then I will put it in there for them to fill But the first thing is the field Yeah, I will use it
+
+1:16:00 - Admin Giang
+  not for the process.
+
+1:16:01 - Tony Hoang
+  We're not expecting you to get up for So we're not expecting to get So like that we're expecting to get up So it's nice be different DEB.  So, that's what I really want ways of doing this.
+
+1:16:30 - Tran Hoang (hoanghd218@gmail.com)
+  I think it's a really great We'll so All we have we do now? Bye Hello, I think we can continue.  Okay.
+
+1:17:35 - Feroz Ahmed
+  We need to be able to add merge tags in the subject as well. I mean, it's not a priority, but making sure that somebody made a task for that.  Credits, I think you're working on that. much. much. much. much. much. much. Okay, so backup IHMS. If somebody is working on it, don't worry about it.
+
+1:18:13 - Tony Hoang
+  Okay, so no need to backup, right?
+
+1:18:16 - Feroz Ahmed
+  No need. Is it going to take a few days to do the whole process or no?
+
+1:18:22 - Tony Hoang
+  Not a few days. Just need a few hours, one or two hours.
+
+1:18:29 - Feroz Ahmed
+  Like, did you start it or no?
+
+1:18:31 - Tony Hoang
+  I backup already, but I need a server to...
+
+1:18:40 - Feroz Ahmed
+  It's okay.
+
+1:18:41 - Tony Hoang
+  Don't spend those two hours on it.
+
+1:18:43 - Feroz Ahmed
+  Don't worry about it right now.
+
+1:18:45 - Tony Hoang
+  Okay, got it. And the answer for company layers, is it only about the suppliers or anything else? Oh, think that...  We discussed, right?
+
+1:18:58 - Feroz Ahmed
+  Didn't we discuss the supplier? Or did we say later?
+
+1:19:04 - Tony Hoang
+  We will not finish the question. And about the company later, I think for now, we should stop the company later.  We should focus on the hours. We need to finish our company first, all the features first. So for now, we have many features and many bugs, right?  So I think we need to completely finish our company, our system first. So for now, if we implement the company later, we will have a lot of issues, right?  We can't handle all of them. We should make our system perfect first. We should make our system perfect first.  then it will be easy to implement the company later. We can have...
+
+1:20:04 - Feroz Ahmed
+  So let me ask you this. We have some bugs in our system and we discussed, oh, this bug is because we added a company layer.  There are several bugs in the system that are a reason we added a company layer. Correct? Yes.
+
+1:20:33 - Tony Hoang
+  Okay.
+
+1:20:34 - Feroz Ahmed
+  Now what you're suggesting is, let's stop the company layer and fix the bugs. So my question is, if we fix the bugs, we later on, we continue working on the company layer, these bugs will come back again, and there will be new bugs.  So what you're What suggesting is we will only fix the problems, but we will not fix the root cause.  The business model, when we change the business model, we have to change the system architecture and then solve the bugs, not solve the bugs and then redesign the system architecture, you know?
+
+1:21:23 - Tony Hoang
+  Yes.
+
+1:21:23 - Feroz Ahmed
+  So I partially agree with what you're saying. There are some critical bugs we need to fix, but we cannot stop on the company layer development.  We started company layer on the 1st of February, if I remember the exact date.
+
+1:21:47 - Tony Hoang
+  Oh yes, we wish that, but we... Correct.
+
+1:21:52 - Feroz Ahmed
+  We had obsolete issues to work on...
+
+1:21:54 - Tony Hoang
+  We are not working on 8 months. Yes.
+
+1:21:59 - Feroz Ahmed
+  But... We cannot stop company layer because that is the business model, like if next week or maybe next month, if a home builder comes and says, okay, or if a siding company comes and says, yep, we are ready to be a part of site, not of trade-wise.
+
+1:22:18 - Tony Hoang
+  But the thing is, but the thing is, if we, okay, so I think the thing is, if we, but the thing is that we should make our system perfect, what is the meaning of delivery to them?  But there is still many things to do. And for now we have, we have one company only, right? But we still have much work to do.  What if we have three companies and how can we handle all of them?
+
+1:22:57 - Feroz Ahmed
+  So, do you know about the book, the book?
+
+1:23:00 - Tony Hoang
+  Not all the bug because of us. The bug is about we haven't done it. You know about the bug of the warranty, right?  The bug, most of the bug is not about our fault. The bug is about we haven't done with the warranty.  We only done the basic version. We haven't done with the finance and the warranty for the house not belong to us.  So suddenly you told me, you called me and oh, we need to create it, but we need to create a warranty for the house outside not in our system.
+
+1:24:11 - Feroz Ahmed
+  But we fix the bugs that are a result of what the system or the change of the business model, whatever it is, if we only focus on the bugs that we have right now and don't work on the company layer, if somebody wants to work with us, it will take our team another 60 days to finish the company layer.  And nobody is going to wait 60 days to start onboarding. Right now, if somebody company says, okay, we are ready to be a part of Tradewise.  Their onboarding itself will take more than 30 days because they have to create the tools list, they have to create the videos, they have to create onboarding tests, they have to create the worker roles, they have to come up with the pricing.  There is a lot of work that goes into setting up a siding company or a roofing company, just the system setup.  So, we will have that 30 days still to fix the bugs or to improve the company layer, but if we say, oh, we are going to stop the company layer completely and only fix the bugs, and 30 days later, we start the company layer, how many more days will it take to fix the bugs that are caused by the company?  So what I suggest is while somebody is one or two people are working on the bugs and improving the system, the rest of them will be working on the company layer because that is our business model.  We cannot say, I'm going to put it later. I'm going to work on it later.
+
+1:26:26 - Tran Hoang (hoanghd218@gmail.com)
+  Excuse me, do you think that we can stop the system when we are developing the company layer?
+
+1:26:39 - Feroz Ahmed
+  Stop the system as in?
+
+1:26:41 - Tran Hoang (hoanghd218@gmail.com)
+  Stop the system to develop the company layer because we will change a lot of the database.
+
+1:26:53 - Tony Hoang
+  I do not understand stop the system.
+
+1:26:56 - Feroz Ahmed
+  No, no, no, not stop it.
+
+1:26:58 - Tony Hoang
+  I mean they are saying, Okay, so let's say about the bug, we need to take two months to fix the bug and the feature, and about the company layer, we need two months, so the total is four months.  Okay, so even we do the company layer first, we fix the bug first, the total will be always four months.
+
+1:27:37 - Feroz Ahmed
+  No, there will be more bugs after you finish the company layer. I can guarantee that. If you fix the bugs now, and then work on the company layer, there will be even more bugs when you finish the company layer.  So what you can do is You can have somebody work on company layer one by one, one report at a time, once that is fixed, perfected, tested it out, you can say, okay, this layer, company layer is done.  And obviously for company layer, I didn't say all the reports, every single thing is not a priority. We already discussed file system is the last priority in company layer.  That's okay. What are the most important things? Just the executive report, the ground zero, job status report, logistics report, these reports that are actually useful for running the business.  Everything else is back office. So we cannot tell Brandon, oh, we cannot work on the company layer, but that is the actual.  That's the business model. Without the company layer, there is no business. So there is no point in fixing the bugs if we cannot fix the company layer right now.
+
+1:29:38 - Tony Hoang
+  So I can fix all the bugs, all the bugs. After that, I have to fix the bugs. So can fix all the bugs store, I can fix all the bugs.  So fix store. So I can fix all the bugs Thank Ví dụ ở đây hiện tại mình có khoảng 20 bucks đi chẳng hạn, 20 bucks đi chẳng hạn, sau đó mình triệt khai cả copy nail nữa, nó cũng 20 bucks, có phải tổng cộng 40 bucks đúng không?  Đó thì mình làm sao, mình hand over hết được toàn bộ người đấy. Nên cái hướng em nghĩ là mình cứ làm, bởi vì nó không hề ảnh hưởng đến nhau á, kiểu copy nail nó chỉ ảnh hưởng một chút chút á, nhưng mà cái bất kì á.
+
+1:30:24 - Tran Hoang (hoanghd218@gmail.com)
+  Ý này em xác xác làm được không á? Như Feroz bảo ấy, bây giờ mình không làm theo Feroz bảo đúng không?  Thì sau này nó gặp vấn đề gì ấy, em chỉ hỏi em thế thôi, bây giờ em tự tin là làm được đúng không?  Tại vì mình đang làm ngược lại những gì Feroz nói, có nó quyết định anh giải cho em quyết định.  Bây giờ đấy ví dụ là ít nhất thì ít nhất là ví dụ anh muốn phát hành ra cái company này, có phát hành cái hệ thống của mình ra nhiều bên khác đúng không?  Thì ít nhất cái bên mình nó phải hoàn thành xong trước, bên mình chưa hoàn thành xong.
+
+1:31:00 - Tony Hoang
+  It's very because the benefit of the layer of my application is in and it's very support. The copy layer of my application is really not on top, and to be able to the analyzer in-app, a user-in-www.  lot cooperating for Cutting Night A. know, to do the thing. have it's not an There is a that I wanted to apply for.  There is only one right You know, that you think that you have one right now. You know, do it right now.  I can't see you can't see you I can't you
+
+1:32:00 - Tran Hoang (hoanghd218@gmail.com)
+  Em giải thích lại cho Feroz là cái hướng mình sẽ làm xong rồi mình sẽ chốt như thế, xong rồi tính toán thử thời gian đấy, tính toán thử thời gian, tính toán sau cơm.
+
+1:32:08 - Tony Hoang
+  Bây giờ hỏi Feroz là Feroz có muốn nhận thêm nhiều bóc không, muốn nhận thêm nhiều bóc thì đấy, cách mà mình đang muốn làm hay là mình muốn.
+
+1:32:16 - Tran Hoang (hoanghd218@gmail.com)
+  Thế này nhé Hậu ơi, họ chỉ quan tâm áo căm thôi, bây giờ em làm gì thì làm, bây giờ cách nào cũng được hiểu biết không.  Và khi nào xong thế thôi, có đâu kia kia để em quyết định chả vấn đề gì cả.
+
+1:32:30 - Tony Hoang
+  Thế thì dù mình làm cái gì trước thì nó cũng bất từng đấy thời gian thôi, từng đấy thời gian thôi.
+
+1:32:36 - Tran Hoang (hoanghd218@gmail.com)
+  Tổng bao nhiêu nhỉ, khi nào xong nhỉ?
+
+1:32:39 - Tony Hoang
+  Phần đấy thì cần phải thảo đoạn hết tất cả những cái cây đó. Thế nhưng mà gọi là cái tổng thời gian nó vẫn thế, tổng thời gian nó vẫn thế đúng không?
+
+1:32:46 - Tran Hoang (hoanghd218@gmail.com)
+  Làm bọn đâu?
+
+1:32:48 - Tony Hoang
+  Tổng thời gian nó vẫn thế, ý em là tổng thời gian nó vẫn, mình làm cái nào trước thì tổng thời gian nó vẫn thế.  Nhưng mà nếu mà mình ưu tiên làm cả hai cái, ưu tiên làm cái này cây kia trước á, thì nó sẽ có nhiều bớt hơn đúng không?
+
+1:32:58 - Tran Hoang (hoanghd218@gmail.com)
+  được khắc phòng cho Để lỡ video Để Để Hãy Để lỡ những video hấp Hãy subscribe cho kênh Ghiền Mì Gõ Để không bỏ lỡ những video hấp dẫn  Nó bằng gì bằng nhanh đi xong rồi để cho Phương với cả chị Giang nghỉ ngơi ạ?
+
+1:34:10 - Tony Hoang
+  Ờ chắc là chị Giang với Phương áo ra rồi nhá, cái phần này cũng không quá cần để hết.
+
+1:34:18 - Tran Hoang (hoanghd218@gmail.com)
+  Xong rồi để anh vào anh nhanh, xong rồi phải sắp xếp thời gian xem để anh vào anh xem cùng cái campaign này với cả phần kia xem như thế nào?
+
+1:34:25 - Admin Giang
+  Chị vẫn thấy cái hướng mà phí hết Bắc trước nó vẫn hơi rất hậu. Tại vì là chị thấy Bắc nó cứ để ra nên tôi có những cái không hẳn là Bắc mà là những cái người ta muốn enhance hoặc improve.
+
+1:34:38 - Tony Hoang
+  Đấy đúng không? Bây giờ hiện tại của mình họ đang kêu khó khá nhiều Bắc đúng không chị? Bây giờ mà chị muốn làm cả cái trong sông thì số lượng Bắc nó sẽ nhân lên gấp chuyên hàng nhiều.  Đấy thì lúc đấy mình không thể nào hand over chứ ít nhất mình phải để cho cái company này nó chạy được trước đã.  Chính chắc là phải cái hiện tại của mình chạy được trước đã. Bây giờ mà mình chuyển hai company, nay ơi, trong cuối cùng cả hai cái đã không chạy được thì cũng để làm gì đâu, đúng không?  Bởi vì số đoạn bug nó nhiều quá, đoạn bug nó xảy ra không handle được hết thì làm sao để làm gì đâu.
+
+1:35:15 - Tran Hoang (hoanghd218@gmail.com)
+  Tại vì cái ý của họ đầu tiên là cái đích cuối của họ ấy là họ muốn cái đích cuối là company nèo chạy được, đấy là đích cuối trước.  Đó thì ví dụ bây giờ họ đang hình dung này, và họ đang hình dung này, bây giờ thì ông có fix được xong 20 cái bug này cho nữa thì bây giờ khi ông ghép với company nèo vào nó vẫn có bug, vẫn vẫn có bug từ 20 cái bug cũ đấy thì họ đang nghĩ như vậy.  Thì theo em thấy như thế nào? Khi mình ghép company nèo vào thì nó không ảnh hưởng cái gì?  Lúc nào mình xong mình mới nói với họ chứ đúng không? Bây giờ thì nói lại nhá, cái throw đang nghĩ như thế này, bây giờ chúng ta đang có 20 bugs ở những cái hệ thống quần lại đúng không?  Chúng ta đang có ai này, chưa nói gì nữa là company nèo hết. Đó, thì bây giờ là sau khi chúng ta fix được 20 cái bug đấy, sau đó chúng ta bắt đầu làm company nèo, làm company nèo sau đó lại ảnh hưởng đến 20 bước cũ.  kênh hấp trọng Cố chúc database không bị sao thì cố chúc database thì là em chỉ bảo là ảnh hưởng hay không ảnh hưởng thôi.  Nó ảnh hưởng nhỏ thôi chứ nó không ảnh hưởng hết Nếu như thế thì bây giờ em muốn làm như theo ý em bảo là Facebook bây giờ đi đã, thì em bảo lại Feroz.  Em nói thật luôn đấy là cái hướng tốt nhất.
+
+1:36:34 - Tony Hoang
+  Chứ bây giờ anh muốn làm cả hai xong đúng không? Anh không bảo anh muốn hay không muốn.
+
+1:36:44 - Tran Hoang (hoanghd218@gmail.com)
+  Mà vấn đề ở đây là mình phải giải thích rõ cho họ biết là bây giờ chúng tôi làm theo hướng này.  Tại vì Feroz đang bảo là phải làm theo hướng kia phải hiểu không?
+
+1:36:51 - Tony Hoang
+  Chứ không phải là anh muốn hay không muốn mà bây giờ chúng ta tìm ra phương án nào giải quyết tốt nhất.
+
+1:36:56 - Tran Hoang (hoanghd218@gmail.com)
+  Đấy thì bây giờ nhớ. Tại vì Feroz đang bảo em là phải làm hai cái xong Hoặc là sửa luôn company there và làm cùng hai cái đấy đi.  Và ngày sau là ngày này. Em làm ngược lại cũng được. Nhưng mà nó cùng ra được kết quả cuối như thế không á.  Thế thì phải giải thích họ, rõ cho họ chứ không để phút cuối họ sẽ bảo đây là tại cãi người tôi nên giờ bị đội bất như thế này.  Thì phải bảo rõ cho họ như thế và họ đồng ý. Tại vì họ trả tiền cho mình nên mình phải đợi họ thông qua nữa.  Sau đó còn lại bất kỳ cái phần gì. Đầu tiên là hệ thống hiện tại đấy. Bây giờ giả sử như trong trường hợp là theo ý em bảo luôn.  không? Thì hệ thống còn lại là bao nhiêu bớt. Và em bảo em phải trao đổi cái đâu cái gì đấy.  Để mới ra được estimate xuống thì trao đổi phần đấy đi. Sau đó là tính tiếp là company there.  Muốn làm những phần nào. Và ví dụ như có 40 cái report thì bây giờ là xong trước 30 report đúng không?  Và ngần này thời gian thôi làm được. Nó chỉ vậy thôi. So if it's to the step or the next step, then you to if you want to do the next step, and then you to give the time.
+
+1:38:21 - Tony Hoang
+  Okay, so I have a plan. So if we fix the bug first, we focus on the COVID-19 first, so the total date to finish is still the same.  So still the same. And I will need all of the features and the bug we have right now. So, okay, so...  I will send it to you later, so then we can review and we can check what is important, so we can do it later after the company later, finish.  Okay, let's discuss on a separate call.
+
+1:39:18 - Feroz Ahmed
+  don't want to keep everybody holed up in this call. I'm sure everybody has a lot of tasks on their hand.  But let's discuss separately and come up with a plan because I cannot stop company layer. If our team doesn't have the enough capacity to work on the company layer, we need to bring in more people, Wong.  But we cannot stop company layer.
+
+1:39:41 - Tran Hoang (hoanghd218@gmail.com)
+  I think we don't have capacity right now, but we need to study about the solution.
+
+1:39:50 - Feroz Ahmed
+  Okay, let's start interviewing and we can start hiring people temporarily on a freelancing basis to finish the company layer.
+
+1:40:00 - Admin Giang
+  I will send it to you later, so then we can review and we can check what is important, so we can do it later after the company later, finish.  Okay, let's discuss on a separate call.
+
+1:40:18 - Feroz Ahmed
+  don't want to keep everybody holed up in this call.
+
+1:40:22 - Admin Giang
+  I'm sure everybody has a lot of tasks on their hand.
+
+1:40:25 - Feroz Ahmed
+  But let's discuss separately and come up with a plan because I cannot stop company layer. If our team doesn't have the enough capacity to work on the company layer, we need to bring in more people, Wong.  But we cannot stop company layer. I think we don't have capacity right now, but we need to study about the solution.  Okay, let's start interviewing and we can start hiring people temporarily on a freelancing basis to finish the company layer.  Okay, got it. Okay, does anybody else have any questions regarding their own tasks?
+
+1:41:08 - Admin Giang
+  Yes, yes, yes. One last question, please. Yes. Do we remove the regular sign up for worker, Feroz?
+
+1:41:19 - Tony Hoang
+  No, don't remove it yet.
+
+1:41:21 - Tran Hoang (hoanghd218@gmail.com)
+  No. So we keep the regular sign up. The quick sign up is I need a QR code that takes the workers to quick sign up.  I needed the quick sign up because if I go to like a trade show or a college, like a conference, nobody is going to have time to fill in all the information and sign up as a worker.  So that quick sign up, I need a QR code that says quick sign up, and I can take that QR code with me.  So like wherever I go and tell them, yep, sign up, scan the QR code and enter the name and email and phone number.  Yeah, I see. Yeah. Got it. Yeah. Thank you. Okay. Thank you. Okay. Take it away. Thank you. Bye-bye. Bye.

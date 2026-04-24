@@ -1,0 +1,15 @@
+{
+  "name": "kdp-image-generator",
+  "version": "1.0.0",
+  "description": "KDP coloring book image generator using AI33 API",
+  "main": "generate_images.js",
+  "scripts": {
+    "generate": "node generate_images.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1",
+    "form-data": "^4.0.0",
+    "sharp": "^0.33.0"
+  }
+}

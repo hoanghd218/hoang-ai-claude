@@ -1,0 +1,17 @@
+{
+  "current_book": "Halloween Cute & Spooky",
+  "current_idea_file": "107_halloween_cute_spooky.md",
+  "stage": "planning",
+  "stage_detail": "Starting /kdp-create-book for Halloween Cute & Spooky (8.5x8.5 square, 50 pages)",
+  "started_at": "2026-03-26T23:30:00Z",
+  "completed_books": [
+    {"name": "Race Cars & Vehicles", "file": "100_race_cars_vehicles.md", "theme_key": "race_cars_vehicles", "completed_at": "2026-03-26T15:10:00Z"},
+    {"name": "Airplanes & Helicopters", "file": "101_airplanes_helicopters.md", "theme_key": "airplanes_helicopters", "completed_at": "2026-03-26T16:50:00Z"},
+    {"name": "Flowers & Garden Kids", "file": "102_flowers_garden_kids.md", "theme_key": "flowers_garden_kids", "completed_at": "2026-03-26T21:15:00Z"},
+    {"name": "Weather & Seasons", "file": "103_weather_seasons.md", "theme_key": "weather_seasons", "completed_at": "2026-03-26T21:50:00Z"},
+    {"name": "Alphabet Animals ABC", "file": "104_alphabet_animals_abc.md", "theme_key": "alphabet_animals_abc", "completed_at": "2026-03-26T22:15:00Z"},
+    {"name": "Numbers & Counting", "file": "105_numbers_counting.md", "theme_key": "numbers_counting", "completed_at": "2026-03-26T22:50:00Z"},
+    {"name": "Summer Beach Fun", "file": "106_summer_beach_fun.md", "theme_key": "summer_beach_fun", "completed_at": "2026-03-26T23:15:00Z"}
+  ],
+  "errors": []
+}
