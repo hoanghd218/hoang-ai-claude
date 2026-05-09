@@ -1,0 +1,16 @@
+{
+  "eval_id": 0,
+  "eval_name": "career-ops-tool",
+  "prompt": "Chuyển X post này thành bài Facebook:\n\nX post từ @santifer (Santiago): \"Just open-sourced my AI-powered job search system built on Claude Code. Career-Ops automates the entire pipeline: scrapes 700+ listings, matches your profile, generates tailored resumes & cover letters. Already evaluated 740 opportunities and created 100+ custom applications. GitHub link: github.com/santifer/career-ops\"\n\nSource URL: https://github.com/santifer/career-ops",
+  "assertions": [
+    "Output contains NO URLs in the Facebook post body text",
+    "Output contains NO emoji or special Unicode characters (no ✅❌🔴→•1️⃣ etc.)",
+    "Output uses Vietnamese language with proper diacritics",
+    "Output does NOT mention code architecture, programming languages, or technical implementation details",
+    "Output focuses on user benefits: time saved, manual work replaced, or business outcomes",
+    "Output uses first-person 'mình' voice, NOT news-reporting style",
+    "Output includes a CTA directing readers to comments for links",
+    "Output is between 300-600 words per post",
+    "Hook (first 2 lines) creates curiosity gap or shock — does not start with 'Hôm nay mình chia sẻ'"
+  ]
+}

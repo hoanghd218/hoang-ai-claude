@@ -1,0 +1,15 @@
+{
+  "eval_id": 1,
+  "eval_name": "anthropic-trend",
+  "prompt": "Viết bài Facebook từ tweet này:\n\n@AnthropicAI: \"Claude is now the #1 AI coding assistant. In Q1 2026, we shipped 28 major features including Claude Code agent teams, background agents, and MCP ecosystem. Revenue grew 3x YoY.\"\n\nKhông có source URL bổ sung.",
+  "assertions": [
+    "Output contains NO URLs in the Facebook post body text",
+    "Output contains NO emoji or special Unicode characters",
+    "Output uses Vietnamese language with proper diacritics",
+    "Output does NOT read like a news report — uses knowledge-sharing voice ('mình thấy', 'bài học là')",
+    "Output focuses on what this means for the reader (business user/solopreneur), not just reporting facts",
+    "Output uses first-person 'mình' voice consistently",
+    "Output is between 300-600 words per post",
+    "Hook creates curiosity gap — does not start with 'Hôm nay mình chia sẻ'"
+  ]
+}

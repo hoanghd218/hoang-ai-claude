@@ -1,0 +1,72 @@
+[
+  {
+    "handle": "@BenAI92",
+    "name": "Ben AI",
+    "category": "ai-tech"
+  },
+  {
+    "handle": "@chiefleverageofficer",
+    "name": "Chief Leverage Officer",
+    "category": "ai-tech"
+  },
+  {
+    "handle": "@ColeMedin",
+    "name": "Cole Medin",
+    "category": "ai-tech"
+  },
+  {
+    "handle": "@DavidOndrej",
+    "name": "David Ondrej",
+    "category": "ai-tech"
+  },
+  {
+    "handle": "@AlexFinnOfficial",
+    "name": "Alex Finn",
+    "category": "ai-tech"
+  },
+  {
+    "handle": "@BrockMesarich",
+    "name": "Brock Mesarich",
+    "category": "ai-tech"
+  },
+  {
+    "handle": "@GregIsenberg",
+    "name": "Greg Isenberg",
+    "category": "ai-tech"
+  },
+  {
+    "handle": "@Mark_Kashef",
+    "name": "Mark Kashef",
+    "category": "ai-tech"
+  },
+  {
+    "handle": "@nateherk",
+    "name": "Nate Herk",
+    "category": "ai-tech"
+  },
+  {
+    "handle": "@DanKoe",
+    "name": "Dan Koe",
+    "category": "one-person-business"
+  },
+  {
+    "handle": "@thefutur",
+    "name": "Chris Do",
+    "category": "one-person-business"
+  },
+  {
+    "handle": "@JustinWelsh",
+    "name": "Justin Welsh",
+    "category": "one-person-business"
+  },
+  {
+    "handle": "@simonsinek",
+    "name": "Simon Sinek",
+    "category": "mindset"
+  },
+  {
+    "handle": "@aliabdaal",
+    "name": "Ali Abdaal",
+    "category": "mindset"
+  }
+]

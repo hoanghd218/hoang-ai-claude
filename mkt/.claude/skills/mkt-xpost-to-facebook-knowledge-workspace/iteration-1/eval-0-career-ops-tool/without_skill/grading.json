@@ -1,0 +1,55 @@
+{
+  "expectations": [
+    {
+      "text": "Output contains NO URLs in the Facebook post body text",
+      "passed": true,
+      "evidence": "No URLs found"
+    },
+    {
+      "text": "Output contains NO emoji or special Unicode characters",
+      "passed": false,
+      "evidence": "Emojis: ['👇']; Special chars: ['→']"
+    },
+    {
+      "text": "Output uses Vietnamese language with proper diacritics",
+      "passed": true,
+      "evidence": "Found 775 Vietnamese diacritical characters"
+    },
+    {
+      "text": "Output does NOT mention code architecture or technical implementation",
+      "passed": false,
+      "evidence": "Found tech terms: ['API call']"
+    },
+    {
+      "text": "Output focuses on user benefits: time saved, manual work replaced",
+      "passed": false,
+      "evidence": "Found benefit words: ['automation']"
+    },
+    {
+      "text": "Output uses first-person 'mình' voice, NOT news-reporting style",
+      "passed": true,
+      "evidence": "'mình' present: True, news-style phrases: False"
+    },
+    {
+      "text": "Output includes a CTA directing readers to comments for links",
+      "passed": false,
+      "evidence": "CTA to comments found: False"
+    },
+    {
+      "text": "Output is between 300-600 words per post",
+      "passed": true,
+      "evidence": "Post 1: 298 words (OK)"
+    },
+    {
+      "text": "Hook does not start with 'Hôm nay mình chia sẻ'",
+      "passed": true,
+      "evidence": "Hook does not start with banned phrase"
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 4,
+    "total": 9,
+    "pass_rate": 0.56
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "expectations": [
+    {
+      "text": "Output contains NO URLs in any Facebook post body",
+      "passed": true,
+      "evidence": "No URLs found"
+    },
+    {
+      "text": "Output contains NO emoji or special Unicode characters",
+      "passed": false,
+      "evidence": "Emojis: ['🧮', '👇', '💡']"
+    },
+    {
+      "text": "Output produces posts for BOTH X posts",
+      "passed": true,
+      "evidence": "Review tool covered: True, Max plan covered: True"
+    },
+    {
+      "text": "Each post has a different angle/lens",
+      "passed": false,
+      "evidence": "Found 1 distinct posts"
+    },
+    {
+      "text": "Output does NOT mention code architecture or technical implementation",
+      "passed": false,
+      "evidence": "Found tech terms: ['API call']"
+    },
+    {
+      "text": "Output translates technical concepts into user benefits",
+      "passed": true,
+      "evidence": "Found benefit words: ['tiết kiệm', 'thời gian', 'automation', 'không cần', 'tăng']"
+    },
+    {
+      "text": "Output uses first-person 'mình' voice throughout",
+      "passed": true,
+      "evidence": "'mình' present: True, news-style phrases: False"
+    },
+    {
+      "text": "All posts are between 300-600 words each",
+      "passed": true,
+      "evidence": "Post 1: 364 words (OK)"
+    },
+    {
+      "text": "CTA directs to comments for links where relevant",
+      "passed": true,
+      "evidence": "CTA to comments found: True"
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 3,
+    "total": 9,
+    "pass_rate": 0.67
+  }
+}

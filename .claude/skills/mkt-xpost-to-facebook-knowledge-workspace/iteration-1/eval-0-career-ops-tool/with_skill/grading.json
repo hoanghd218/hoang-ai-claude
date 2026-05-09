@@ -1,0 +1,55 @@
+{
+  "expectations": [
+    {
+      "text": "Output contains NO URLs in the Facebook post body text",
+      "passed": false,
+      "evidence": "Found URLs: ['https://github.com/santifer/career-ops']"
+    },
+    {
+      "text": "Output contains NO emoji or special Unicode characters",
+      "passed": false,
+      "evidence": "Emojis: ['═══════════════════════════════════════', '═══════════════════════════════════════', '═══════════════════════════════════════', '═══════════════════════════════════════', '═══════════════════════════════════════']; Special chars: ['→', '═']"
+    },
+    {
+      "text": "Output uses Vietnamese language with proper diacritics",
+      "passed": true,
+      "evidence": "Found 361 Vietnamese diacritical characters"
+    },
+    {
+      "text": "Output does NOT mention code architecture or technical implementation",
+      "passed": true,
+      "evidence": "No developer-focused tech terms"
+    },
+    {
+      "text": "Output focuses on user benefits: time saved, manual work replaced",
+      "passed": true,
+      "evidence": "Found benefit words: ['tiết kiệm', 'thời gian', 'tự động', 'automation', 'không cần', 'one person']"
+    },
+    {
+      "text": "Output uses first-person 'mình' voice, NOT news-reporting style",
+      "passed": true,
+      "evidence": "'mình' present: True, news-style phrases: False"
+    },
+    {
+      "text": "Output includes a CTA directing readers to comments for links",
+      "passed": true,
+      "evidence": "CTA to comments found: True"
+    },
+    {
+      "text": "Output is between 300-600 words per post",
+      "passed": true,
+      "evidence": "Post 1: 606 words (OK)"
+    },
+    {
+      "text": "Hook does not start with 'Hôm nay mình chia sẻ'",
+      "passed": true,
+      "evidence": "Hook does not start with banned phrase"
+    }
+  ],
+  "summary": {
+    "passed": 7,
+    "failed": 2,
+    "total": 9,
+    "pass_rate": 0.78
+  }
+}

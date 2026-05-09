@@ -1,0 +1,23 @@
+{
+  "skill_name": "mkt-xpost-to-facebook-knowledge",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "Chuyển X post này thành bài Facebook:\n\nX post từ @santifer (Santiago): \"Just open-sourced my AI-powered job search system built on Claude Code. Career-Ops automates the entire pipeline: scrapes 700+ listings, matches your profile, generates tailored resumes & cover letters. Already evaluated 740 opportunities and created 100+ custom applications. GitHub link: github.com/santifer/career-ops\"\n\nSource URL: https://github.com/santifer/career-ops",
+      "expected_output": "1-2 bài Facebook dạng chia sẻ kiến thức, viết cho người muốn ứng dụng AI (không phải developer), không có URL trong body, không emoji, giọng 'mình đọc được...'",
+      "files": []
+    },
+    {
+      "id": 1,
+      "prompt": "Viết bài Facebook từ tweet này:\n\n@AnthropicAI: \"Claude is now the #1 AI coding assistant. In Q1 2026, we shipped 28 major features including Claude Code agent teams, background agents, and MCP ecosystem. Revenue grew 3x YoY.\"\n\nKhông có source URL bổ sung.",
+      "expected_output": "1-2 bài Facebook dạng phân tích xu hướng AI, viết cho chủ doanh nghiệp/solopreneur, focus vào 'điều này có nghĩa gì cho bạn', không URL trong body, không emoji",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Chuyển 2 X posts này thành Facebook content:\n\nPost 1 - @nickcdev: \"Built a code review visualization tool using Claude Code. It maps PR dependencies, shows review bottlenecks, and generates weekly team reports. Saved our team 5 hours/week on code review coordination. github.com/nickcdev/code-review-graph\"\n\nPost 2 - @AISafetyWatch: \"Anthropic just released the Claude Max plan at $200/month — unlimited usage for power users. Some developers reporting $500+ in API savings. But is it worth it for non-developers?\"\n\nTạo Facebook posts cho cả 2.",
+      "expected_output": "3-4 bài Facebook (1-2 per X post), đa dạng format (actionable + deep-dive), viết cho non-developer audience, mỗi bài góc nhìn khác, không URL, không emoji",
+      "files": []
+    }
+  ]
+}

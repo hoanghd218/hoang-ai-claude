@@ -1,0 +1,32 @@
+{
+  "youtube": [
+    { "handle": "@BenAI92", "name": "Ben AI", "category": "ai-tech" },
+    { "handle": "@ColeMedin", "name": "Cole Medin", "category": "ai-tech" },
+    { "handle": "@DavidOndrej", "name": "David Ondrej", "category": "ai-tech" },
+    { "handle": "@AlexFinnOfficial", "name": "Alex Finn", "category": "ai-tech" },
+    { "handle": "@GregIsenberg", "name": "Greg Isenberg", "category": "ai-tech" },
+    { "handle": "@nateherk", "name": "Nate Herk", "category": "ai-tech" },
+    { "handle": "@chiefleverageofficer", "name": "Chief Leverage Officer", "category": "ai-tech" }
+  ],
+  "tiktok": [
+    { "handle": "aiexplained", "name": "AI Explained" },
+    { "handle": "techwithtim", "name": "Tech With Tim" },
+    { "handle": "ai_for_devs", "name": "AI for Devs" },
+    { "handle": "automationwithzapier", "name": "Automation with Zapier" },
+    { "handle": "theaiadvantage", "name": "The AI Advantage" }
+  ],
+  "facebook": [
+    { "page": "ArtificialIntelligenceHub", "name": "AI Hub" },
+    { "page": "OpenAI", "name": "OpenAI" },
+    { "page": "AnthropicAI", "name": "Anthropic" },
+    { "page": "AIAgentsCommunity", "name": "AI Agents Community" },
+    { "page": "NguoiLamChuCongNghe", "name": "Người Làm Chủ Công Nghệ" }
+  ],
+  "xcom_queries": [
+    "AI agents 2025",
+    "Claude Code",
+    "automation workflow AI",
+    "one person business AI",
+    "AI tools trending"
+  ]
+}

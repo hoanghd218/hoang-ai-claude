@@ -1,0 +1,16 @@
+{
+  "eval_id": 2,
+  "eval_name": "multi-post",
+  "prompt": "Chuyển 2 X posts này thành Facebook content:\n\nPost 1 - @nickcdev: \"Built a code review visualization tool using Claude Code. It maps PR dependencies, shows review bottlenecks, and generates weekly team reports. Saved our team 5 hours/week on code review coordination. github.com/nickcdev/code-review-graph\"\n\nPost 2 - @AISafetyWatch: \"Anthropic just released the Claude Max plan at $200/month — unlimited usage for power users. Some developers reporting $500+ in API savings. But is it worth it for non-developers?\"\n\nTạo Facebook posts cho cả 2.",
+  "assertions": [
+    "Output contains NO URLs in any Facebook post body",
+    "Output contains NO emoji or special Unicode characters",
+    "Output produces posts for BOTH X posts (not just one)",
+    "Each post has a different angle/lens — no repeated perspectives",
+    "Output does NOT mention code architecture, PR dependencies, or technical implementation",
+    "Output translates technical concepts into user benefits",
+    "Output uses first-person 'mình' voice throughout",
+    "All posts are between 300-600 words each",
+    "CTA directs to comments for links where relevant"
+  ]
+}

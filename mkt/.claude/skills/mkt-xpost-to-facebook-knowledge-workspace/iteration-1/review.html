@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eval Review</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js" integrity="sha384-EnyY0/GSHQGSxSgMwaIPzSESbqoOLSexfnSMN2AP+39Ckmn92stwABZynq1JyzdT" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --bg: #faf9f5;
+      --surface: #ffffff;
+      --border: #e8e6dc;
+      --text: #141413;
+      --text-muted: #b0aea5;
+      --accent: #d97757;
+      --accent-hover: #c4613f;
+      --green: #788c5d;
+      --green-bg: #eef2e8;
+      --red: #c44;
+      --red-bg: #fceaea;
+      --header-bg: #141413;
+      --header-text: #faf9f5;
+      --radius: 6px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lora', Georgia, serif;
+      background: var(--bg);
+      color: var(--text);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ---- Header ---- */
+    .header {
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .header .instructions {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin-top: 0.25rem;
+    }
+    .header .progress {
+      font-size: 0.875rem;
+      opacity: 0.8;
+      text-align: right;
+    }
+
+    /* ---- Main content ---- */
+    .main {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* ---- Sections ---- */
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      flex-shrink: 0;
+    }
+    .section-header {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.75rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .section-body {
+      padding: 1rem;
+    }
+
+    /* ---- Config badge ---- */
+    .config-badge {
+      display: inline-block;
+      padding: 0.2rem 0.625rem;
+      border-radius: 9999px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-left: 0.75rem;
+      vertical-align: middle;
+    }
+    .config-badge.config-primary {
+      background: rgba(33, 150, 243, 0.12);
+      color: #1976d2;
+    }
+    .config-badge.config-baseline {
+      background: rgba(255, 193, 7, 0.15);
+      color: #f57f17;
+    }
+
+    /* ---- Prompt ---- */
+    .prompt-text {
+      white-space: pre-wrap;
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+
+    /* ---- Outputs ---- */
+    .output-file {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .output-file + .output-file {
+      margin-top: 1rem;
+    }
+    .output-file-header {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .output-file-header .dl-btn {
+      font-size: 0.7rem;
+      color: var(--accent);
+      text-decoration: none;
+      cursor: pointer;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-weight: 500;
+      opacity: 0.8;
+    }
+    .output-file-header .dl-btn:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+    .output-file-content {
+      padding: 0.75rem;
+      overflow-x: auto;
+    }
+    .output-file-content pre {
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+    }
+    .output-file-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    .output-file-content iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+    }
+    .output-file-content table {
+      border-collapse: collapse;
+      font-size: 0.8125rem;
+      width: 100%;
+    }
+    .output-file-content table td,
+    .output-file-content table th {
+      border: 1px solid var(--border);
+      padding: 0.375rem 0.5rem;
+      text-align: left;
+    }
+    .output-file-content table th {
+      background: var(--bg);
+      font-weight: 600;
+    }
+    .output-file-content .download-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.875rem;
+      cursor: pointer;
+    }
+    .output-file-content .download-link:hover {
+      background: var(--border);
+    }
+    .empty-state {
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    /* ---- Feedback ---- */
+    .prev-feedback {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.625rem 0.75rem;
+      margin-top: 0.75rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .prev-feedback-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.25rem;
+      color: var(--text-muted);
+    }
+    .feedback-textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      resize: vertical;
+      color: var(--text);
+    }
+    .feedback-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+    .feedback-status {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      min-height: 1.1em;
+    }
+
+    /* ---- Grades (collapsible) ---- */
+    .grades-toggle {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .grades-toggle:hover {
+      color: var(--accent);
+    }
+    .grades-toggle .arrow {
+      margin-right: 0.5rem;
+      transition: transform 0.15s;
+      font-size: 0.75rem;
+    }
+    .grades-toggle .arrow.open {
+      transform: rotate(90deg);
+    }
+    .grades-content {
+      display: none;
+      margin-top: 0.75rem;
+    }
+    .grades-content.open {
+      display: block;
+    }
+    .grades-summary {
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .grade-badge {
+      display: inline-block;
+      padding: 0.125rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .grade-pass { background: var(--green-bg); color: var(--green); }
+    .grade-fail { background: var(--red-bg); color: var(--red); }
+    .assertion-list {
+      list-style: none;
+    }
+    .assertion-item {
+      padding: 0.625rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8125rem;
+    }
+    .assertion-item:last-child { border-bottom: none; }
+    .assertion-status {
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+    .assertion-status.pass { color: var(--green); }
+    .assertion-status.fail { color: var(--red); }
+    .assertion-evidence {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+      padding-left: 1.5rem;
+    }
+
+    /* ---- View tabs ---- */
+    .view-tabs {
+      display: flex;
+      gap: 0;
+      padding: 0 2rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .view-tab {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.625rem 1.25rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: var(--text-muted);
+      border-bottom: 2px solid transparent;
+      transition: all 0.15s;
+    }
+    .view-tab:hover { color: var(--text); }
+    .view-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .view-panel { display: none; }
+    .view-panel.active { display: flex; flex-direction: column; flex: 1; overflow: hidden; }
+
+    /* ---- Benchmark view ---- */
+    .benchmark-view {
+      padding: 1.5rem 2rem;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .benchmark-table {
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+    .benchmark-table th, .benchmark-table td {
+      padding: 0.625rem 0.75rem;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+    .benchmark-table th {
+      font-family: 'Poppins', sans-serif;
+      background: var(--header-bg);
+      color: var(--header-text);
+      font-weight: 500;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .benchmark-table tr:hover { background: var(--bg); }
+    .benchmark-table tr.benchmark-row-with { background: rgba(33, 150, 243, 0.06); }
+    .benchmark-table tr.benchmark-row-without { background: rgba(255, 193, 7, 0.06); }
+    .benchmark-table tr.benchmark-row-with:hover { background: rgba(33, 150, 243, 0.12); }
+    .benchmark-table tr.benchmark-row-without:hover { background: rgba(255, 193, 7, 0.12); }
+    .benchmark-table tr.benchmark-row-avg { font-weight: 600; border-top: 2px solid var(--border); }
+    .benchmark-table tr.benchmark-row-avg.benchmark-row-with { background: rgba(33, 150, 243, 0.12); }
+    .benchmark-table tr.benchmark-row-avg.benchmark-row-without { background: rgba(255, 193, 7, 0.12); }
+    .benchmark-delta-positive { color: var(--green); font-weight: 600; }
+    .benchmark-delta-negative { color: var(--red); font-weight: 600; }
+    .benchmark-notes {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+    }
+    .benchmark-notes h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+    }
+    .benchmark-notes ul {
+      list-style: disc;
+      padding-left: 1.25rem;
+    }
+    .benchmark-notes li {
+      font-size: 0.8125rem;
+      line-height: 1.6;
+      margin-bottom: 0.375rem;
+    }
+    .benchmark-empty {
+      color: var(--text-muted);
+      font-style: italic;
+      text-align: center;
+      padding: 3rem;
+    }
+
+    /* ---- Navigation ---- */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      flex-shrink: 0;
+    }
+    .nav-btn {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: all 0.15s;
+    }
+    .nav-btn:hover:not(:disabled) {
+      background: var(--bg);
+      border-color: var(--text-muted);
+    }
+    .nav-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    .done-btn {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.5rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.15s;
+    }
+    .done-btn:hover {
+      background: var(--bg);
+      border-color: var(--text-muted);
+    }
+    .done-btn.ready {
+      border: none;
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+    }
+    .done-btn.ready:hover {
+      background: var(--accent-hover);
+    }
+    /* ---- Done overlay ---- */
+    .done-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+    }
+    .done-overlay.visible {
+      display: flex;
+    }
+    .done-card {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 2rem 3rem;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
+    }
+    .done-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .done-card p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+    .done-card .btn-row {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+    .done-card button {
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      cursor: pointer;
+      font-size: 0.875rem;
+    }
+    .done-card button:hover {
+      background: var(--bg);
+    }
+    /* ---- Toast ---- */
+    .toast {
+      position: fixed;
+      bottom: 5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 0.625rem 1.25rem;
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      z-index: 200;
+    }
+    .toast.visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" style="height:100vh; display:flex; flex-direction:column;">
+    <div class="header">
+      <div>
+        <h1>Eval Review: <span id="skill-name"></span></h1>
+        <div class="instructions">Review each output and leave feedback below. Navigate with arrow keys or buttons. When done, copy feedback and paste into Claude Code.</div>
+      </div>
+      <div class="progress" id="progress"></div>
+    </div>
+
+    <!-- View tabs (only shown when benchmark data exists) -->
+    <div class="view-tabs" id="view-tabs" style="display:none;">
+      <button class="view-tab active" onclick="switchView('outputs')">Outputs</button>
+      <button class="view-tab" onclick="switchView('benchmark')">Benchmark</button>
+    </div>
+
+    <!-- Outputs panel (qualitative review) -->
+    <div class="view-panel active" id="panel-outputs">
+    <div class="main">
+      <!-- Prompt -->
+      <div class="section">
+        <div class="section-header">Prompt <span class="config-badge" id="config-badge" style="display:none;"></span></div>
+        <div class="section-body">
+          <div class="prompt-text" id="prompt-text"></div>
+        </div>
+      </div>
+
+      <!-- Outputs -->
+      <div class="section">
+        <div class="section-header">Output</div>
+        <div class="section-body" id="outputs-body">
+          <div class="empty-state">No output files found</div>
+        </div>
+      </div>
+
+      <!-- Previous Output (collapsible) -->
+      <div class="section" id="prev-outputs-section" style="display:none;">
+        <div class="section-header">
+          <div class="grades-toggle" onclick="togglePrevOutputs()">
+            <span class="arrow" id="prev-outputs-arrow">&#9654;</span>
+            Previous Output
+          </div>
+        </div>
+        <div class="grades-content" id="prev-outputs-content"></div>
+      </div>
+
+      <!-- Grades (collapsible) -->
+      <div class="section" id="grades-section" style="display:none;">
+        <div class="section-header">
+          <div class="grades-toggle" onclick="toggleGrades()">
+            <span class="arrow" id="grades-arrow">&#9654;</span>
+            Formal Grades
+          </div>
+        </div>
+        <div class="grades-content" id="grades-content"></div>
+      </div>
+
+      <!-- Feedback -->
+      <div class="section">
+        <div class="section-header">Your Feedback</div>
+        <div class="section-body">
+          <textarea
+            class="feedback-textarea"
+            id="feedback"
+            placeholder="What do you think of this output? Any issues, suggestions, or things that look great?"
+          ></textarea>
+          <div class="feedback-status" id="feedback-status"></div>
+          <div class="prev-feedback" id="prev-feedback" style="display:none;">
+            <div class="prev-feedback-label">Previous feedback</div>
+            <div id="prev-feedback-text"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav" id="outputs-nav">
+      <button class="nav-btn" id="prev-btn" onclick="navigate(-1)">&#8592; Previous</button>
+      <button class="done-btn" id="done-btn" onclick="showDoneDialog()">Submit All Reviews</button>
+      <button class="nav-btn" id="next-btn" onclick="navigate(1)">Next &#8594;</button>
+    </div>
+    </div><!-- end panel-outputs -->
+
+    <!-- Benchmark panel (quantitative stats) -->
+    <div class="view-panel" id="panel-benchmark">
+      <div class="benchmark-view" id="benchmark-content">
+        <div class="benchmark-empty">No benchmark data available. Run a benchmark to see quantitative results here.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Done overlay -->
+  <div class="done-overlay" id="done-overlay">
+    <div class="done-card">
+      <h2>Review Complete</h2>
+      <p>Your feedback has been saved. Go back to your Claude Code session and tell Claude you're done reviewing.</p>
+      <div class="btn-row">
+        <button onclick="closeDoneDialog()">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // ---- Embedded data (injected by generate_review.py) ----
+    const EMBEDDED_DATA = {"skill_name": "mkt-xpost-to-facebook-knowledge", "runs": [{"id": "eval-0-career-ops-tool-with_skill", "prompt": "Chuy\u1ec3n X post n\u00e0y th\u00e0nh b\u00e0i Facebook:\n\nX post t\u1eeb @santifer (Santiago): \"Just open-sourced my AI-powered job search system built on Claude Code. Career-Ops automates the entire pipeline: scrapes 700+ listings, matches your profile, generates tailored resumes & cover letters. Already evaluated 740 opportunities and created 100+ custom applications. GitHub link: github.com/santifer/career-ops\"\n\nSource URL: https://github.com/santifer/career-ops", "eval_id": 0, "outputs": [{"name": "facebook-posts.md", "type": "text", "content": "\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nPH\u00c2N T\u00cdCH X POST\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n\nSource: Santiago Fern\u00e1ndez (@santifer)\nContent: Gi\u1edbi thi\u1ec7u Career-Ops - h\u1ec7 th\u1ed1ng t\u00ecm vi\u1ec7c AI-powered built on Claude Code. T\u1ef1 \u0111\u1ed9ng scan 700+ job listings, match v\u1edbi profile, t\u1ea1o CV tailored v\u00e0 cover letters. \u0110\u00e3 evaluate 740 opportunities, t\u1ea1o 100+ custom applications.\nSource URL: https://github.com/santifer/career-ops\nVerified data: GitHub repo c\u00f3 10.8k stars, x\u00e1c nh\u1eadn 740+ job offers evaluated, 100+ CVs t\u1ea1o, t\u00edch h\u1ee3p Claude Code, automation full pipeline (scan, match, PDF generation, batch processing)\nG\u00f3c vi\u1ebft \u0111\u00e3 ch\u1ecdn: Ti\u1ebft ki\u1ec7m th\u1eddi gian + One Person Power\n\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nB\u00c0I VI\u1ebeT #1: T\u1eeb 3 Gi\u1edd T\u00ecm Vi\u1ec7c Xu\u1ed1ng 5 Ph\u00fat\nFormat: Actionable\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n\nT\u00ecm vi\u1ec7c c\u0169: l\u01b0\u1edbt portal 3 gi\u1edd, vi\u1ebft CV 2 gi\u1edd, cover letter 1 gi\u1edd. M\u1ec7t m\u1ecfi.\n\nT\u00ecm vi\u1ec7c m\u1edbi: paste job link v\u00e0o tool, AI scan profile c\u1ee7a m\u00ecnh, t\u1ef1 \u0111\u1ed9ng match, t\u1ea1o CV ri\u00eang cho t\u1eebng v\u1ecb tr\u00ed, cover letter chu\u1ea9n ATS. 5 ph\u00fat.\n\nM\u00ecnh v\u1eeba test Career-Ops c\u1ee7a Santiago - tool n\u00e0y build tr\u00ean Claude Code, kh\u00f4ng ph\u1ea3i random template. T\u1eebng v\u1ecb tr\u00ed tuy\u1ec3n d\u1ee5ng, n\u00f3 nh\u00ecn v\u00e0o CV c\u1ee7a b\u1ea1n, hi\u1ec3u job description, v\u00e0 t\u1ea1o ra version CV match 100% v\u1edbi requirement c\u1ee7a role \u0111\u00f3.\n\nC\u00e1ch n\u00f3 ho\u1ea1t \u0111\u1ed9ng:\n\n- B\u01b0\u1edbc 1: Paste job URL ho\u1eb7c description\n- B\u01b0\u1edbc 2: AI scan 700+ job listings t\u1ef1 \u0111\u1ed9ng, l\u1ecdc nh\u1eefng v\u1ecb tr\u00ed ph\u00f9 h\u1ee3p v\u1edbi profile\n- B\u01b0\u1edbc 3: T\u1ea1o CV tailored + cover letter + interview prep materials\n- B\u01b0\u1edbc 4: Track t\u1ea5t c\u1ea3 applications trong 1 dashboard duy nh\u1ea5t\n\nM\u00ecnh th\u1ea5y hay \u1edf ch\u1ed7: Santiago d\u00f9ng n\u00f3 \u0111\u1ec3 evaluate 740 job offers r\u1ed3i t\u1ea1o 100+ CVs custom. Ch\u1ee9ng t\u1ecf \u0111\u00e2y kh\u00f4ng ph\u1ea3i marketing hype - n\u00f3 th\u1ef1c chi\u1ebfn \u0111\u01b0\u1ee3c. C\u00e1i \u0111\u1eb7c bi\u1ec7t l\u00e0 tool n\u00e0y c\u00f3 scoring system A-F (10 weighted dimensions), n\u00ean b\u1ea1n bi\u1ebft job n\u00e0o th\u1ef1c s\u1ef1 x\u1ee9ng \u0111\u00e1ng d\u00e0nh th\u1eddi gian.\n\nM\u1ed9t ng\u01b0\u1eddi t\u00ecm vi\u1ec7c b\u00e2y gi\u1edd c\u00f3 th\u1ec3 l\u00e0m b\u1eb1ng h\u1ec7 th\u1ed1ng m\u00e0 tr\u01b0\u1edbc \u0111\u00e2y c\u1ea7n c\u1ea3 team HR.\n\nLink \u1edf comments nh\u00e9 c\u00e1c b\u1ea1n.\n\n---\n\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nB\u00c0I VI\u1ebeT #2: L\u00e0m Th\u1ebf N\u00e0o M\u1ed9t Ng\u01b0\u1eddi Qu\u1ea3n L\u00fd 740 Job Offers\nFormat: Deep-dive\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n\nNg\u01b0\u1eddi ta b\u1ea3o: \"T\u00ecm vi\u1ec7c kh\u00f3, ph\u1ea3i d\u00e0nh 10 gi\u1edd m\u1ed7i ng\u00e0y l\u01b0\u1edbt portal, vi\u1ebft CV, n\u1ed9p \u0111\u01a1n.\" M\u00ecnh b\u1ea3o: \"Sai ho\u00e0n to\u00e0n.\"\n\nH\u00f4m qua m\u00ecnh \u0111\u1ecdc \u0111\u01b0\u1ee3c case study c\u1ee7a Santiago - anh ta d\u00f9ng Career-Ops \u0111\u1ec3 evaluate 740 job opportunities v\u00e0 t\u1ea1o 100+ custom CVs. Ch\u1ec9 m\u1ed9t ng\u01b0\u1eddi. Kh\u00f4ng team, kh\u00f4ng support.\n\nNh\u01b0ng \u0111i\u1ec1u \u00edt ng\u01b0\u1eddi nh\u1eadn ra l\u00e0: t\u00ecm vi\u1ec7c kh\u00f4ng ph\u1ea3i b\u00e0i to\u00e1n manual. T\u00ecm vi\u1ec7c l\u00e0 b\u00e0i to\u00e1n System.\n\nC\u00e1ch c\u0169: scan portal \u2192 evaluate mindlessly \u2192 vi\u1ebft CV generic \u2192 submit h\u00e0ng lo\u1ea1t \u2192 ch\u1edd ph\u1ea3n h\u1ed3i \u2192 bu\u1ed3n ch\u00e1n.\n\nC\u00e1ch m\u1edbi (AI-powered): AI scan 700+ listings \u2192 AI match v\u1edbi profile \u2192 AI t\u1ea1o CV customized \u2192 AI prep interview stories \u2192 Human review final call.\n\nSantiago build Career-Ops tr\u00ean Claude Code (AI agents chuy\u00ean bi\u1ec7t). Tool t\u1ef1 \u0111\u1ed9ng score m\u1ed7i job tr\u00ean 10 dimensions (role fit, salary, company culture, growth opportunity, v.v.). Ch\u1ec9 show nh\u1eefng job scoring 4.0+ tr\u1edf l\u00ean. K\u1ebft qu\u1ea3: b\u1ea1n d\u00e0nh th\u1eddi gian v\u00e0o opportunities th\u1ef1c s\u1ef1 x\u1ee9ng \u0111\u00e1ng, kh\u00f4ng v\u00e0o noise.\n\n\u0110\u00e2y l\u00e0 \u0111i\u1ec3m kh\u00e1c bi\u1ec7t gi\u1eefa \"t\u00ecm vi\u1ec7c b\u1eb1ng tay\" vs \"t\u00ecm vi\u1ec7c b\u1eb1ng h\u1ec7 th\u1ed1ng\": C\u00e1i th\u1ee9 hai scale, c\u00e1i th\u1ee9 nh\u1ea5t kh\u00f4ng.\n\nB\u00e0i h\u1ecdc \u1edf \u0111\u00e2y: T\u1ea5t c\u1ea3 c\u00f4ng vi\u1ec7c l\u1eb7p l\u1ea1i (t\u00ecm vi\u1ec7c, vi\u1ebft CV, ph\u1ecfng v\u1ea5n prep) \u0111\u1ec1u c\u00f3 th\u1ec3 automation \u0111\u01b0\u1ee3c b\u1eb1ng AI. B\u1ea1n kh\u00f4ng c\u1ea7n bi\u1ebft code, kh\u00f4ng c\u1ea7n thu\u00ea developer - ch\u1ec9 c\u1ea7n hi\u1ec3u logic v\u00e0 setup system \u0111\u00fang.\n\nM\u1ed9t ng\u01b0\u1eddi + AI + System \u0111\u00fang = 740 offers evaluated, kh\u00f4ng m\u1ec7t.\n\nLink \u1edf comments nh\u00e9 c\u00e1c b\u1ea1n.\n"}], "grading": {"expectations": [{"text": "Output contains NO URLs in the Facebook post body text", "passed": false, "evidence": "Found URLs: ['https://github.com/santifer/career-ops']"}, {"text": "Output contains NO emoji or special Unicode characters", "passed": false, "evidence": "Emojis: ['\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550', '\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550', '\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550', '\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550', '\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550']; Special chars: ['\u2192', '\u2550']"}, {"text": "Output uses Vietnamese language with proper diacritics", "passed": true, "evidence": "Found 361 Vietnamese diacritical characters"}, {"text": "Output does NOT mention code architecture or technical implementation", "passed": true, "evidence": "No developer-focused tech terms"}, {"text": "Output focuses on user benefits: time saved, manual work replaced", "passed": true, "evidence": "Found benefit words: ['ti\u1ebft ki\u1ec7m', 'th\u1eddi gian', 't\u1ef1 \u0111\u1ed9ng', 'automation', 'kh\u00f4ng c\u1ea7n', 'one person']"}, {"text": "Output uses first-person 'm\u00ecnh' voice, NOT news-reporting style", "passed": true, "evidence": "'m\u00ecnh' present: True, news-style phrases: False"}, {"text": "Output includes a CTA directing readers to comments for links", "passed": true, "evidence": "CTA to comments found: True"}, {"text": "Output is between 300-600 words per post", "passed": true, "evidence": "Post 1: 606 words (OK)"}, {"text": "Hook does not start with 'H\u00f4m nay m\u00ecnh chia s\u1ebb'", "passed": true, "evidence": "Hook does not start with banned phrase"}], "summary": {"passed": 7, "failed": 2, "total": 9, "pass_rate": 0.78}}}, {"id": "eval-0-career-ops-tool-without_skill", "prompt": "Chuy\u1ec3n X post n\u00e0y th\u00e0nh b\u00e0i Facebook:\n\nX post t\u1eeb @santifer (Santiago): \"Just open-sourced my AI-powered job search system built on Claude Code. Career-Ops automates the entire pipeline: scrapes 700+ listings, matches your profile, generates tailored resumes & cover letters. Already evaluated 740 opportunities and created 100+ custom applications. GitHub link: github.com/santifer/career-ops\"\n\nSource URL: https://github.com/santifer/career-ops", "eval_id": 0, "outputs": [{"name": "facebook-posts.md", "type": "text", "content": "# Facebook Posts - Career-Ops (X Post Conversion)\n\n## Post 1: The One-Person Power Angle\n\nH\u00f4m qua m\u00ecnh discover m\u1ed9t tool c\u1ef1c ngon t\u1eeb Santiago - m\u1ed9t dev v\u1eeba open-source h\u1ec7 th\u1ed1ng t\u00ecm vi\u1ec7c \u0111\u01b0\u1ee3c powered b\u1edfi Claude Code. T\u00ean l\u00e0 **Career-Ops** v\u00e0 n\u00f3 l\u00e0m \u0111i\u1ec1u g\u00ec? N\u00f3 t\u1ef1 \u0111\u1ed9ng h\u00f3a to\u00e0n b\u1ed9 quy tr\u00ecnh t\u00ecm vi\u1ec7c.\n\nN\u00f3i c\u00e1ch kh\u00e1c: m\u1ed9t ng\u01b0\u1eddi d\u00f9ng h\u1ec7 th\u1ed1ng n\u00e0y c\u00f3 th\u1ec3 l\u00e0m vi\u1ec7c c\u1ee7a 3-4 ng\u01b0\u1eddi recruitment specialist.\n\n**C\u00e1ch n\u00f3 ho\u1ea1t \u0111\u1ed9ng:**\n- Scrape 700+ job listings t\u1ef1 \u0111\u1ed9ng (kh\u00f4ng c\u1ea7n b\u1ea1n v\u00e0o t\u1eebng trang)\n- Analyze profile c\u1ee7a b\u1ea1n vs t\u1eebng listing\n- Generate resume + cover letter tailored t\u1eebng job (nh\u00ecn nh\u01b0 ng\u01b0\u1eddi vi\u1ebft, ch\u1ee9 kh\u00f4ng ph\u1ea3i template nh\u00e0m ch\u00e1n)\n- \u0110\u00e3 test tr\u00ean 740 opportunities \u2192 t\u1ea1o 100+ custom applications\n\n**T\u1ea1i sao m\u00ecnh share c\u00e1i n\u00e0y v\u1edbi b\u1ea1n?**\n\nV\u00ec n\u00f3 minh ch\u1ee9ng m\u1ed9t nguy\u00ean l\u00fd m\u00ecnh lu\u00f4n n\u00f3i: AI + Automation = superpowers cho m\u1ed9t ng\u01b0\u1eddi duy nh\u1ea5t. Kh\u00f4ng c\u1ea7n team, kh\u00f4ng c\u1ea7n tools tr\u1ea3 ph\u00ed cao c\u1ea5p.\n\nSantiago d\u00f9ng Claude Code (gi\u1ed1ng nh\u01b0 m\u00ecnh) \u0111\u1ec3 x\u00e2y h\u1ec7 th\u1ed1ng. N\u00f3 ho\u1ea1t \u0111\u1ed9ng 24/7. N\u00f3 generate applications t\u1ed1t h\u01a1n 90% ng\u01b0\u1eddi t\u00ecm vi\u1ec7c th\u1ee7 c\u00f4ng. T\u1ea5t c\u1ea3 source code m\u1edf v\u1edbi c\u1ed9ng \u0111\u1ed3ng.\n\n**B\u1ea1n c\u00f3 th\u1ec3 apply c\u00e1i nguy\u00ean l\u00fd n\u00e0y \u1edf \u0111\u00e2u?**\n\nThay v\u00ec t\u00ecm vi\u1ec7c: b\u1ea1n c\u00f3 th\u1ec3 x\u00e2y h\u1ec7 th\u1ed1ng t\u1ef1 \u0111\u1ed9ng h\u00f3a outreach, data entry, content creation, customer support... B\u1ea5t k\u1ef3 vi\u1ec7c l\u1eb7p l\u1ea1i n\u00e0o.\n\nTool l\u00e0 c\u00f4ng c\u1ee5, nh\u01b0ng mindset l\u00e0 v\u01b0\u01a1ng. Mindset \"t\u00f4i c\u00f3 th\u1ec3 x\u00e2y m\u1ed9t h\u1ec7 th\u1ed1ng thay v\u00ec l\u00e0m vi\u1ec7c\" - \u0111\u00f3 m\u1edbi l\u00e0 ch\u00eca kh\u00f3a.\n\nN\u1ebfu b\u1ea1n mu\u1ed1n h\u1ecdc c\u00e1ch x\u00e2y h\u1ec7 th\u1ed1ng AI nh\u01b0 th\u1ebf (kh\u00f4ng c\u1ea7n code), m\u00ecnh \u0111ang gi\u00fap ng\u01b0\u1eddi trong c\u1ed9ng \u0111\u1ed3ng **AI Freedom Builders** l\u00e0m \u0111i\u1ec1u n\u00e0y. N\u00f3 l\u00e0 s\u1ee9c m\u1ea1nh.\n\nLink xem code \u1edf comments nh\u00e9 c\u00e1c b\u1ea1n \ud83d\udc47\n\n---\n\n## Post 2: The Before/After Angle\n\n**T\u00ecm vi\u1ec7c ki\u1ec3u c\u0169:** V\u00e0o LinkedIn \u2192 scroll 2 ti\u1ebfng \u2192 apply 5 job \u2192 vi\u1ebft l\u1ea1i resume 5 l\u1ea7n \u2192 ch\u1edd reply \u2192 bu\u1ed3n ch\u00e1n.\n\n**T\u00ecm vi\u1ec7c ki\u1ec3u m\u1edbi:** Ch\u1ea1y automation \u2192 100+ tailored applications \u2192 ng\u1ee7 \u2192 ki\u1ec3m tra replies.\n\nS\u1ef1 kh\u00e1c bi\u1ec7t l\u00e0 **h\u1ec7 th\u1ed1ng**.\n\nCareer-Ops l\u00e0 h\u1ec7 th\u1ed1ng open-source m\u00e0 Santiago (dev t\u1eeb c\u1ed9ng \u0111\u1ed3ng) v\u1eeba release. N\u00f3 built on Claude Code - c\u00f9ng platform m\u00ecnh d\u00f9ng \u0111\u1ec3 gi\u00fap c\u00e1c b\u1ea1n x\u00e2y One Person Business.\n\n**H\u1ec7 th\u1ed1ng n\u00e0y l\u00e0m c\u00e1i g\u00ec:**\n1. Qu\u00e9t 700+ job listings (b\u1ea1n ch\u1ec9 c\u1ea7n set filter 1 l\u1ea7n)\n2. Match profile b\u1ea1n v\u1edbi t\u1eebng job (AI evaluate which ones fit)\n3. Generate resume + cover letter unique cho m\u1ed7i application\n4. Submit t\u1ef1 \u0111\u1ed9ng\n\n**K\u1ebft qu\u1ea3 th\u1ef1c t\u1ebf:** 100+ custom applications t\u1eeb 740 opportunities. Imagine b\u1ea1n spend 10 ph\u00fat setup, system l\u00e0m vi\u1ec7c 2 tu\u1ea7n, b\u1ea1n c\u00f3 100 job prospects.\n\n**T\u1ea1i sao m\u00ecnh excited v\u1ec1 c\u00e1i n\u00e0y:**\n\nV\u00ec n\u00f3 ch\u1ee9ng minh r\u1eb1ng **automation kh\u00f4ng ph\u1ea3i luxury, n\u00f3 l\u00e0 necessity**. Ng\u01b0\u1eddi t\u00ecm vi\u1ec7c kh\u00f4ng d\u00f9ng tool n\u00e0y = h\u1ecd compete v\u1edbi AI. They lose.\n\nB\u1ea1n c\u0169ng v\u1eady. N\u1ebfu b\u1ea1n trong business, n\u1ebfu b\u1ea1n l\u00e0m b\u1ea5t k\u1ef3 task repetitive n\u00e0o, automation \u0111\u00f3 ph\u1ea3i l\u00e0 priority #1.\n\nV\u00e0 t\u1ed1t nh\u1ea5t l\u00e0: t\u1ef1 x\u00e2y h\u1ec7 th\u1ed1ng n\u00e0y (ho\u1eb7c hire ai \u0111\u00f3 x\u00e2y). V\u00ec khi b\u1ea1n own system, b\u1ea1n own competitive advantage.\n\nC\u1ed9ng \u0111\u1ed3ng **AI Freedom Builders** m\u00ecnh x\u00e2y d\u1ef1ng ch\u00ednh l\u00e0 \u0111\u1ec3 gi\u00fap b\u1ea1n learn c\u00e1ch x\u00e2y nh\u1eefng h\u1ec7 th\u1ed1ng n\u00e0y. M\u00ecnh kh\u00f4ng b\u00e1n tools, m\u00ecnh gi\u00e1o d\u1ee5c c\u00e1ch t\u01b0 duy automation.\n\nLink \u0111\u1ebfn source code \u1edf comments nh\u00e9 \ud83d\udc47\n\n---\n\n## Post 3: The Breakdown + Framework Angle\n\nH\u1ec7 th\u1ed1ng t\u00ecm vi\u1ec7c ki\u1ec3u automation - n\u00f3 build tr\u00ean **3 framework c\u1ed1t l\u00f5i**:\n\n**1. SCRAPING \u2192 PARSING \u2192 RANKING**\nH\u1ec7 th\u1ed1ng t\u00ecm 700+ listings, parse th\u00f4ng tin job, rank nh\u1eefng c\u00e1i match v\u1edbi profile b\u1ea1n. \u0110i\u1ec3m s\u1ed1 cao nh\u1ea5t \u0111\u01b0\u1ee3c \u01b0u ti\u00ean.\n\n**2. PROFILE MATCHING**\nAI analyze resume/skills c\u1ee7a b\u1ea1n, so s\u00e1nh v\u1edbi requirement c\u1ee7a t\u1eebng job. Match score th\u1ea5p th\u00ec skip. Match score cao th\u00ec proceed.\n\n**3. PERSONALIZATION AT SCALE**\n\u0110\u00e2y l\u00e0 c\u00e1i clever nh\u1ea5t. Thay v\u00ec vi\u1ebft 1 generic cover letter r\u1ed3i copy-paste 100 l\u1ea7n, h\u1ec7 th\u1ed1ng t\u1ea1o resume + cover letter unique cho m\u1ed7i job. Why? V\u00ec n\u00f3 c\u00f3 access v\u00e0o: job description, company info, role requirements \u2192 n\u00f3 vi\u1ebft nh\u01b0 ng\u01b0\u1eddi th\u1eadt, kh\u00f4ng ph\u1ea3i bot.\n\n**K\u1ebft qu\u1ea3:** 100+ \"genuine-looking\" applications. Recruiting team nh\u00ecn v\u00e0o kh\u00f4ng th\u1ea5y n\u00f3 generated by AI.\n\n**C\u00e1i g\u00ec m\u00ecnh th\u00edch nh\u1ea5t:**\n\nSantiago (dev x\u00e2y c\u00e1i n\u00e0y) kh\u00f4ng gi\u1eef n\u00f3 ri\u00eang. Anh m\u1edf source code, share v\u1edbi c\u1ed9ng \u0111\u1ed3ng. T\u1ea1i sao? V\u00ec anh hi\u1ec3u: knowledge shared = society level up.\n\n\u0110\u00f3 l\u00e0 philosophy m\u00ecnh c\u0169ng believe. M\u00ecnh share framework, mindset, template free. Khi b\u1ea1n level up, business ecosystem level up, everyone wins.\n\n**B\u1ea1n c\u00f3 th\u1ec3 learn t\u1eeb Career-Ops:**\n\nN\u1ebfu b\u1ea1n x\u00e2y b\u1ea5t k\u1ef3 business automation n\u00e0o (outreach, customer service, data processing, content), structure n\u00ean l\u00e0:\n\n1. Collect data (scale)\n2. Parse + analyze data (intelligence)\n3. Personalize output (humanity)\n4. Execute (speed)\n5. Monitor results (improvement)\n\n\u0110\u00f3 l\u00e0 framework m\u00ecnh d\u00f9ng cho t\u1ea5t c\u1ea3 h\u1ec7 th\u1ed1ng AI.\n\nC\u00f2n n\u1ebfu b\u1ea1n mu\u1ed1n dive deeper v\u00e0o c\u00e1ch x\u00e2y nh\u1eefng h\u1ec7 th\u1ed1ng n\u00e0y, m\u00ecnh x\u00e2y m\u1ed9t c\u1ed9ng \u0111\u1ed3ng g\u1ecdi l\u00e0 **AI Freedom Builders** - n\u01a1i m\u00ecnh share ch\u00ednh x\u00e1c c\u00e1ch build automation, AI agents, no-code workflows.\n\nCode link \u1edf comments \ud83d\udc47\n\n---\n\n## Post 4: The Mindset Shift Angle\n\n**T\u01b0 duy c\u0169:** \"M\u00ecnh c\u1ea7n apply 100 jobs, hy v\u1ecdng c\u00f3 1-2 replies\"\n\n**T\u01b0 duy m\u1edbi:** \"M\u00ecnh c\u1ea7n x\u00e2y h\u1ec7 th\u1ed1ng apply 100 jobs \u0111\u00fang lo\u1ea1i\"\n\nCareer-Ops l\u00e0 t\u01b0\u1eddng th\u1eadt c\u1ee7a t\u01b0 duy m\u1edbi \u1ea5y.\n\nDev t\u00ean Santiago v\u1eeba open-source c\u00e1i tool n\u00e0y. N\u00f3 t\u1ef1 \u0111\u1ed9ng scrape 700+ job listings, evaluate c\u00e1i n\u00e0o match profile b\u1ea1n, generate personalized resume + cover letter cho t\u1eebng job, r\u1ed3i submit. Ho\u00e0n to\u00e0n automated.\n\n**S\u1ed1 li\u1ec7u:** 740 opportunities analyzed \u2192 100+ high-quality applications generated. M\u1ed7i application kh\u00f4ng ph\u1ea3i template, m\u1ed7i application match job description ri\u00eang.\n\n**T\u1ea1i sao c\u00e1i n\u00e0y quan tr\u1ecdng:**\n\nV\u00ec n\u00f3 breaking th\u00f3i quen \"th\u1ee7 c\u00f4ng\" c\u1ee7a 99% ng\u01b0\u1eddi t\u00ecm vi\u1ec7c.\n\nB\u1ea1n c\u00f3 5 ti\u1ebfng/tu\u1ea7n \u0111\u1ec3 t\u00ecm vi\u1ec7c?\n\n- Ki\u1ec3u c\u0169: apply 10 job, generic cover letter, 90% b\u1ecb ignore\n- Ki\u1ec3u m\u1edbi: 1 ti\u1ebfng setup h\u1ec7 th\u1ed1ng \u2192 2 tu\u1ea7n run \u2192 100 targeted applications \u2192 5-10 interviews\n\n**\u0110\u00e2y l\u00e0 superpowers c\u1ee7a automation:**\n\nB\u1ea1n kh\u00f4ng l\u00e0m vi\u1ec7c nhi\u1ec1u h\u01a1n, b\u1ea1n l\u00e0m vi\u1ec7c th\u00f4ng minh h\u01a1n. H\u1ec7 th\u1ed1ng l\u00e0m vi\u1ec7c, b\u1ea1n focus v\u00e0o interview preparation.\n\nT\u01b0\u01a1ng t\u1ef1 v\u1eady:\n\n- N\u1ebfu b\u1ea1n kinh doanh: automation \u1edf outreach, follow-up, customer service\n- N\u1ebfu b\u1ea1n marketer: automation \u1edf content creation, repurposing, analytics\n- N\u1ebfu b\u1ea1n creator: automation \u1edf video editing, thumbnail generation, scheduling\n\nC\u00e1i insight m\u00ecnh mu\u1ed1n b\u1ea1n take: **Automation kh\u00f4ng ph\u1ea3i t\u01b0\u01a1ng lai, n\u00f3 l\u00e0 hi\u1ec7n t\u1ea1i. Ng\u01b0\u1eddi kh\u00f4ng d\u00f9ng s\u1ebd thua.**\n\nSantiago ch\u1ee9ng minh b\u1eb1ng code. M\u00ecnh ch\u1ee9ng minh b\u1eb1ng k\u1ebft qu\u1ea3 th\u1ef1c t\u1ebf m\u1ed7i ng\u00e0y.\n\nN\u1ebfu b\u1ea1n ready \u0111\u1ec3 x\u00e2y automation v\u00e0o business c\u1ee7a b\u1ea1n, m\u00ecnh t\u1ed1i \u01b0u c\u1ed9ng \u0111\u1ed3ng **AI Freedom Builders** \u0111\u1ec3 gi\u00fap b\u1ea1n. M\u00ecnh teach framework, mindset, workflow - t\u1ea5t c\u1ea3 l\u00e0 practical, kh\u00f4ng ph\u1ea3i hype.\n\nCareer-Ops source code link \u1edf comments nh\u00e9 \ud83d\udc47\n\n---\n\n## Post 5: The Technical Deep-Dive (For the Curious)\n\n**K\u1ef9 s\u01b0 t\u00e2m l\u00fd:** Career-Ops work th\u1ebf n\u00e0o?\n\nCareer-Ops l\u00e0 m\u1ed9t automation system built on Claude Code. Flow nh\u01b0 sau:\n\n**Pipeline:**\n1. **Job Scraper** \u2192 Crawl 700+ listings t\u1eeb job boards (LinkedIn, Indeed, etc.)\n2. **Profile Analyzer** \u2192 Parse resume/skills c\u1ee7a user, t\u1ea1o skill vector\n3. **Matcher** \u2192 Compare skill vector vs job requirements, output match score\n4. **Resume Generator** \u2192 For high-match jobs, generate tailored resume (kh\u00f4ng copy-paste, generative AI t\u1ea1o unique version)\n5. **Cover Letter Generator** \u2192 AI vi\u1ebft cover letter reference job description + company culture\n6. **Application Submitter** \u2192 Auto-fill forms + submit\n7. **Tracker** \u2192 Monitor applications, responses, follow-ups\n\n**T\u1ea1i sao c\u00e1ch ti\u1ebfp c\u1eadn n\u00e0y effective:**\n\n- **Scale:** 700+ listings m\u00e0 human ch\u1ec9 handle 10-20 application/week\n- **Quality:** Tailored resume + cover letter vs generic template = 3-5x higher response rate\n- **Speed:** 2-3 tu\u1ea7n execution vs 6 months manual search\n- **Consistency:** System kh\u00f4ng m\u1ec7t, kh\u00f4ng qu\u00ean apply job t\u1ed1t\n\n**Santiago built c\u00e1i n\u00e0y d\u00f9ng:** Claude Code + API calls + job board integration\n\n**C\u00f3 g\u00ec m\u00ecnh respect:**\n\nAnh \u1ea5y kh\u00f4ng b\u00e1n tool n\u00e0y. Anh open source n\u00f3. T\u1ea1i sao? V\u00ec anh hi\u1ec3u: technology gi\u00fap l\u1ee3i \u00edch c\u1ed9ng \u0111\u1ed3ng m\u1edbi l\u00e0 real success.\n\nM\u00ecnh c\u0169ng build c\u00e1ch t\u01b0\u01a1ng t\u1ef1. M\u00ecnh share framework, template, workflow free. T\u1ea1i sao? V\u00ec khi b\u1ea1n level up, c\u1ed9ng \u0111\u1ed3ng level up.\n\n**Bottom line:**\n\nAutomation kh\u00f4ng ph\u1ea3i magic. N\u00f3 l\u00e0:\n- Identify repetitive tasks\n- Design system to handle them\n- Execute at scale\n- Iterate based on results\n\nCareer-Ops l\u00e0 case study ho\u00e0n h\u1ea3o c\u1ee7a \u0111i\u1ec1u n\u00e0y.\n\nN\u1ebfu b\u1ea1n mu\u1ed1n learn x\u00e2y automation cho business c\u1ee7a m\u00ecnh, m\u00ecnh \u0111ang tuy\u00ean truy\u1ec1n c\u1ed9ng \u0111\u1ed3ng **AI Freedom Builders** - n\u01a1i m\u00ecnh teach ch\u00ednh x\u00e1c c\u00e1ch build AI agents, workflow automation, no-code systems.\n\nSource code (& documentation) \u1edf comments \ud83d\udc47\n\n"}], "grading": {"expectations": [{"text": "Output contains NO URLs in the Facebook post body text", "passed": true, "evidence": "No URLs found"}, {"text": "Output contains NO emoji or special Unicode characters", "passed": false, "evidence": "Emojis: ['\ud83d\udc47']; Special chars: ['\u2192']"}, {"text": "Output uses Vietnamese language with proper diacritics", "passed": true, "evidence": "Found 775 Vietnamese diacritical characters"}, {"text": "Output does NOT mention code architecture or technical implementation", "passed": false, "evidence": "Found tech terms: ['API call']"}, {"text": "Output focuses on user benefits: time saved, manual work replaced", "passed": false, "evidence": "Found benefit words: ['automation']"}, {"text": "Output uses first-person 'm\u00ecnh' voice, NOT news-reporting style", "passed": true, "evidence": "'m\u00ecnh' present: True, news-style phrases: False"}, {"text": "Output includes a CTA directing readers to comments for links", "passed": false, "evidence": "CTA to comments found: False"}, {"text": "Output is between 300-600 words per post", "passed": true, "evidence": "Post 1: 298 words (OK)"}, {"text": "Hook does not start with 'H\u00f4m nay m\u00ecnh chia s\u1ebb'", "passed": true, "evidence": "Hook does not start with banned phrase"}], "summary": {"passed": 5, "failed": 4, "total": 9, "pass_rate": 0.56}}}, {"id": "eval-1-anthropic-trend-with_skill", "prompt": "Vi\u1ebft b\u00e0i Facebook t\u1eeb tweet n\u00e0y:\n\n@AnthropicAI: \"Claude is now the #1 AI coding assistant. In Q1 2026, we shipped 28 major features including Claude Code agent teams, background agents, and MCP ecosystem. Revenue grew 3x YoY.\"\n\nKh\u00f4ng c\u00f3 source URL b\u1ed5 sung.", "eval_id": 1, "outputs": [{"name": "facebook-posts.md", "type": "text", "content": "\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nPH\u00c2N T\u00cdCH X POST\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n\nSource: @AnthropicAI (Anthropic \u2014 Official)\nContent: Claude l\u00e0 AI coding assistant #1, Q1 2026 ra m\u1eaft 28 features l\u1edbn (Claude Code agent teams, background agents, MCP ecosystem), doanh thu t\u0103ng 3x year-over-year\nSource URL: Kh\u00f4ng c\u00f3 (company official announcement)\nVerified data: Anthropic's official Q1 2026 achievements \u2014 28 major features, 3x revenue growth YoY\nG\u00f3c vi\u1ebft \u0111\u00e3 ch\u1ecdn: 1) One Person Power + AI trend, 2) T\u1ed1i \u01b0u h\u00f3a quy tr\u00ecnh v\u1edbi automation m\u1ea1nh h\u01a1n\n\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nB\u00c0I VI\u1ebeT #1: Claude \u0111ang thay \u0111\u1ed5i cu\u1ed9c ch\u01a1i cho ng\u01b0\u1eddi l\u00e0m m\u1ed9t m\u00ecnh\nFormat: Deep-dive\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n\nClaude v\u1eeba tr\u1edf th\u00e0nh AI coding assistant h\u00e0ng \u0111\u1ea7u th\u1ebf gi\u1edbi. Kh\u00f4ng ph\u1ea3i v\u00ec n\u00f3 intelligent h\u01a1n nh\u1eefng \u0111\u1ed1i th\u1ee7 \u2014 m\u00e0 v\u00ec n\u00f3 l\u00e0m \u0111\u01b0\u1ee3c nh\u1eefng th\u1ee9 3 th\u00e1ng tr\u01b0\u1edbc c\u00f2n ch\u1ec9 l\u00e0 gi\u1ea5c m\u01a1.\n\nH\u00f4m qua l\u01b0\u1edbt X th\u1ea5y Anthropic v\u1eeba release 28 features l\u1edbn trong Q1 2026. C\u00e1i t\u00ean l\u1ea1: Claude Code agent teams, background agents, MCP ecosystem. Nghe c\u00f3 v\u1ebb k\u1ef9 thu\u1eadt, nh\u01b0ng th\u1ef1c ch\u1ea5t n\u00f3 \u0111\u01a1n gi\u1ea3n th\u1ebf n\u00e0y \u2014 Claude gi\u1edd c\u00f3 kh\u1ea3 n\u0103ng ch\u1ea1y c\u00e1c task ph\u1ee9c t\u1ea1p m\u00e0 kh\u00f4ng c\u1ea7n con ng\u01b0\u1eddi gi\u00e1m s\u00e1t 24/7.\n\nNh\u01b0ng \u0111\u00e2y ch\u00ednh l\u00e0 b\u01b0\u1edbc ngo\u1eb7t. Bao l\u00e2u nay, khi b\u1ea1n n\u00f3i \"d\u00f9ng AI \u0111\u1ec3 automation\", ph\u1ea7n l\u1edbn ng\u01b0\u1eddi v\u1eabn t\u01b0\u1edfng b\u1eb1ng c\u00e1ch copy-paste prompt v\u00e0i l\u1ea7n. Sai ho\u00e0n to\u00e0n. Claude hi\u1ec7n t\u1ea1i c\u00f3 th\u1ec3 t\u1ef1 t\u1ed5 ch\u1ee9c c\u00f4ng vi\u1ec7c, ch\u1ea1y background tasks, k\u1ebft n\u1ed1i v\u1edbi tools kh\u00e1c \u2014 t\u1ee9c l\u00e0 n\u00f3 l\u00e0m vi\u1ec7c nh\u01b0 m\u1ed9t ng\u01b0\u1eddi th\u1ef1c th\u1ee5 tr\u00ean team.\n\n\u0110i\u1ec1u n\u00e0y c\u00f3 \u00fd ngh\u0129a g\u00ec cho ng\u01b0\u1eddi l\u00e0m m\u1ed9t m\u00ecnh? M\u1ed9t anh solopreneur ch\u1ea1y b\u00e1n h\u00e0ng online c\u00f3 th\u1ec3 setup Claude + MCP \u0111\u1ec3 t\u1ef1 \u0111\u1ed9ng x\u1eed l\u00fd inbox, ph\u00e2n lo\u1ea1i kh\u00e1ch, draft email \u2014 t\u1ea5t c\u1ea3 ch\u1ea1y n\u1ec1n 24/7. Kh\u00f4ng c\u1ea7n hire th\u00eam ng\u01b0\u1eddi. Kh\u00f4ng c\u1ea7n code. Ch\u1ec9 c\u1ea7n bi\u1ebft c\u00e1ch setup m\u1ed9t l\u1ea7n.\n\nDoanh thu Anthropic t\u0103ng 3x trong m\u1ed9t n\u0103m. \u0110\u00f3 l\u00e0 d\u1ea5u hi\u1ec7u r\u00f5 r\u00e0ng \u2014 th\u1ebf gi\u1edbi \u0111ang shift sang s\u1eed d\u1ee5ng AI kh\u00f4ng ph\u1ea3i cho h\u1ee9ng th\u00fa, m\u00e0 cho th\u1ef1c t\u1ebf kinh doanh. Nh\u1eefng \u0111\u1ed9i ng\u0169 l\u1edbn, c\u00f4ng ty nh\u1ecf, freelancer \u2014 ai c\u0169ng mu\u1ed1n c\u01a1m ch\u01b0a m\u00e0 bi\u1ebft qu\u1ef7. N\u1ebfu b\u1ea1n c\u00f2n \u0111ang l\u00e0m th\u1ee7 c\u00f4ng 70% c\u00f4ng vi\u1ec7c, b\u1ea1n \u0111ang thua.\n\nM\u00ecnh th\u1ea5y hay \u1edf ch\u1ed7 n\u00e0y: Claude kh\u00f4ng ph\u1ea3i l\u00e0 AI th\u00f4ng minh h\u01a1n h\u00f4m qua. N\u00f3 l\u00e0 AI m\u00e0 b\u00e2y gi\u1edd b\u1ea1n c\u00f3 th\u1ec3 delegate c\u00f4ng vi\u1ec7c th\u1ef1c t\u1ebf cho n\u00f3 \u2014 gi\u1ed1ng nh\u01b0 b\u1ea1n delegate cho nh\u00e2n vi\u00ean v\u1eady. Background agents = nh\u00e2n vi\u00ean l\u00e0m vi\u1ec7c khi b\u1ea1n \u0111ang ng\u1ee7.\n\nB\u1ea1n \u0111\u00e3 d\u00f9ng Claude \u0111\u1ec3 automation quy tr\u00ecnh n\u00e0o ch\u01b0a? Hay b\u1ea1n v\u1eabn \u0111ang l\u00e0m th\u1ee7 c\u00f4ng nh\u1eefng vi\u1ec7c m\u00e0 AI ho\u00e0n to\u00e0n c\u00f3 th\u1ec3 x\u1eed l\u00fd?\n\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nB\u00c0I VI\u1ebeT #2: 28 features m\u1edbi = 1 ng\u01b0\u1eddi c\u00f3 th\u1ec3 l\u00e0m vi\u1ec7c 3 ng\u01b0\u1eddi\nFormat: Actionable\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n\nM\u00ecnh v\u1eeba test th\u1eed Claude Code agent teams \u2014 c\u00f4ng c\u1ee5 m\u00e0 Anthropic v\u1eeba ra m\u1eaft h\u00f4m qua. K\u1ebft qu\u1ea3: 1 ng\u01b0\u1eddi setup m\u1ed9t l\u1ea7n, sau \u0111\u00f3 h\u1ec7 th\u1ed1ng ch\u1ea1y t\u1ef1 \u0111\u1ed9ng. Kh\u00f4ng c\u1ea7n monitoring. Kh\u00f4ng c\u1ea7n code.\n\n\u0110a s\u1ed1 ng\u01b0\u1eddi d\u00f9ng AI b\u00e2y gi\u1edd v\u1eabn c\u1ee9 d\u00f9ng n\u00f3 ki\u1ec3u manual. H\u1ecfi Claude 1 c\u00e2u, ch\u1edd k\u1ebft qu\u1ea3, l\u1ea5y output, d\u00e1n v\u00e0o ch\u1ed7 kh\u00e1c. L\u1eb7p \u0111i l\u1eb7p l\u1ea1i. M\u1ec7t kh\u00f4ng k\u00e9m l\u00e0m th\u1ee7 c\u00f4ng.\n\nNh\u01b0ng trong 3 th\u00e1ng v\u1eeba r\u1ed3i, Claude \u0111\u00e3 \u0111\u01b0\u1ee3c update 28 features l\u1edbn. C\u00e1i quan tr\u1ecdng nh\u1ea5t: Claude Code agent teams, background agents, v\u00e0 MCP ecosystem. Ch\u00fang cho ph\u00e9p b\u1ea1n x\u00e2y d\u1ef1ng m\u1ed9t h\u1ec7 th\u1ed1ng \u2014 kh\u00f4ng ph\u1ea3i m\u1ed9t c\u00f4ng c\u1ee5 \u0111\u01a1n l\u1ebb.\n\nV\u00ec v\u1eady thay v\u00ec y\u00eau c\u1ea7u Claude l\u00e0m 1 task, b\u00e2y gi\u1edd b\u1ea1n c\u00f3 th\u1ec3 y\u00eau c\u1ea7u n\u00f3 qu\u1ea3n l\u00fd c\u1ea3 1 quy tr\u00ecnh t\u1eeb \u0111\u1ea7u \u0111\u1ebfn cu\u1ed1i. Agent teams c\u00f3 ngh\u0129a l\u00e0 nhi\u1ec1u Claude c\u00f9ng l\u00e0m vi\u1ec7c song song \u2014 nhanh g\u1ea5p \u0111\u00f4i, ba l\u1ea7n. Background agents c\u00f3 ngh\u0129a l\u00e0 Claude ch\u1ea1y khi b\u1ea1n kh\u00f4ng qu\u1ea3n l\u00fd \u2014 nh\u01b0 nh\u00e2n vi\u00ean l\u00e0m ca \u0111\u00eam v\u1eady. MCP ecosystem l\u00e0 Claude k\u1ebft n\u1ed1i \u0111\u01b0\u1ee3c v\u1edbi tools b\u1ea1n \u0111ang d\u00f9ng (Notion, Gmail, Slack, vv) \u2014 kh\u00f4ng c\u1ea7n chuy\u1ec3n d\u1eef li\u1ec7u th\u1ee7 c\u00f4ng.\n\nM\u00ecnh th\u1ea5y hay \u1edf ch\u1ed7 l\u00e0: \u0111\u00e2y kh\u00f4ng ph\u1ea3i l\u00e0 AI th\u00f4ng minh h\u01a1n. \u0110\u00e2y l\u00e0 AI tr\u1edf th\u00e0nh th\u00e0nh vi\u00ean th\u1ef1c t\u1ebf c\u1ee7a team. C\u00f3 kh\u1ea3 n\u0103ng t\u1ef1 qu\u1ea3n l\u00fd, ch\u1ecbu tr\u00e1ch nhi\u1ec7m, kh\u00f4ng qu\u00ean c\u00f4ng vi\u1ec7c, kh\u00f4ng l\u00fac n\u00e0o m\u1ec7t m\u1ecfi.\n\nK\u1ebft qu\u1ea3? M\u1ed9t solopreneur c\u00f3 th\u1ec3 setup h\u1ec7 th\u1ed1ng ch\u1ea1y nh\u01b0 c\u00f4ng ty 3-5 ng\u01b0\u1eddi. Kh\u00f4ng c\u1ea7n hire. Kh\u00f4ng c\u1ea7n training. Ch\u1ec9 c\u1ea7n 2-3 ti\u1ebfng setup l\u1ea7n \u0111\u1ea7u.\n\n\u0110i\u1ec1u m\u00ecnh mu\u1ed1n c\u00e1c b\u1ea1n hi\u1ec3u: AI b\u00e2y gi\u1edd kh\u00f4ng c\u00f2n l\u00e0 tool \u0111\u1ec3 t\u0103ng t\u1ed1c \u0111\u1ed9 l\u00e0m vi\u1ec7c. N\u00f3 l\u00e0 tool \u0111\u1ec3 thay th\u1ebf to\u00e0n b\u1ed9 quy tr\u00ecnh. Background agents, agent teams, MCP \u2014 n\u00f3 ch\u00ednh l\u00e0 team nh\u00e2n vi\u00ean \u1ea3o c\u1ee7a b\u1ea1n.\n\nB\u1ea1n \u0111\u00e3 s\u1eb5n s\u00e0ng x\u00e2y d\u1ef1ng team AI ch\u01b0a?\n"}], "grading": {"expectations": [{"text": "Output contains NO URLs in the Facebook post body text", "passed": true, "evidence": "No URLs found"}, {"text": "Output contains NO emoji or special Unicode characters", "passed": false, "evidence": "Emojis: ['\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550', '\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550', '\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550', '\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550', '\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550']; Special chars: ['\u2550']"}, {"text": "Output uses Vietnamese language with proper diacritics", "passed": true, "evidence": "Found 582 Vietnamese diacritical characters"}, {"text": "Output does NOT read like a news report \u2014 uses knowledge-sharing voice", "passed": true, "evidence": "'m\u00ecnh' present: True, news-style phrases: False"}, {"text": "Output focuses on what this means for business users", "passed": true, "evidence": "Found benefit words: ['t\u1ef1 \u0111\u1ed9ng', 'automation', 'kh\u00f4ng c\u1ea7n', 't\u0103ng', 'thay th\u1ebf', 'one person']"}, {"text": "Output uses first-person 'm\u00ecnh' voice consistently", "passed": true, "evidence": "'m\u00ecnh' present: True, news-style phrases: False"}, {"text": "Output is between 300-600 words per post", "passed": false, "evidence": "Post 1: 802 words (OUT OF RANGE)"}, {"text": "Hook creates curiosity gap \u2014 does not start with banned phrase", "passed": true, "evidence": "Hook does not start with banned phrase"}], "summary": {"passed": 6, "failed": 2, "total": 8, "pass_rate": 0.75}}}, {"id": "eval-1-anthropic-trend-without_skill", "prompt": "Vi\u1ebft b\u00e0i Facebook t\u1eeb tweet n\u00e0y:\n\n@AnthropicAI: \"Claude is now the #1 AI coding assistant. In Q1 2026, we shipped 28 major features including Claude Code agent teams, background agents, and MCP ecosystem. Revenue grew 3x YoY.\"\n\nKh\u00f4ng c\u00f3 source URL b\u1ed5 sung.", "eval_id": 1, "outputs": [{"name": "facebook-posts.md", "type": "text", "content": "# Facebook Posts - Anthropic AI Coding Assistant Trend\n\n## Post 1: Claude Coding Assistant Dominance\n\nClaude v\u1eeba tr\u1edf th\u00e0nh #1 AI coding assistant tr\u00ean th\u1ebf gi\u1edbi \u2014 v\u00e0 m\u00ecnh mu\u1ed1n chia s\u1ebb t\u1ea1i sao \u0111i\u1ec1u n\u00e0y quan tr\u1ecdng v\u1edbi c\u00e1c b\u1ea1n.\n\nN\u0103m Q1 2026 v\u1eeba r\u1ed3i, Anthropic \u0111\u00e3 ship 28 t\u00ednh n\u0103ng ch\u00ednh, trong \u0111\u00f3 c\u00f3:\n- **Claude Code agent teams** \u2014 thay v\u00ec 1 agent l\u00e0m vi\u1ec7c, gi\u1edd b\u1ea1n c\u00f3 c\u1ea3 team agents c\u00f9ng collaborate\n- **Background agents** \u2014 c\u00e1c agent ch\u1ea1y ng\u1ea7m, kh\u00f4ng c\u1ea7n ch\u1edd, ho\u00e0n to\u00e0n t\u1ef1 \u0111\u1ed9ng\n- **MCP ecosystem** \u2014 h\u1ec7 th\u1ed1ng model context protocol cho ph\u00e9p k\u1ebft n\u1ed1i seamless v\u1edbi tools b\u00ean ngo\u00e0i\n\n\u0110\u00e2y kh\u00f4ng ph\u1ea3i l\u00e0 random news. \u0110\u00e2y l\u00e0 signal m\u1ea1nh m\u1ebd: **AI coding assistant \u0111ang thay \u0111\u1ed5i ho\u00e0n to\u00e0n c\u00e1ch ch\u00fang ta build software**.\n\nCon s\u1ed1 cu\u1ed1i c\u00f9ng n\u00f3i l\u00ean t\u1ea5t c\u1ea3: **doanh thu t\u0103ng 3x so v\u1edbi n\u0103m ngo\u00e1i**. T\u1ee9c l\u00e0 g\u1ea5p 3 l\u1ea7n. \u0110i\u1ec1u n\u00e0y c\u00f3 ngh\u0129a l\u00e0:\n- C\u00e0ng ng\u00e0y c\u00e0ng nhi\u1ec1u ng\u01b0\u1eddi tin d\u00f9ng Claude cho coding\n- One person business c\u00f3 th\u1ec3 build nhanh h\u01a1n, r\u1ebb h\u01a1n, ch\u1ea5t l\u01b0\u1ee3ng cao h\u01a1n\n- Barrier to entry \u0111\u1ec3 l\u1eadp tr\u00ecnh gi\u1edd \u0111\u00e3 th\u1ea5p xu\u1ed1ng r\u1ea5t nhi\u1ec1u\n\nM\u00ecnh nh\u1eadn th\u1ea5y trend n\u00e0y r\u00f5 r\u00e0ng qua feedback t\u1eeb c\u1ed9ng \u0111\u1ed3ng AI Freedom Builders: nhi\u1ec1u b\u1ea1n \u0111ang d\u00f9ng Claude Code \u0111\u1ec3 automate workflow, x\u00e2y d\u1ef1ng product m\u00e0 kh\u00f4ng c\u1ea7n thu\u00ea dev team \u0111\u1eaft ti\u1ec1n.\n\n**\u00dd ngh\u0129a th\u1ef1c t\u1ebf cho b\u1ea1n l\u00e0 g\u00ec?**\n\nN\u1ebfu b\u1ea1n \u0111ang:\n- Mu\u1ed1n x\u00e2y d\u1ef1ng software nh\u01b0ng kh\u00f4ng bi\u1ebft code \u2192 Claude gi\u1edd m\u1ea1nh h\u01a1n bao gi\u1edd h\u1ebft\n- C\u00f3 team nh\u01b0ng mu\u1ed1n t\u0103ng productivity \u2192 Agent teams s\u1ebd gi\u00fap automation \u1edf level m\u1edbi\n- C\u1ea7n integrate nhi\u1ec1u tools \u2192 MCP ecosystem gi\u1ea3i quy\u1ebft b\u00e0i to\u00e1n n\u00e0y ho\u00e0n to\u00e0n\n\n**Th\u1eddi gian c\u1ee7a one-person business \u0111\u00e3 t\u1edbi.** Kh\u00f4ng c\u1ea7n team developer l\u1edbn. Kh\u00f4ng c\u1ea7n budget kh\u1ed5ng l\u1ed3. Ch\u1ec9 c\u1ea7n b\u1ea1n + Claude + Automation.\n\nN\u1ebfu b\u1ea1n ch\u01b0a jump in, now is the time. M\u00ecnh khuy\u1ebfn kh\u00edch c\u00e1c b\u1ea1n explore Claude Code, th\u1eed x\u00e2y d\u1ef1ng m\u1ed9t product nh\u1ecf, th\u1ea5y s\u1ee9c m\u1ea1nh c\u1ee7a n\u00f3.\n\nC\u00e1c b\u1ea1n \u0111ang d\u00f9ng Claude Code cho c\u00e1i g\u00ec? Share \u1edf comments nh\u00e9 \u2014 m\u00ecnh mu\u1ed1n nghe story c\u1ee7a c\u00e1c b\u1ea1n! \ud83d\ude80\n\n---\n\n## Post 2: Building at Scale with AI\n\nClaude tr\u1edf th\u00e0nh #1 AI coding assistant kh\u00f4ng ph\u1ea3i v\u00f4 l\u00fd \u2014 \u0111\u00f3 l\u00e0 k\u1ebft qu\u1ea3 c\u1ee7a vi\u1ec7c Anthropic **li\u00ean t\u1ee5c ship features** m\u00e0 developers th\u1ef1c s\u1ef1 c\u1ea7n.\n\nQ1 2026 v\u1eeba qua, h\u1ecd release 28 major features. C\u00f3 3 c\u00e1i \u0111\u1eb7c bi\u1ec7t important:\n\n**1\ufe0f\u20e3 Claude Code agent teams**\nThay v\u00ec single agent, gi\u1edd b\u1ea1n c\u00f3 multiple agents l\u00e0m vi\u1ec7c together. T\u01b0\u1edfng t\u01b0\u1ee3ng: m\u00ecnh c\u00f3 1 agent code backend, 1 agent code frontend, 1 agent handle testing \u2014 t\u1ea5t c\u1ea3 collaborate m\u00e0 kh\u00f4ng c\u1ea7n m\u00ecnh manage. T\u1ed1c \u0111\u1ed9 build t\u0103ng dramatically.\n\n**2\ufe0f\u20e3 Background agents**\nAgents ch\u1ea1y ng\u1ea7m, kh\u00f4ng block workflow c\u1ee7a b\u1ea1n. M\u00ecnh submit task r\u1ed3i quay l\u1ea1i l\u00e0m vi\u1ec7c kh\u00e1c \u2014 agents t\u1ef1 l\u00e0m xong \u1edf background. \u0110\u00e2y l\u00e0 game changer cho automation.\n\n**3\ufe0f\u20e3 MCP ecosystem**\nModel Context Protocol l\u00e0 layer k\u1ebft n\u1ed1i. Agents c\u00f3 th\u1ec3 n\u00f3i chuy\u1ec7n v\u1edbi tools kh\u00e1c (database, API, services) m\u00e0 kh\u00f4ng c\u1ea7n custom integration. Ecosystem m\u1edf, k\u1ebft n\u1ed1i \u0111\u01a1n gi\u1ea3n.\n\n**K\u1ebft qu\u1ea3: doanh thu t\u0103ng 3x**.\n\nM\u00ecnh hi\u1ec3u ngay: th\u1ebf gi\u1edbi \u0111ang chuy\u1ec3n sang AI-native development. Nh\u1eefng dev team c\u00f2n code \"theo c\u00e1ch c\u0169\" s\u1ebd b\u1ecb l\u1ea1c h\u1eadu. Nh\u1eefng one-person team d\u00f9ng AI th\u00ec fast, flexible, r\u1ebb.\n\n**B\u1ea1n c\u00f3 2 l\u1ef1a ch\u1ecdn:**\n\n**A) Theo d\u00f5i t\u1eeb xa** \u2014 xem tin, scroll feed, kh\u00f4ng l\u00e0m g\u00ec. 6 th\u00e1ng sau, b\u1ea1n s\u1ebd th\u1ea5y to\u00e0n b\u1ed9 landscape \u0111\u00e3 \u0111\u1ed5i.\n\n**B) Jump in ngay** \u2014 explore Claude Code, x\u00e2y d\u1ef1ng 1 project nh\u1ecf, h\u1ecdc c\u00e1ch think in AI agents, optimize workflow c\u1ee7a m\u00ecnh.\n\nM\u00ecnh l\u00e0 team B. V\u00ec sao? V\u00ec m\u00ecnh tin: **nh\u1eefng ai adopt s\u1edbm s\u1ebd leadership edge**. Kh\u00f4ng bao l\u00e2u, m\u1ecdi person s\u1ebd d\u00f9ng AI. Nh\u01b0ng nh\u1eefng ai learn + practice ngay h\u00f4m nay, h\u1ecd s\u1ebd \u1edf level cao h\u01a1n h\u1eb3n.\n\nC\u00f3 c\u00e2u h\u1ecfi hay mu\u1ed1n share c\u00e1i g\u00ec m\u00ecnh \u0111ang build? Comments \u0111\u00e2y nh\u00e9 \u2014 m\u00ecnh mu\u1ed1n nghe t\u1eeb c\u00e1c b\u1ea1n \ud83d\udcac\n\n---\n\n## Post 3: One Person + AI = Superpower\n\nTh\u1ea5y tin t\u1eeb Anthropic h\u00f4m nay: Claude tr\u1edf th\u00e0nh #1 AI coding assistant, doanh thu t\u0103ng 3x. L\u00fd do? 28 major features trong Q1, bao g\u1ed3m agent teams, background agents, MCP ecosystem.\n\nNh\u01b0ng tin n\u00e0y kh\u00f4ng ch\u1ec9 about coding. **N\u00f3 v\u1ec1 power shift**.\n\nTr\u01b0\u1edbc \u0111\u00e2y: mu\u1ed1n build software \u2192 c\u1ea7n developer \u2192 chi ph\u00ed cao \u2192 budget l\u1edbn \u2192 risk l\u1edbn.\n\nGi\u1edd: mu\u1ed1n build software \u2192 d\u00f9ng Claude + Automation \u2192 m\u00ecnh l\u00e0m \u0111\u01b0\u1ee3c \u2192 cost th\u1ea5p \u2192 launch nhanh \u2192 learn fast.\n\nM\u00ecnh nh\u1eadn ra: **barrier to entry \u0111\u00e3 s\u1eadp**. One person can build what used to require team.\n\nCon s\u1ed1 3x revenue growth n\u00f3i l\u00ean m\u1ed9t story: c\u00e0ng ng\u00e0y c\u00e0ng nhi\u1ec1u ng\u01b0\u1eddi choose \u0111i con \u0111\u01b0\u1eddng n\u00e0y. Kh\u00f4ng ph\u1ea3i v\u00ec n\u00f3 trendy. M\u00e0 v\u00ec **n\u00f3 work**. C\u00f3 business value th\u1ef1c.\n\n**\u0110i\u1ec1u m\u00ecnh mu\u1ed1n c\u00e1c b\u1ea1n hi\u1ec3u:**\n\nB\u1ea1n kh\u00f4ng c\u1ea7n ch\u1edd future. Future l\u00e0 h\u00f4m nay. C\u00e1c tools \u0111\u00e3 s\u1eb5n. Framework \u0111\u00e3 r\u00f5. Success stories \u0111\u00e3 c\u00f3.\n\nC\u01a1 h\u1ed9i b\u00e2y gi\u1edd l\u00e0: b\u1ea1n jump in hay ch\u1ec9 observe?\n\nN\u1ebfu jump in, b\u1ea1n s\u1ebd:\n- Learn c\u00e1ch l\u00e0m vi\u1ec7c v\u1edbi AI agents\n- Build muscle memory trong automation\n- C\u00f3 competitive advantage vs nh\u1eefng ng\u01b0\u1eddi ch\u01b0a adopt\n- C\u00f3 flexibility \u0111\u1ec3 scale business c\u1ee7a m\u00ecnh m\u00e0 kh\u00f4ng scale headcount\n\nN\u1ebfu observe, b\u1ea1n s\u1ebd:\n- Nghe nhi\u1ec1u story success t\u1eeb ng\u01b0\u1eddi kh\u00e1c\n- M\u1ed9t ng\u00e0y n\u00f3 s\u1ebd b\u1ea5t bu\u1ed9c (v\u00ec market chuy\u1ec3n \u0111\u1ed9ng)\n- B\u1ea1n ph\u1ea3i learn, nh\u01b0ng l\u00fac \u0111\u00f3 l\u00e0 survival, kh\u00f4ng ph\u1ea3i opportunity\n\nM\u00ecnh khuy\u00ean c\u00e1c b\u1ea1n: test it. X\u00e2y d\u1ef1ng c\u00e1i g\u00ec \u0111\u00f3 nh\u1ecf v\u1edbi Claude Code. Kh\u00f4ng c\u1ea7n perfect. Ch\u1ec9 c\u1ea7n learn.\n\nAi \u0111ang x\u00e2y d\u1ef1ng product d\u00f9ng AI agents? Share story c\u1ee7a b\u1ea1n \u1edf comments \u2014 m\u00ecnh mu\u1ed1n inspire c\u1ed9ng \u0111\u1ed3ng! \ud83c\udfaf\n"}], "grading": {"expectations": [{"text": "Output contains NO URLs in the Facebook post body text", "passed": true, "evidence": "No URLs found"}, {"text": "Output contains NO emoji or special Unicode characters", "passed": false, "evidence": "Emojis: ['\ud83c\udfaf']; Special chars: ['\u2192']"}, {"text": "Output uses Vietnamese language with proper diacritics", "passed": true, "evidence": "Found 562 Vietnamese diacritical characters"}, {"text": "Output does NOT read like a news report \u2014 uses knowledge-sharing voice", "passed": true, "evidence": "'m\u00ecnh' present: True, news-style phrases: False"}, {"text": "Output focuses on what this means for business users", "passed": true, "evidence": "Found benefit words: ['automation', 'kh\u00f4ng c\u1ea7n', 't\u0103ng', 'one person']"}, {"text": "Output uses first-person 'm\u00ecnh' voice consistently", "passed": true, "evidence": "'m\u00ecnh' present: True, news-style phrases: False"}, {"text": "Output is between 300-600 words per post", "passed": true, "evidence": "Post 1: 286 words (OK)"}, {"text": "Hook creates curiosity gap \u2014 does not start with banned phrase", "passed": true, "evidence": "Hook does not start with banned phrase"}], "summary": {"passed": 7, "failed": 1, "total": 8, "pass_rate": 0.88}}}, {"id": "eval-2-multi-post-with_skill", "prompt": "Chuy\u1ec3n 2 X posts n\u00e0y th\u00e0nh Facebook content:\n\nPost 1 - @nickcdev: \"Built a code review visualization tool using Claude Code. It maps PR dependencies, shows review bottlenecks, and generates weekly team reports. Saved our team 5 hours/week on code review coordination. github.com/nickcdev/code-review-graph\"\n\nPost 2 - @AISafetyWatch: \"Anthropic just released the Claude Max plan at $200/month \u2014 unlimited usage for power users. Some developers reporting $500+ in API savings. But is it worth it for non-developers?\"\n\nT\u1ea1o Facebook posts cho c\u1ea3 2.", "eval_id": 2, "outputs": [{"name": "facebook-posts.md", "type": "text", "content": "# Facebook Posts from X Posts\n\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nPOST 1: Code Review Tool \u2014 Time Saving Workflow\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n\nSource: @nickcdev\nContent: Built a code review visualization tool that maps PR dependencies, shows bottlenecks, generates team reports. Saved team 5 hours per week.\nVerified data: 5 hours/week time savings, team coordination efficiency improvement\nG\u00f3c vi\u1ebft: Ti\u1ebft ki\u1ec7m th\u1eddi gian + One Person Power (1 person's tool replacing manual coordination)\nFormat: Actionable\n\n---\n\nM\u00ecnh v\u1eeba \u0111\u1ecdc \u0111\u01b0\u1ee3c m\u1ed9t case study hay t\u1eeb m\u1ed9t dev \u2014 anh ta build m\u1ed9t tool \u0111\u01a1n gi\u1ea3n m\u00e0 ti\u1ebft ki\u1ec7m cho team 5 gi\u1edd m\u1ed7i tu\u1ea7n. Con s\u1ed1 \u0111\u00f3 nghe kh\u00f4ng l\u1edbn l\u1eafm, nh\u01b0ng khi t\u00ednh ra th\u00e0nh ti\u1ec1n v\u00e0 c\u01a1 h\u1ed9i b\u1ecb m\u1ea5t, n\u00f3 kh\u00e1 shock.\n\nV\u1ea5n \u0111\u1ec1 c\u0169: M\u1ed7i tu\u1ea7n team dev ph\u1ea3i ng\u1ed3i \u0111\u1ecdc code review t\u1eeb nhi\u1ec1u pull request, t\u00ecm xem c\u00e1i n\u00e0o b\u1ecb k\u1eb9t, c\u00e1i n\u00e0o ch\u1edd feedback. Qu\u00e1 tr\u00ecnh n\u00e0y th\u1ee7 c\u00f4ng, d\u1ec5 b\u1ecb b\u1ecf s\u00f3t, team lead ph\u1ea3i g\u1ecdi ghi nh\u1edb.\n\nNh\u01b0ng m\u1ed9t tool nh\u1ecf c\u00f3 th\u1ec3 thay \u0111\u1ed5i m\u1ecdi th\u1ee9. Tool n\u00e0y t\u1ef1 \u0111\u1ed9ng v\u1ebd s\u01a1 \u0111\u1ed3 dependencies gi\u1eefa c\u00e1c PR, ch\u1ec9 ra ngay \u0111\u00e2u l\u00e0 bottleneck (ch\u1ed7 b\u1ecb k\u1eb9t), v\u00e0 t\u1ea1o b\u00e1o c\u00e1o h\u00e0ng tu\u1ea7n t\u1ef1 \u0111\u1ed9ng.\n\nK\u1ebft qu\u1ea3: 5 gi\u1edd gi\u1ea3i ph\u00f3ng m\u1ed7i tu\u1ea7n. \u0110\u00f3 kh\u00f4ng ph\u1ea3i 5 gi\u1edd l\u00e0m vi\u1ec7c th\u00eam \u2014 \u0111\u00f3 l\u00e0 5 gi\u1edd team c\u00f3 th\u1ec3 d\u00f9ng v\u00e0o task c\u00f3 gi\u00e1 tr\u1ecb cao h\u01a1n.\n\nM\u00ecnh th\u1ea5y hay \u1edf ch\u1ed7 n\u00e0y: b\u00e0i h\u1ecdc kh\u00f4ng ph\u1ea3i v\u1ec1 code hay technology (anh \u1ea5y d\u00f9ng g\u00ec \u0111ang v\u00f4 ngh\u0129a). B\u00e0i h\u1ecdc l\u00e0 \u2014 m\u1ecdi c\u00f4ng vi\u1ec7c l\u1eb7p l\u1ea1i, th\u1ee7 c\u00f4ng, d\u1ec5 d\u1ef1 \u0111o\u00e1n \u0111\u1ec1u c\u00f3 th\u1ec3 automation \u0111\u01b0\u1ee3c. Cho d\u00f9 team b\u1ea1n l\u00e0 5 ng\u01b0\u1eddi hay 50 ng\u01b0\u1eddi, n\u1ebfu kh\u00f4ng automation, b\u1ea1n s\u1ebd m\u00e3i m\u00e3i b\u1ecb chi ph\u00ed l\u1eb7p l\u1ea1i \u0111\u00f3 k\u00e9o l\u00f9i.\n\nH\u1ec7 th\u1ed1ng kh\u00f4ng ph\u1ea3i l\u00e0 m\u1ed9t c\u00e1i tool m\u1ea1nh. H\u1ec7 th\u1ed1ng l\u00e0 s\u1ef1 t\u1ef1 \u0111\u1ed9ng ho\u00e1 nh\u1eefng c\u00f4ng vi\u1ec7c \u0111ang \u0103n m\u1ea5t th\u1eddi gian.\n\nD\u00f9ng 1 tool nh\u1ecf thay 5 gi\u1edd manual work m\u1ed7i tu\u1ea7n \u2014 \u0111\u00f3 l\u00e0 one person power. B\u1ea1n \u0111\u00e3 automation c\u00e1i g\u00ec trong team c\u1ee7a m\u00ecnh ch\u01b0a? Comment cho m\u00ecnh bi\u1ebft nh\u00e9.\n\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nPOST 2: Claude Max Plan \u2014 Business Decision Making\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n\nSource: @AISafetyWatch\nContent: Anthropic released Claude Max plan at $200/month with unlimited usage. Some developers reporting $500+ API savings. Questions if worth it for non-developers.\nVerified data: Claude Max plan exists at $200/month, developers report $500+ savings, plan is unlimited usage\nG\u00f3c vi\u1ebft: So s\u00e1nh & L\u1ef1a ch\u1ecdn + \u1ee8ng d\u1ee5ng th\u1ef1c t\u1ebf cho non-developers\nFormat: Comparison + Actionable\n\n---\n\n200 \u0111\u00f4 m\u1ed7i th\u00e1ng. \u0110\u00f3 c\u00f3 ph\u1ea3i nhi\u1ec1u ti\u1ec1n kh\u00f4ng? Ph\u1ee5 thu\u1ed9c v\u00e0o b\u1ea1n \u0111ang d\u00f9ng n\u00f3 \u0111\u1ec3 l\u00e0m g\u00ec.\n\nH\u00f4m qua m\u00ecnh l\u01b0\u1edbt X th\u1ea5y Anthropic v\u1eeba ra Claude Max \u2014 plan m\u1edbi v\u1edbi m\u1ee9c ph\u00ed 200 \u0111\u00f4/th\u00e1ng, unlimited API usage. V\u00e0 m\u1ea5y dev \u0111ang share: \"C\u00e1i n\u00e0y ti\u1ebft ki\u1ec7m t\u00f4i 500 c\u00e1i \u0111\u00f4 API cost h\u00e0ng th\u00e1ng.\" Con s\u1ed1 \u0111\u00f3 kh\u00e1 h\u1ea5p d\u1eabn.\n\nNh\u01b0ng c\u00e2u h\u1ecfi \u0111\u1eb7t ra l\u00e0: b\u1ea1n kh\u00f4ng ph\u1ea3i dev, b\u1ea1n kh\u00f4ng d\u00f9ng API. V\u1eady c\u00e1i plan n\u00e0y c\u00f3 gi\u00e1 tr\u1ecb g\u00ec v\u1edbi b\u1ea1n?\n\nTr\u01b0\u1edbc ti\u00ean, h\u00e3y hi\u1ec3u s\u1ef1 kh\u00e1c bi\u1ec7t:\n\n1. N\u1ebfu b\u1ea1n l\u00e0 developer / d\u00f9ng API: Claude Max ti\u1ebft ki\u1ec7m ti\u1ec1n ngay l\u1eadp t\u1ee9c. Unlimited usage c\u00f3 ngh\u0129a kh\u00f4ng lo chi ph\u00ed per-token. N\u1ebfu d\u1ef1 \u00e1n b\u1ea1n d\u00f9ng 1-2 tri\u1ec7u tokens/th\u00e1ng, con s\u1ed1 ti\u1ebft ki\u1ec7m c\u00f3 th\u1ec3 l\u00e0 300-500 \u0111\u00f4.\n\n2. N\u1ebfu b\u1ea1n l\u00e0 solopreneur / content creator / d\u00f9ng Claude web/mobile: B\u1ea1n c\u1ea7n h\u1ecfi \u2014 \u0111ang l\u00e0m c\u00f4ng vi\u1ec7c g\u00ec m\u00e0 c\u1ea7n unlimited? N\u1ebfu b\u1ea1n ch\u1ec9 d\u00f9ng Claude \u0111\u1ec3 vi\u1ebft script, t\u1ea1o n\u1ed9i dung, \u0111\u1ecdc t\u00e0i li\u1ec7u, c\u00f3 th\u1ec3 plan th\u01b0\u1eddng (100/th\u00e1ng ho\u1eb7c 20 Pro) \u0111\u00e3 \u0111\u1ee7 r\u1ed3i. Unlimited ch\u1ec9 ph\u00e1t huy gi\u00e1 tr\u1ecb khi workload th\u1ef1c s\u1ef1 heavy.\n\nM\u00ecnh th\u1ea5y \u0111i\u1ec1u quan tr\u1ecdng \u1edf \u0111\u00e2y l\u00e0: kh\u00f4ng c\u1ee9 \"unlimited\" l\u00e0 t\u1ed1t. C\u1ea7n xem b\u1ea1n \u0111ang d\u00f9ng bao nhi\u00eau. N\u1ebfu hi\u1ec7n t\u1ea1i b\u1ea1n ch\u1ec9 d\u00f9ng Claude 2-3 gi\u1edd/ng\u00e0y, unlimited kh\u00f4ng s\u1ebd thay \u0111\u1ed5i productivity c\u1ee7a b\u1ea1n l\u1edbn bao nhi\u00eau. Nh\u01b0ng n\u1ebfu b\u1ea1n automation c\u1ea3 workflow c\u00f4ng vi\u1ec7c (script t\u1ea1o content, ph\u00e2n t\u00edch data, t\u1ea1o prompt li\u00ean t\u1ee5c), v\u1eady unlimited l\u00e0 investment c\u00f3 sense.\n\nM\u00ecnh kh\u00f4ng n\u00f3i plan n\u00e0y t\u1ed1t hay x\u1ea5u. M\u00ecnh ch\u1ec9 n\u00f3i: tr\u01b0\u1edbc khi chi 200 \u0111\u00f4, h\u00e3y track xem b\u1ea1n d\u00f9ng Claude bao nhi\u00eau/th\u00e1ng. N\u1ebfu con s\u1ed1 hi\u1ec7n t\u1ea1i < 100 \u0111\u00f4, b\u1ea1n ch\u01b0a c\u1ea7n. N\u1ebfu >= 150 \u0111\u00f4, upgrade s\u1ebd ti\u1ebft ki\u1ec7m ngay.\n\nB\u00e0i h\u1ecdc \u1edf \u0111\u00e2y: ti\u1ec1n AI kh\u00f4ng bao gi\u1edd b\u1ecb l\u00e3ng ph\u00ed \u2014 mi\u1ec5n l\u00e0 b\u1ea1n d\u00f9ng n\u00f3 \u0111\u1ec3 automation ho\u1eb7c t\u0103ng productivity. Chi ph\u00ed tools ch\u1ec9 tr\u1edf th\u00e0nh v\u1ea5n \u0111\u1ec1 n\u1ebfu tool \u0111\u00f3 ng\u1ed3i im kh\u00f4ng d\u00f9ng.\n\nB\u1ea1n d\u00f9ng Claude bao nhi\u00eau th\u00e1ng m\u1ed9t l\u1ea7n? C\u00f3 xem x\u00e9t unlimited ch\u01b0a? Comment chia s\u1ebb t\u00ecnh h\u00ecnh c\u1ee7a b\u1ea1n nh\u00e9.\n\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\n"}], "grading": {"expectations": [{"text": "Output contains NO URLs in any Facebook post body", "passed": true, "evidence": "No URLs found"}, {"text": "Output contains NO emoji or special Unicode characters", "passed": false, "evidence": "Emojis: ['\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550', '\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550', '\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500', '\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550', '\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550']; Special chars: ['\u2550', '\u2500\u2500\u2500']"}, {"text": "Output produces posts for BOTH X posts", "passed": true, "evidence": "Review tool covered: True, Max plan covered: True"}, {"text": "Each post has a different angle/lens", "passed": false, "evidence": "Found 1 distinct posts"}, {"text": "Output does NOT mention code architecture or technical implementation", "passed": true, "evidence": "No developer-focused tech terms"}, {"text": "Output translates technical concepts into user benefits", "passed": true, "evidence": "Found benefit words: ['ti\u1ebft ki\u1ec7m', 'th\u1eddi gian', 't\u1ef1 \u0111\u1ed9ng', 'automation', 't\u0103ng', 'gi\u1ea3i ph\u00f3ng', 'one person']"}, {"text": "Output uses first-person 'm\u00ecnh' voice throughout", "passed": true, "evidence": "'m\u00ecnh' present: True, news-style phrases: False"}, {"text": "All posts are between 300-600 words each", "passed": false, "evidence": "Post 1: 789 words (OUT OF RANGE)"}, {"text": "CTA directs to comments for links where relevant", "passed": true, "evidence": "CTA to comments found: True"}], "summary": {"passed": 6, "failed": 3, "total": 9, "pass_rate": 0.67}}}, {"id": "eval-2-multi-post-without_skill", "prompt": "Chuy\u1ec3n 2 X posts n\u00e0y th\u00e0nh Facebook content:\n\nPost 1 - @nickcdev: \"Built a code review visualization tool using Claude Code. It maps PR dependencies, shows review bottlenecks, and generates weekly team reports. Saved our team 5 hours/week on code review coordination. github.com/nickcdev/code-review-graph\"\n\nPost 2 - @AISafetyWatch: \"Anthropic just released the Claude Max plan at $200/month \u2014 unlimited usage for power users. Some developers reporting $500+ in API savings. But is it worth it for non-developers?\"\n\nT\u1ea1o Facebook posts cho c\u1ea3 2.", "eval_id": 2, "outputs": [{"name": "facebook-posts.md", "type": "text", "content": "# Facebook Posts - Converted from X Posts\n\n## Post 1: Claude Code Review Automation Tool\n\n---\n\n**C\u00f4ng c\u1ee5 m\u00e0 b\u1ea1n n\u00ean bi\u1ebft: Code Review Visualization System**\n\nM\u00ecnh v\u1eeba kh\u00e1m ph\u00e1 m\u1ed9t c\u00e1i hay t\u1eeb @nickcdev \u2014 m\u1ed9t tool x\u00e2y d\u1ef1ng b\u1eb1ng Claude Code \u0111\u1ec3 t\u1ef1 \u0111\u1ed9ng h\u00f3a qu\u00e1 tr\u00ecnh review code. C\u00e1i n\u00e0y kh\u00f4ng ph\u1ea3i l\u00e0 b\u00ecnh th\u01b0\u1eddng \u0111\u00e2u, c\u00e1c b\u1ea1n \u01a1i.\n\n**C\u00e1i tool n\u00e0y l\u00e0m g\u00ec?**\n- Mapping c\u00e1c dependencies trong Pull Requests (PR)\n- Hi\u1ec3n th\u1ecb ch\u00ednh x\u00e1c nh\u1eefng ch\u1ed7 \"bottleneck\" \u2014 n\u01a1i code review b\u1ecb k\u1eb9t\n- T\u1ef1 \u0111\u1ed9ng generate weekly reports cho to\u00e0n team\n\n**K\u1ebft qu\u1ea3 th\u1ef1c t\u1ebf?** Nh\u00f3m c\u1ee7a h\u1ecd ti\u1ebft ki\u1ec7m \u0111\u01b0\u1ee3c **5 gi\u1edd m\u1ed7i tu\u1ea7n** tr\u00ean vi\u1ec7c coord vi\u1ec7c review code. T\u00ednh ra m\u1ed9t n\u0103m l\u00e0 260 gi\u1edd \u2014 \u0111\u00f3 l\u00e0 g\u1ea7n 7 tu\u1ea7n l\u01b0\u01a1ng ng\u01b0\u1eddi \u0111\u00f3 m\u00e0 b\u1ea1n c\u00f3 th\u1ec3 d\u00f9ng v\u00e0o nh\u1eefng vi\u1ec7c c\u00f3 gi\u00e1 tr\u1ecb cao h\u01a1n.\n\n**T\u1ea1i sao m\u00ecnh share c\u00e1i n\u00e0y?**\n\nV\u00ec \u0111\u00e2y ch\u00ednh l\u00e0 power c\u1ee7a AI Automation m\u00e0 m\u00ecnh lu\u00f4n n\u00f3i \u2014 kh\u00f4ng ph\u1ea3i l\u00e0 thay th\u1ebf con ng\u01b0\u1eddi, m\u00e0 l\u00e0 **lo\u1ea1i b\u1ecf nh\u1eefng vi\u1ec7c repetitive, t\u1ed1n th\u1eddi gian nh\u01b0ng kh\u00f4ng t\u1ea1o value g\u00ec nhi\u1ec1u.** Code review l\u00e0 c\u00f4ng vi\u1ec7c quan tr\u1ecdng, nh\u01b0ng vi\u1ec7c _track, coord, v\u00e0 organize_ vi\u1ec7c review? C\u00e1i \u0111\u00f3 ho\u00e0n to\u00e0n c\u00f3 th\u1ec3 auto h\u00f3a.\n\nN\u1ebfu b\u1ea1n l\u00e0:\n- Qu\u1ea3n l\u00fd team dev\n- Freelancer mu\u1ed1n t\u1ed1i \u01b0u quy tr\u00ecnh l\u00e0m vi\u1ec7c\n- Hay ai c\u0169ng t\u1ed1n th\u1eddi gian v\u00e0o nh\u1eefng c\u00f4ng vi\u1ec7c \"nh\u1ecf nh\u1eb7t\" h\u00e0ng ng\u00e0y\n\n...th\u00ec \u0111\u00e2y ch\u00ednh l\u00e0 mindset b\u1ea1n c\u1ea7n \u2014 **t\u00ecm nh\u1eefng c\u00e1i b\u1ea1n l\u00e0m m\u00e0 machine c\u00f3 th\u1ec3 l\u00e0m t\u1ed1t h\u01a1n, r\u1ed3i d\u00f9ng th\u1eddi gian \u0111\u00f3 v\u00e0o nh\u1eefng c\u00e1i ch\u1ec9 con ng\u01b0\u1eddi m\u1edbi l\u00e0m \u0111\u01b0\u1ee3c.**\n\nB\u1ea1n \u0111ang l\u00e3ng ph\u00ed bao nhi\u00eau gi\u1edd/tu\u1ea7n v\u00e0o nh\u1eefng vi\u1ec7c c\u00f3 th\u1ec3 automation h\u00f3a? Comment \u1edf d\u01b0\u1edbi nh\u00e9 c\u00e1c b\u1ea1n \ud83d\udc47\n\n---\n\n## Post 2: Claude Max Plan \u2014 C\u00f3 \u0110\u00e1ng Kh\u00f4ng?\n\n---\n\n**Claude Max $200/th\u00e1ng \u2014 C\u00f3 th\u1ef1c s\u1ef1 ti\u1ebft ki\u1ec7m ti\u1ec1n kh\u00f4ng? \ud83e\uddee**\n\nV\u1eeba c\u00f3 tin: Anthropic v\u1eeba release **Claude Max plan \u2014 $200/th\u00e1ng unlimited usage.** Nghe th\u00ec m\u1eafc, nh\u01b0ng h\u00e3y nghe m\u00ecnh ph\u00e2n t\u00edch c\u00e1i n\u00e0y.\n\n**S\u1ed1 li\u1ec7u g\u00ec \u0111\u00e3 n\u00f3i?**\n\nM\u1ed9t s\u1ed1 developers report r\u1eb1ng h\u1ecd ti\u1ebft ki\u1ec7m \u0111\u01b0\u1ee3c **$500+ m\u1ed7i th\u00e1ng** b\u1eb1ng c\u00e1ch chuy\u1ec3n sang plan n\u00e0y. Tho\u1ea1t nghe th\u00ec l\u1ea1 \u2014 sao l\u1ea1i ti\u1ebft ki\u1ec7m khi t\u0103ng gi\u00e1? Nh\u01b0ng logic \u0111\u1eb1ng sau n\u00f3 r\u1ea5t r\u00f5:\n- C\u00e1c b\u1ea1n kh\u00f4ng c\u1ea7n lo v\u1ec1 overages fee (b\u1ecb t\u00ednh th\u00eam ti\u1ec1n khi d\u00f9ng qu\u00e1 h\u1ea1n m\u1ee9c)\n- C\u00f3 th\u1ec3 test, iterate, v\u00e0 experiment bao nhi\u00eau t\u00f9y th\u00edch m\u00e0 kh\u00f4ng s\u1ee3 h\u00f3a \u0111\u01a1n\n- D\u00f9ng h\u1ebft full potential c\u1ee7a Claude m\u00e0 kh\u00f4ng c\u1ea7n \"qu\u1ea3n l\u00fd\" t\u1eebng API call\n\n**V\u1eady c\u00e1i Max plan n\u00e0y c\u00f3 ph\u1ea3i cho b\u1ea1n kh\u00f4ng?**\n\nN\u1ebfu b\u1ea1n l\u00e0 **developer** ho\u1eb7c **power user** d\u00f9ng Claude intensively \u2014 th\u00ec c\u00f3 l\u00fd do \u0111\u1ec3 xem x\u00e9t. Nh\u01b0ng n\u1ebfu b\u1ea1n l\u00e0:\n- Ng\u01b0\u1eddi d\u00f9ng b\u00ecnh th\u01b0\u1eddng (v\u00e0i request/ng\u00e0y)\n- Ch\u1ec9 d\u00f9ng m\u1ed7i OpenAI hay Claude \u0111\u00f4i khi\n- Ho\u1eb7c kh\u00f4ng bi\u1ebft m\u00ecnh d\u00f9ng bao nhi\u00eau\n\n...th\u00ec ch\u01b0a c\u1ea7n b\u01b0\u1edbc n\u00e0y.\n\n**C\u00e1i m\u00ecnh mu\u1ed1n b\u1ea1n hi\u1ec3u l\u00e0:**\n\n\u0110\u00e2y kh\u00f4ng ph\u1ea3i b\u00e0i vi\u1ebft \"n\u00ean mua hay kh\u00f4ng.\" \u0110\u00e2y l\u00e0 b\u00e0i vi\u1ebft v\u1ec1 **c\u00e1ch suy ngh\u0129 \u0111\u00fang khi ch\u1ecdn tools.** Trong cu\u1ed9c \u0111\u1eddi startup v\u00e0 one-person business c\u1ee7a b\u1ea1n, b\u1ea1n s\u1ebd \u0111\u1ed1i m\u1eb7t v\u1edbi h\u00e0ng t\u00e1 l\u1ef1a ch\u1ecdn nh\u01b0 th\u1ebf n\u00e0y:\n- N\u00ean mua template, script hay vi\u1ebft t\u1eeb \u0111\u1ea7u?\n- N\u00ean invest v\u00e0o course hay t\u1ef1 h\u1ecdc t\u1eeb YouTube?\n- N\u00ean thu\u00ea ng\u01b0\u1eddi hay automation h\u00f3a?\n\n**C\u00e1ch m\u00ecnh suy ngh\u0129:** Kh\u00f4ng ph\u1ea3i \"c\u00e1i n\u00e0y bao nhi\u00eau ti\u1ec1n\" \u2014 m\u00e0 l\u00e0 **\"c\u00e1i n\u00e0y gi\u00fap m\u00ecnh l\u00e0m g\u00ec, ti\u1ebft ki\u1ec7m th\u1eddi gian bao nhi\u00eau, v\u00e0 li\u1ec7u ROI c\u00f3 d\u01b0\u01a1ng kh\u00f4ng?\"**\n\nN\u1ebfu $200/th\u00e1ng gi\u00fap b\u1ea1n \u0111\u01b0\u1ee3c th\u00eam 40 gi\u1edd/th\u00e1ng m\u00e0 l\u1ebd ra ph\u1ea3i handle manually? \u0110\u00f3 l\u00e0 deal ngon. N\u1ebfu b\u1ea1n ch\u1ec9 d\u00f9ng 5 gi\u1edd/th\u00e1ng th\u00ec ch\u01b0a c\u1ea7n.\n\n**C\u00e2u h\u1ecfi cho b\u1ea1n:** B\u1ea1n \u0111ang s\u1eed d\u1ee5ng c\u00e1c AI tools nh\u01b0 th\u1ebf n\u00e0o? C\u00f3 \u0111ang \"t\u1eadn d\u1ee5ng\" h\u1ebft potential c\u1ee7a ch\u00fang kh\u00f4ng hay v\u1eabn d\u00f9ng m\u1eb7c \u0111\u1ecbnh? Comment xu\u1ed1ng nh\u00e9 \ud83d\udc47\n\n---\n\n**\ud83d\udca1 Link tham kh\u1ea3o \u1edf comments nh\u00e9 c\u00e1c b\u1ea1n!**\n"}], "grading": {"expectations": [{"text": "Output contains NO URLs in any Facebook post body", "passed": true, "evidence": "No URLs found"}, {"text": "Output contains NO emoji or special Unicode characters", "passed": false, "evidence": "Emojis: ['\ud83e\uddee', '\ud83d\udc47', '\ud83d\udca1']"}, {"text": "Output produces posts for BOTH X posts", "passed": true, "evidence": "Review tool covered: True, Max plan covered: True"}, {"text": "Each post has a different angle/lens", "passed": false, "evidence": "Found 1 distinct posts"}, {"text": "Output does NOT mention code architecture or technical implementation", "passed": false, "evidence": "Found tech terms: ['API call']"}, {"text": "Output translates technical concepts into user benefits", "passed": true, "evidence": "Found benefit words: ['ti\u1ebft ki\u1ec7m', 'th\u1eddi gian', 'automation', 'kh\u00f4ng c\u1ea7n', 't\u0103ng']"}, {"text": "Output uses first-person 'm\u00ecnh' voice throughout", "passed": true, "evidence": "'m\u00ecnh' present: True, news-style phrases: False"}, {"text": "All posts are between 300-600 words each", "passed": true, "evidence": "Post 1: 364 words (OK)"}, {"text": "CTA directs to comments for links where relevant", "passed": true, "evidence": "CTA to comments found: True"}], "summary": {"passed": 6, "failed": 3, "total": 9, "pass_rate": 0.67}}}], "previous_feedback": {}, "previous_outputs": {}, "benchmark": {"metadata": {"skill_name": "mkt-xpost-to-facebook-knowledge", "skill_path": "/sessions/friendly-keen-allen/mnt/hoang-ai-marketing/.claude/skills/mkt-xpost-to-facebook-knowledge", "executor_model": "claude-sonnet-4-6", "analyzer_model": "claude-opus-4-6", "timestamp": "2026-04-07T04:17:00Z", "evals_run": [0, 1, 2], "runs_per_configuration": 1}, "runs": [{"eval_id": 0, "eval_name": "career-ops-tool", "configuration": "with_skill", "run_number": 1, "result": {"pass_rate": 0.78, "passed": 7, "failed": 2, "total": 9, "time_seconds": 116.5, "tokens": 59397, "tool_calls": 8, "errors": 0}, "expectations": [{"text": "No URLs in post body", "passed": false, "evidence": "Analysis header URL leaked into parsing"}, {"text": "No emoji/special chars", "passed": false, "evidence": "Output format separators (\u2550) counted as special chars \u2014 false positive"}, {"text": "Vietnamese with diacritics", "passed": true, "evidence": "Strong Vietnamese throughout"}, {"text": "No dev-focused tech terms", "passed": true, "evidence": "Clean \u2014 no architecture/module/API call mentions"}, {"text": "User benefit focus", "passed": true, "evidence": "Multiple benefit words found"}, {"text": "First-person 'm\u00ecnh' voice", "passed": true, "evidence": "Consistent knowledge-sharing tone"}, {"text": "CTA to comments", "passed": true, "evidence": "Link \u1edf comments nh\u00e9 c\u00e1c b\u1ea1n"}, {"text": "Word count 300-600", "passed": true, "evidence": "Posts within range"}, {"text": "Hook not banned phrase", "passed": true, "evidence": "Strong hooks with data"}]}, {"eval_id": 0, "eval_name": "career-ops-tool", "configuration": "without_skill", "run_number": 1, "result": {"pass_rate": 0.56, "passed": 5, "failed": 4, "total": 9, "time_seconds": 89.0, "tokens": 36008, "tool_calls": 2, "errors": 0}, "expectations": [{"text": "No URLs in post body", "passed": true, "evidence": "No URLs found"}, {"text": "No emoji/special chars", "passed": false, "evidence": "Found \ud83d\udc47 emoji and \u2192 arrow"}, {"text": "Vietnamese with diacritics", "passed": true, "evidence": "Vietnamese present"}, {"text": "No dev-focused tech terms", "passed": false, "evidence": "Found: API call"}, {"text": "User benefit focus", "passed": false, "evidence": "Only 1 benefit word found"}, {"text": "First-person 'm\u00ecnh' voice", "passed": true, "evidence": "m\u00ecnh used"}, {"text": "CTA to comments", "passed": false, "evidence": "Used AI Freedom Builders CTA with community link instead"}, {"text": "Word count 300-600", "passed": true, "evidence": "Within range"}, {"text": "Hook not banned phrase", "passed": true, "evidence": "OK"}]}, {"eval_id": 1, "eval_name": "anthropic-trend", "configuration": "with_skill", "run_number": 1, "result": {"pass_rate": 0.75, "passed": 6, "failed": 2, "total": 8, "time_seconds": 87.2, "tokens": 46406, "tool_calls": 6, "errors": 0}, "expectations": [{"text": "No URLs in post body", "passed": true, "evidence": "Clean"}, {"text": "No emoji/special chars", "passed": false, "evidence": "Output format separators \u2014 false positive"}, {"text": "Vietnamese with diacritics", "passed": true, "evidence": "Strong Vietnamese"}, {"text": "Knowledge-sharing voice", "passed": true, "evidence": "Uses 'm\u00ecnh th\u1ea5y hay \u1edf ch\u1ed7'"}, {"text": "Business user focus", "passed": true, "evidence": "Solopreneur, one person power angle"}, {"text": "First-person m\u00ecnh voice", "passed": true, "evidence": "Consistent"}, {"text": "Word count 300-600", "passed": false, "evidence": "Post 1: 802 words \u2014 too long"}, {"text": "Hook curiosity gap", "passed": true, "evidence": "Strong opening hooks"}]}, {"eval_id": 1, "eval_name": "anthropic-trend", "configuration": "without_skill", "run_number": 1, "result": {"pass_rate": 0.88, "passed": 7, "failed": 1, "total": 8, "time_seconds": 81.9, "tokens": 34741, "tool_calls": 1, "errors": 0}, "expectations": [{"text": "No URLs in post body", "passed": true, "evidence": "Clean"}, {"text": "No emoji/special chars", "passed": false, "evidence": "Found \ud83d\ude80 \ud83c\udfaf \ud83d\udcac emojis"}, {"text": "Vietnamese with diacritics", "passed": true, "evidence": "Present"}, {"text": "Knowledge-sharing voice", "passed": true, "evidence": "Uses m\u00ecnh"}, {"text": "Business user focus", "passed": true, "evidence": "One person power, business value"}, {"text": "First-person m\u00ecnh voice", "passed": true, "evidence": "Consistent"}, {"text": "Word count 300-600", "passed": true, "evidence": "Within range"}, {"text": "Hook curiosity gap", "passed": true, "evidence": "OK"}]}, {"eval_id": 2, "eval_name": "multi-post", "configuration": "with_skill", "run_number": 1, "result": {"pass_rate": 0.67, "passed": 6, "failed": 3, "total": 9, "time_seconds": 84.0, "tokens": 48835, "tool_calls": 9, "errors": 0}, "expectations": [{"text": "No URLs in post body", "passed": true, "evidence": "Clean"}, {"text": "No emoji/special chars", "passed": false, "evidence": "Format separators \u2014 false positive"}, {"text": "Posts for BOTH X posts", "passed": true, "evidence": "Both review tool and Max plan covered"}, {"text": "Different angles per post", "passed": false, "evidence": "Parser found only 1 section \u2014 needs better parsing"}, {"text": "No dev tech terms", "passed": true, "evidence": "Clean"}, {"text": "User benefit translation", "passed": true, "evidence": "Good benefit language"}, {"text": "First-person m\u00ecnh voice", "passed": true, "evidence": "Consistent"}, {"text": "Word count 300-600", "passed": false, "evidence": "Combined post 789 words \u2014 posts not properly separated"}, {"text": "CTA to comments", "passed": true, "evidence": "Present"}]}, {"eval_id": 2, "eval_name": "multi-post", "configuration": "without_skill", "run_number": 1, "result": {"pass_rate": 0.67, "passed": 6, "failed": 3, "total": 9, "time_seconds": 78.4, "tokens": 34359, "tool_calls": 1, "errors": 0}, "expectations": [{"text": "No URLs in post body", "passed": true, "evidence": "Clean"}, {"text": "No emoji/special chars", "passed": false, "evidence": "Found \ud83e\uddee \ud83d\udc47 \ud83d\udca1 emojis"}, {"text": "Posts for BOTH X posts", "passed": true, "evidence": "Both topics covered"}, {"text": "Different angles per post", "passed": false, "evidence": "Parser limitation"}, {"text": "No dev tech terms", "passed": false, "evidence": "Found: API call"}, {"text": "User benefit translation", "passed": true, "evidence": "Benefit words present"}, {"text": "First-person m\u00ecnh voice", "passed": true, "evidence": "Uses m\u00ecnh"}, {"text": "Word count 300-600", "passed": true, "evidence": "Within range"}, {"text": "CTA to comments", "passed": true, "evidence": "Present"}]}], "run_summary": {"with_skill": {"pass_rate": {"mean": 0.73, "stddev": 0.06, "min": 0.67, "max": 0.78}, "time_seconds": {"mean": 95.9, "stddev": 17.6, "min": 84.0, "max": 116.5}, "tokens": {"mean": 51546, "stddev": 6849, "min": 46406, "max": 59397}}, "without_skill": {"pass_rate": {"mean": 0.7, "stddev": 0.16, "min": 0.56, "max": 0.88}, "time_seconds": {"mean": 83.1, "stddev": 5.5, "min": 78.4, "max": 89.0}, "tokens": {"mean": 35036, "stddev": 874, "min": 34359, "max": 36008}}, "delta": {"pass_rate": "+0.03", "time_seconds": "+12.8", "tokens": "+16510"}}, "notes": ["GRADING ARTIFACT: The 'no emoji/special chars' assertion fails for ALL with_skill runs due to \u2550\u2550\u2550 output format separators in the analysis section \u2014 these are NOT in the actual Facebook post body. True pass rate for with_skill is likely ~89% if this false positive is corrected.", "WITHOUT-SKILL consistently uses emoji (\ud83d\udc47\ud83d\ude80\ud83c\udfaf\ud83d\udcac\ud83e\uddee\ud83d\udca1) \u2014 the skill successfully eliminates emoji from post bodies.", "WITHOUT-SKILL leaks technical terms (API call) into posts \u2014 the skill prevents this.", "WITH-SKILL consistently uses 'Link \u1edf comments' CTA pattern \u2014 without-skill sometimes uses community CTA with implied URL instead.", "WITH-SKILL word count issue: tends to write slightly longer posts (800+ words) when combining analysis + post in one output \u2014 needs tighter length control.", "Eval 1 (anthropic-trend) shows WITHOUT-SKILL outperforming on raw pass rate (88% vs 75%), but this is misleading \u2014 the with-skill failure is the format separator false positive + word count, while without-skill passes because it doesn't output the analysis section (fewer tokens = shorter posts)."]}};
+
+    // ---- State ----
+    let feedbackMap = {};  // run_id -> feedback text
+    let currentIndex = 0;
+    let visitedRuns = new Set();
+
+    // ---- Init ----
+    async function init() {
+      // Load saved feedback from server — but only if this isn't a fresh
+      // iteration (indicated by previous_feedback being present). When
+      // previous feedback exists, the feedback.json on disk is stale from
+      // the prior iteration and should not pre-fill the textareas.
+      const hasPrevious = Object.keys(EMBEDDED_DATA.previous_feedback || {}).length > 0
+        || Object.keys(EMBEDDED_DATA.previous_outputs || {}).length > 0;
+      if (!hasPrevious) {
+        try {
+          const resp = await fetch("/api/feedback");
+          const data = await resp.json();
+          if (data.reviews) {
+            for (const r of data.reviews) feedbackMap[r.run_id] = r.feedback;
+          }
+        } catch { /* first run, no feedback yet */ }
+      }
+
+      document.getElementById("skill-name").textContent = EMBEDDED_DATA.skill_name;
+      showRun(0);
+
+      // Wire up feedback auto-save
+      const textarea = document.getElementById("feedback");
+      let saveTimeout = null;
+      textarea.addEventListener("input", () => {
+        clearTimeout(saveTimeout);
+        document.getElementById("feedback-status").textContent = "";
+        saveTimeout = setTimeout(() => saveCurrentFeedback(), 800);
+      });
+    }
+
+    // ---- Navigation ----
+    function navigate(delta) {
+      const newIndex = currentIndex + delta;
+      if (newIndex >= 0 && newIndex < EMBEDDED_DATA.runs.length) {
+        saveCurrentFeedback();
+        showRun(newIndex);
+      }
+    }
+
+    function updateNavButtons() {
+      document.getElementById("prev-btn").disabled = currentIndex === 0;
+      document.getElementById("next-btn").disabled =
+        currentIndex === EMBEDDED_DATA.runs.length - 1;
+    }
+
+    // ---- Show a run ----
+    function showRun(index) {
+      currentIndex = index;
+      const run = EMBEDDED_DATA.runs[index];
+
+      // Progress
+      document.getElementById("progress").textContent =
+        `${index + 1} of ${EMBEDDED_DATA.runs.length}`;
+
+      // Prompt
+      document.getElementById("prompt-text").textContent = run.prompt;
+
+      // Config badge
+      const badge = document.getElementById("config-badge");
+      const configMatch = run.id.match(/(with_skill|without_skill|new_skill|old_skill)/);
+      if (configMatch) {
+        const config = configMatch[1];
+        const isBaseline = config === "without_skill" || config === "old_skill";
+        badge.textContent = config.replace(/_/g, " ");
+        badge.className = "config-badge " + (isBaseline ? "config-baseline" : "config-primary");
+        badge.style.display = "inline-block";
+      } else {
+        badge.style.display = "none";
+      }
+
+      // Outputs
+      renderOutputs(run);
+
+      // Previous outputs
+      renderPrevOutputs(run);
+
+      // Grades
+      renderGrades(run);
+
+      // Previous feedback
+      const prevFb = (EMBEDDED_DATA.previous_feedback || {})[run.id];
+      const prevEl = document.getElementById("prev-feedback");
+      if (prevFb) {
+        document.getElementById("prev-feedback-text").textContent = prevFb;
+        prevEl.style.display = "block";
+      } else {
+        prevEl.style.display = "none";
+      }
+
+      // Feedback
+      document.getElementById("feedback").value = feedbackMap[run.id] || "";
+      document.getElementById("feedback-status").textContent = "";
+
+      updateNavButtons();
+
+      // Track visited runs and promote done button when all visited
+      visitedRuns.add(index);
+      const doneBtn = document.getElementById("done-btn");
+      if (visitedRuns.size >= EMBEDDED_DATA.runs.length) {
+        doneBtn.classList.add("ready");
+      }
+
+      // Scroll main content to top
+      document.querySelector(".main").scrollTop = 0;
+    }
+
+    // ---- Render outputs ----
+    function renderOutputs(run) {
+      const container = document.getElementById("outputs-body");
+      container.innerHTML = "";
+
+      const outputs = run.outputs || [];
+      if (outputs.length === 0) {
+        container.innerHTML = '<div class="empty-state">No output files</div>';
+        return;
+      }
+
+      for (const file of outputs) {
+        const fileDiv = document.createElement("div");
+        fileDiv.className = "output-file";
+
+        // Always show file header with download link
+        const header = document.createElement("div");
+        header.className = "output-file-header";
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = file.name;
+        header.appendChild(nameSpan);
+        const dlBtn = document.createElement("a");
+        dlBtn.className = "dl-btn";
+        dlBtn.textContent = "Download";
+        dlBtn.download = file.name;
+        dlBtn.href = getDownloadUri(file);
+        header.appendChild(dlBtn);
+        fileDiv.appendChild(header);
+
+        const content = document.createElement("div");
+        content.className = "output-file-content";
+
+        if (file.type === "text") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          content.appendChild(pre);
+        } else if (file.type === "image") {
+          const img = document.createElement("img");
+          img.src = file.data_uri;
+          img.alt = file.name;
+          content.appendChild(img);
+        } else if (file.type === "pdf") {
+          const iframe = document.createElement("iframe");
+          iframe.src = file.data_uri;
+          content.appendChild(iframe);
+        } else if (file.type === "xlsx") {
+          renderXlsx(content, file.data_b64);
+        } else if (file.type === "binary") {
+          const a = document.createElement("a");
+          a.className = "download-link";
+          a.href = file.data_uri;
+          a.download = file.name;
+          a.textContent = "Download " + file.name;
+          content.appendChild(a);
+        } else if (file.type === "error") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          pre.style.color = "var(--red)";
+          content.appendChild(pre);
+        }
+
+        fileDiv.appendChild(content);
+        container.appendChild(fileDiv);
+      }
+    }
+
+    // ---- XLSX rendering via SheetJS ----
+    function renderXlsx(container, b64Data) {
+      try {
+        const raw = Uint8Array.from(atob(b64Data), c => c.charCodeAt(0));
+        const wb = XLSX.read(raw, { type: "array" });
+
+        for (let i = 0; i < wb.SheetNames.length; i++) {
+          const sheetName = wb.SheetNames[i];
+          const ws = wb.Sheets[sheetName];
+
+          if (wb.SheetNames.length > 1) {
+            const sheetLabel = document.createElement("div");
+            sheetLabel.style.cssText =
+              "font-weight:600; font-size:0.8rem; color:#b0aea5; margin-top:0.5rem; margin-bottom:0.25rem;";
+            sheetLabel.textContent = "Sheet: " + sheetName;
+            container.appendChild(sheetLabel);
+          }
+
+          const htmlStr = XLSX.utils.sheet_to_html(ws, { editable: false });
+          const wrapper = document.createElement("div");
+          wrapper.innerHTML = htmlStr;
+          container.appendChild(wrapper);
+        }
+      } catch (err) {
+        container.textContent = "Error rendering spreadsheet: " + err.message;
+      }
+    }
+
+    // ---- Grades ----
+    function renderGrades(run) {
+      const section = document.getElementById("grades-section");
+      const content = document.getElementById("grades-content");
+
+      if (!run.grading) {
+        section.style.display = "none";
+        return;
+      }
+
+      const grading = run.grading;
+      section.style.display = "block";
+      // Reset to collapsed
+      content.classList.remove("open");
+      document.getElementById("grades-arrow").classList.remove("open");
+
+      const summary = grading.summary || {};
+      const expectations = grading.expectations || [];
+
+      let html = '<div style="padding: 1rem;">';
+
+      // Summary line
+      const passRate = summary.pass_rate != null
+        ? Math.round(summary.pass_rate * 100) + "%"
+        : "?";
+      const badgeClass = summary.pass_rate >= 0.8 ? "grade-pass" : summary.pass_rate >= 0.5 ? "" : "grade-fail";
+      html += '<div class="grades-summary">';
+      html += '<span class="grade-badge ' + badgeClass + '">' + passRate + '</span>';
+      html += '<span>' + (summary.passed || 0) + ' passed, ' + (summary.failed || 0) + ' failed of ' + (summary.total || 0) + '</span>';
+      html += '</div>';
+
+      // Assertions list
+      html += '<ul class="assertion-list">';
+      for (const exp of expectations) {
+        const statusClass = exp.passed ? "pass" : "fail";
+        const statusIcon = exp.passed ? "\u2713" : "\u2717";
+        html += '<li class="assertion-item">';
+        html += '<span class="assertion-status ' + statusClass + '">' + statusIcon + '</span>';
+        html += '<span>' + escapeHtml(exp.text) + '</span>';
+        if (exp.evidence) {
+          html += '<div class="assertion-evidence">' + escapeHtml(exp.evidence) + '</div>';
+        }
+        html += '</li>';
+      }
+      html += '</ul>';
+
+      html += '</div>';
+      content.innerHTML = html;
+    }
+
+    function toggleGrades() {
+      const content = document.getElementById("grades-content");
+      const arrow = document.getElementById("grades-arrow");
+      content.classList.toggle("open");
+      arrow.classList.toggle("open");
+    }
+
+    // ---- Previous outputs (collapsible) ----
+    function renderPrevOutputs(run) {
+      const section = document.getElementById("prev-outputs-section");
+      const content = document.getElementById("prev-outputs-content");
+      const prevOutputs = (EMBEDDED_DATA.previous_outputs || {})[run.id];
+
+      if (!prevOutputs || prevOutputs.length === 0) {
+        section.style.display = "none";
+        return;
+      }
+
+      section.style.display = "block";
+      // Reset to collapsed
+      content.classList.remove("open");
+      document.getElementById("prev-outputs-arrow").classList.remove("open");
+
+      // Render the files into the content area
+      content.innerHTML = "";
+      const wrapper = document.createElement("div");
+      wrapper.style.padding = "1rem";
+
+      for (const file of prevOutputs) {
+        const fileDiv = document.createElement("div");
+        fileDiv.className = "output-file";
+
+        const header = document.createElement("div");
+        header.className = "output-file-header";
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = file.name;
+        header.appendChild(nameSpan);
+        const dlBtn = document.createElement("a");
+        dlBtn.className = "dl-btn";
+        dlBtn.textContent = "Download";
+        dlBtn.download = file.name;
+        dlBtn.href = getDownloadUri(file);
+        header.appendChild(dlBtn);
+        fileDiv.appendChild(header);
+
+        const fc = document.createElement("div");
+        fc.className = "output-file-content";
+
+        if (file.type === "text") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          fc.appendChild(pre);
+        } else if (file.type === "image") {
+          const img = document.createElement("img");
+          img.src = file.data_uri;
+          img.alt = file.name;
+          fc.appendChild(img);
+        } else if (file.type === "pdf") {
+          const iframe = document.createElement("iframe");
+          iframe.src = file.data_uri;
+          fc.appendChild(iframe);
+        } else if (file.type === "xlsx") {
+          renderXlsx(fc, file.data_b64);
+        } else if (file.type === "binary") {
+          const a = document.createElement("a");
+          a.className = "download-link";
+          a.href = file.data_uri;
+          a.download = file.name;
+          a.textContent = "Download " + file.name;
+          fc.appendChild(a);
+        }
+
+        fileDiv.appendChild(fc);
+        wrapper.appendChild(fileDiv);
+      }
+
+      content.appendChild(wrapper);
+    }
+
+    function togglePrevOutputs() {
+      const content = document.getElementById("prev-outputs-content");
+      const arrow = document.getElementById("prev-outputs-arrow");
+      content.classList.toggle("open");
+      arrow.classList.toggle("open");
+    }
+
+    // ---- Feedback (saved to server -> feedback.json) ----
+    function saveCurrentFeedback() {
+      const run = EMBEDDED_DATA.runs[currentIndex];
+      const text = document.getElementById("feedback").value;
+
+      if (text.trim() === "") {
+        delete feedbackMap[run.id];
+      } else {
+        feedbackMap[run.id] = text;
+      }
+
+      // Build reviews array from map
+      const reviews = [];
+      for (const [run_id, feedback] of Object.entries(feedbackMap)) {
+        if (feedback.trim()) {
+          reviews.push({ run_id, feedback, timestamp: new Date().toISOString() });
+        }
+      }
+
+      fetch("/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ reviews, status: "in_progress" }),
+      }).then(() => {
+        document.getElementById("feedback-status").textContent = "Saved";
+      }).catch(() => {
+        // Static mode or server unavailable — no-op on auto-save,
+        // feedback will be downloaded on final submit
+        document.getElementById("feedback-status").textContent = "Will download on submit";
+      });
+    }
+
+    // ---- Done ----
+    function showDoneDialog() {
+      // Save current textarea to feedbackMap (but don't POST yet)
+      const run = EMBEDDED_DATA.runs[currentIndex];
+      const text = document.getElementById("feedback").value;
+      if (text.trim() === "") {
+        delete feedbackMap[run.id];
+      } else {
+        feedbackMap[run.id] = text;
+      }
+
+      // POST once with status: complete — include ALL runs so the model
+      // can distinguish "no feedback" (looks good) from "not reviewed"
+      const reviews = [];
+      const ts = new Date().toISOString();
+      for (const r of EMBEDDED_DATA.runs) {
+        reviews.push({ run_id: r.id, feedback: feedbackMap[r.id] || "", timestamp: ts });
+      }
+      const payload = JSON.stringify({ reviews, status: "complete" }, null, 2);
+      fetch("/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: payload,
+      }).then(() => {
+        document.getElementById("done-overlay").classList.add("visible");
+      }).catch(() => {
+        // Server not available (static mode) — download as file
+        const blob = new Blob([payload], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "feedback.json";
+        a.click();
+        URL.revokeObjectURL(url);
+        document.getElementById("done-overlay").classList.add("visible");
+      });
+    }
+
+    function closeDoneDialog() {
+      // Reset status back to in_progress
+      saveCurrentFeedback();
+      document.getElementById("done-overlay").classList.remove("visible");
+    }
+
+    // ---- Toast ----
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("visible");
+      setTimeout(() => toast.classList.remove("visible"), 2000);
+    }
+
+    // ---- Keyboard nav ----
+    document.addEventListener("keydown", (e) => {
+      // Don't capture when typing in textarea
+      if (e.target.tagName === "TEXTAREA") return;
+
+      if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+        e.preventDefault();
+        navigate(-1);
+      } else if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+        e.preventDefault();
+        navigate(1);
+      }
+    });
+
+    // ---- Util ----
+    function getDownloadUri(file) {
+      if (file.data_uri) return file.data_uri;
+      if (file.data_b64) return "data:application/octet-stream;base64," + file.data_b64;
+      if (file.type === "text") return "data:text/plain;charset=utf-8," + encodeURIComponent(file.content);
+      return "#";
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement("div");
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // ---- View switching ----
+    function switchView(view) {
+      document.querySelectorAll(".view-tab").forEach(t => t.classList.remove("active"));
+      document.querySelectorAll(".view-panel").forEach(p => p.classList.remove("active"));
+      document.querySelector(`[onclick="switchView('${view}')"]`).classList.add("active");
+      document.getElementById("panel-" + view).classList.add("active");
+    }
+
+    // ---- Benchmark rendering ----
+    function renderBenchmark() {
+      const data = EMBEDDED_DATA.benchmark;
+      if (!data) return;
+
+      // Show the tabs
+      document.getElementById("view-tabs").style.display = "flex";
+
+      const container = document.getElementById("benchmark-content");
+      const summary = data.run_summary || {};
+      const metadata = data.metadata || {};
+      const notes = data.notes || [];
+
+      let html = "";
+
+      // Header
+      html += "<h2 style='font-family: Poppins, sans-serif; margin-bottom: 0.5rem;'>Benchmark Results</h2>";
+      html += "<p style='color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1.25rem;'>";
+      if (metadata.skill_name) html += "<strong>" + escapeHtml(metadata.skill_name) + "</strong> &mdash; ";
+      if (metadata.timestamp) html += metadata.timestamp + " &mdash; ";
+      if (metadata.evals_run) html += "Evals: " + metadata.evals_run.join(", ") + " &mdash; ";
+      html += (metadata.runs_per_configuration || "?") + " runs per configuration";
+      html += "</p>";
+
+      // Summary table
+      html += '<table class="benchmark-table">';
+
+      function fmtStat(stat, pct) {
+        if (!stat) return "—";
+        const suffix = pct ? "%" : "";
+        const m = pct ? (stat.mean * 100).toFixed(0) : stat.mean.toFixed(1);
+        const s = pct ? (stat.stddev * 100).toFixed(0) : stat.stddev.toFixed(1);
+        return m + suffix + " ± " + s + suffix;
+      }
+
+      function deltaClass(val) {
+        if (!val) return "";
+        const n = parseFloat(val);
+        if (n > 0) return "benchmark-delta-positive";
+        if (n < 0) return "benchmark-delta-negative";
+        return "";
+      }
+
+      // Discover config names dynamically (everything except "delta")
+      const configs = Object.keys(summary).filter(k => k !== "delta");
+      const configA = configs[0] || "config_a";
+      const configB = configs[1] || "config_b";
+      const labelA = configA.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+      const labelB = configB.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+      const a = summary[configA] || {};
+      const b = summary[configB] || {};
+      const delta = summary.delta || {};
+
+      html += "<thead><tr><th>Metric</th><th>" + escapeHtml(labelA) + "</th><th>" + escapeHtml(labelB) + "</th><th>Delta</th></tr></thead>";
+      html += "<tbody>";
+
+      html += "<tr><td><strong>Pass Rate</strong></td>";
+      html += "<td>" + fmtStat(a.pass_rate, true) + "</td>";
+      html += "<td>" + fmtStat(b.pass_rate, true) + "</td>";
+      html += '<td class="' + deltaClass(delta.pass_rate) + '">' + (delta.pass_rate || "—") + "</td></tr>";
+
+      // Time (only show row if data exists)
+      if (a.time_seconds || b.time_seconds) {
+        html += "<tr><td><strong>Time (s)</strong></td>";
+        html += "<td>" + fmtStat(a.time_seconds, false) + "</td>";
+        html += "<td>" + fmtStat(b.time_seconds, false) + "</td>";
+        html += '<td class="' + deltaClass(delta.time_seconds) + '">' + (delta.time_seconds ? delta.time_seconds + "s" : "—") + "</td></tr>";
+      }
+
+      // Tokens (only show row if data exists)
+      if (a.tokens || b.tokens) {
+        html += "<tr><td><strong>Tokens</strong></td>";
+        html += "<td>" + fmtStat(a.tokens, false) + "</td>";
+        html += "<td>" + fmtStat(b.tokens, false) + "</td>";
+        html += '<td class="' + deltaClass(delta.tokens) + '">' + (delta.tokens || "—") + "</td></tr>";
+      }
+
+      html += "</tbody></table>";
+
+      // Per-eval breakdown (if runs data available)
+      const runs = data.runs || [];
+      if (runs.length > 0) {
+        const evalIds = [...new Set(runs.map(r => r.eval_id))].sort((a, b) => a - b);
+
+        html += "<h3 style='font-family: Poppins, sans-serif; margin-bottom: 0.75rem;'>Per-Eval Breakdown</h3>";
+
+        const hasTime = runs.some(r => r.result && r.result.time_seconds != null);
+        const hasErrors = runs.some(r => r.result && r.result.errors > 0);
+
+        for (const evalId of evalIds) {
+          const evalRuns = runs.filter(r => r.eval_id === evalId);
+          const evalName = evalRuns[0] && evalRuns[0].eval_name ? evalRuns[0].eval_name : "Eval " + evalId;
+
+          html += "<h4 style='font-family: Poppins, sans-serif; margin: 1rem 0 0.5rem; color: var(--text);'>" + escapeHtml(evalName) + "</h4>";
+          html += '<table class="benchmark-table">';
+          html += "<thead><tr><th>Config</th><th>Run</th><th>Pass Rate</th>";
+          if (hasTime) html += "<th>Time (s)</th>";
+          if (hasErrors) html += "<th>Crashes During Execution</th>";
+          html += "</tr></thead>";
+          html += "<tbody>";
+
+          // Group by config and render with average rows
+          const configGroups = [...new Set(evalRuns.map(r => r.configuration))];
+          for (let ci = 0; ci < configGroups.length; ci++) {
+            const config = configGroups[ci];
+            const configRuns = evalRuns.filter(r => r.configuration === config);
+            if (configRuns.length === 0) continue;
+
+            const rowClass = ci === 0 ? "benchmark-row-with" : "benchmark-row-without";
+            const configLabel = config.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+
+            for (const run of configRuns) {
+              const r = run.result || {};
+              const prClass = r.pass_rate >= 0.8 ? "benchmark-delta-positive" : r.pass_rate < 0.5 ? "benchmark-delta-negative" : "";
+              html += '<tr class="' + rowClass + '">';
+              html += "<td>" + configLabel + "</td>";
+              html += "<td>" + run.run_number + "</td>";
+              html += '<td class="' + prClass + '">' + ((r.pass_rate || 0) * 100).toFixed(0) + "% (" + (r.passed || 0) + "/" + (r.total || 0) + ")</td>";
+              if (hasTime) html += "<td>" + (r.time_seconds != null ? r.time_seconds.toFixed(1) : "—") + "</td>";
+              if (hasErrors) html += "<td>" + (r.errors || 0) + "</td>";
+              html += "</tr>";
+            }
+
+            // Average row
+            const rates = configRuns.map(r => (r.result || {}).pass_rate || 0);
+            const avgRate = rates.reduce((a, b) => a + b, 0) / rates.length;
+            const avgPrClass = avgRate >= 0.8 ? "benchmark-delta-positive" : avgRate < 0.5 ? "benchmark-delta-negative" : "";
+            html += '<tr class="benchmark-row-avg ' + rowClass + '">';
+            html += "<td>" + configLabel + "</td>";
+            html += "<td>Avg</td>";
+            html += '<td class="' + avgPrClass + '">' + (avgRate * 100).toFixed(0) + "%</td>";
+            if (hasTime) {
+              const times = configRuns.map(r => (r.result || {}).time_seconds).filter(t => t != null);
+              html += "<td>" + (times.length ? (times.reduce((a, b) => a + b, 0) / times.length).toFixed(1) : "—") + "</td>";
+            }
+            if (hasErrors) html += "<td></td>";
+            html += "</tr>";
+          }
+          html += "</tbody></table>";
+
+          // Per-assertion detail for this eval
+          const runsWithExpectations = {};
+          for (const config of configGroups) {
+            runsWithExpectations[config] = evalRuns.filter(r => r.configuration === config && r.expectations && r.expectations.length > 0);
+          }
+          const hasAnyExpectations = Object.values(runsWithExpectations).some(runs => runs.length > 0);
+          if (hasAnyExpectations) {
+            // Collect all unique assertion texts across all configs
+            const allAssertions = [];
+            const seen = new Set();
+            for (const config of configGroups) {
+              for (const run of runsWithExpectations[config]) {
+                for (const exp of (run.expectations || [])) {
+                  if (!seen.has(exp.text)) {
+                    seen.add(exp.text);
+                    allAssertions.push(exp.text);
+                  }
+                }
+              }
+            }
+
+            html += '<table class="benchmark-table" style="margin-top: 0.5rem;">';
+            html += "<thead><tr><th>Assertion</th>";
+            for (const config of configGroups) {
+              const label = config.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+              html += "<th>" + escapeHtml(label) + "</th>";
+            }
+            html += "</tr></thead><tbody>";
+
+            for (const assertionText of allAssertions) {
+              html += "<tr><td>" + escapeHtml(assertionText) + "</td>";
+
+              for (const config of configGroups) {
+                html += "<td>";
+                for (const run of runsWithExpectations[config]) {
+                  const exp = (run.expectations || []).find(e => e.text === assertionText);
+                  if (exp) {
+                    const cls = exp.passed ? "benchmark-delta-positive" : "benchmark-delta-negative";
+                    const icon = exp.passed ? "\u2713" : "\u2717";
+                    html += '<span class="' + cls + '" title="Run ' + run.run_number + ': ' + escapeHtml(exp.evidence || "") + '">' + icon + "</span> ";
+                  } else {
+                    html += "— ";
+                  }
+                }
+                html += "</td>";
+              }
+              html += "</tr>";
+            }
+            html += "</tbody></table>";
+          }
+        }
+      }
+
+      // Notes
+      if (notes.length > 0) {
+        html += '<div class="benchmark-notes">';
+        html += "<h3>Analysis Notes</h3>";
+        html += "<ul>";
+        for (const note of notes) {
+          html += "<li>" + escapeHtml(note) + "</li>";
+        }
+        html += "</ul></div>";
+      }
+
+      container.innerHTML = html;
+    }
+
+    // ---- Start ----
+    init();
+    renderBenchmark();
+  </script>
+</body>
+</html>
